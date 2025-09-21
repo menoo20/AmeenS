@@ -1,14 +1,19 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import DeveloperJourneyMap from './DeveloperJourneyMap'
+import EducationPortfolioMap from './EducationPortfolioMap'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const [typewriterText, setTypewriterText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
-  
-  const typewriterWords = ['Educator', 'Developer', 'Lifelong Learner', 'Problem Solver', 'Creative Thinker']
-  
+  const [showMapSelection, setShowMapSelection] = useState(false)
+  const [showDeveloperMap, setShowDeveloperMap] = useState(false)
+  const [showEducationMap, setShowEducationMap] = useState(false)
+
+  const typewriterWords = ['Ed Tech Specialist', 'Instructional Designer', 'Learning Experience Designer', 'Content Developer', 'English Teacher', 'Curriculum Developer', 'Academic Supervisor']
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -50,7 +55,7 @@ export default function Hero() {
           <div className="mb-8">
             <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200">
               <img
-                src="/assets/photos/personal/My image portrait.png"
+                src="/assets/photos/personal/My image portrait.webp"
                 alt="Abo Ameen"
                 className="w-full h-full object-cover object-center"
                 style={{ objectPosition: 'center 10%' }}
@@ -73,7 +78,7 @@ export default function Hero() {
           
           {/* Subtitle with Typewriter */}
           <div className="text-xl md:text-2xl mb-8 opacity-95 animate-slide-up font-medium tracking-wide min-h-[2rem]">
-            <span className="text-yellow-300">✨</span> I'm a{' '}
+            <span className="text-yellow-300">✨</span> I'm a/an{' '}
             <span className="text-yellow-300 font-bold bg-white/10 px-2 py-1 rounded-lg">
               {typewriterText}
               <span className="animate-pulse">|</span>
@@ -95,19 +100,13 @@ export default function Hero() {
             <span className="text-yellow-300 font-semibold">amazing fellow learners</span> like you.
           </p>
           
-          {/* Call to action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up mb-32">
+          {/* Call to action button */}
+          <div className="flex justify-center animate-slide-up mb-32">
             <button 
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              onClick={() => setShowMapSelection(true)}
+              className="bg-white text-purple-600 px-10 py-4 rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              🌟 Discover My Story
-            </button>
-            <button 
-              onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              🎯 View My Journey
+              🚀 Where do u wanna start?
             </button>
           </div>
         </div>
@@ -119,6 +118,96 @@ export default function Hero() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
+
+      {/* Map Selection Modal */}
+      {showMapSelection && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 p-8 max-w-2xl w-full">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-white mb-4">Choose Your Journey</h2>
+              <p className="text-white/80 text-lg">
+                Explore my professional expertise through different perspectives
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Developer Journey */}
+              <button
+                onClick={() => {
+                  setShowMapSelection(false)
+                  setShowDeveloperMap(true)
+                }}
+                className="group bg-gradient-to-br from-green-500/20 to-blue-500/20 hover:from-green-500/30 hover:to-blue-500/30 border border-green-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
+              >
+                <div className="text-center">
+                  <div className="text-4xl mb-4">💻</div>
+                  <h3 className="text-xl font-bold text-white mb-2">Developer Journey</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Explore my technical skills, projects, and coding expertise
+                  </p>
+                  <div className="text-green-400 text-sm font-medium">
+                    Terminal • Code • Projects
+                  </div>
+                </div>
+              </button>
+
+              {/* Education Portfolio */}
+              <button
+                onClick={() => {
+                  setShowMapSelection(false)
+                  setShowEducationMap(true)
+                }}
+                className="group bg-gradient-to-br from-purple-500/20 to-indigo-500/20 hover:from-purple-500/30 hover:to-indigo-500/30 border border-purple-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
+              >
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🎓</div>
+                  <h3 className="text-xl font-bold text-white mb-2">Education Portfolio</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    Discover my teaching credentials, certifications, and educational expertise
+                  </p>
+                  <div className="text-purple-400 text-sm font-medium">
+                    Academic • Professional • Credentials
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            {/* Close Button */}
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowMapSelection(false)}
+                className="text-white/60 hover:text-white transition-colors text-sm"
+              >
+                ✕ Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Developer Journey Map */}
+      <DeveloperJourneyMap 
+        isVisible={showDeveloperMap}
+        onClose={() => setShowDeveloperMap(false)}
+        onNavigate={(nodeId) => {
+          console.log(`Navigating to: ${nodeId}`)
+          setShowDeveloperMap(false)
+          // Here we'll add actual navigation logic later
+          alert(`🚀 Navigating to ${nodeId} section! (Coming soon)`)
+        }}
+      />
+
+      {/* Education Portfolio Map */}
+      <EducationPortfolioMap 
+        isVisible={showEducationMap}
+        onClose={() => setShowEducationMap(false)}
+        onNavigate={(sectionId) => {
+          console.log(`Navigating to: ${sectionId}`)
+          setShowEducationMap(false)
+          // Here we'll add actual navigation logic later
+          alert(`🎓 Navigating to ${sectionId} section! (Coming soon)`)
+        }}
+      />
     </section>
   )
 }

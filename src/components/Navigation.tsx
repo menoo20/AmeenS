@@ -8,10 +8,10 @@ export default function Navigation() {
 
   const navItems = [
     { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', label: 'About', disabled: true },
+    { href: '#experience', label: 'Experience', disabled: true },
+    { href: '#gallery', label: 'Gallery', disabled: true },
+    { href: '#contact', label: 'Contact', disabled: true },
     { href: '/blog', label: 'Blog' },
   ]
 
@@ -30,13 +30,23 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  {item.label}
-                </a>
+                item.disabled ? (
+                  <span
+                    key={item.href}
+                    className="text-gray-400 px-3 py-2 rounded-md text-sm font-medium cursor-not-allowed"
+                    title="Coming soon"
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                )
               ))}
             </div>
           </div>
@@ -63,14 +73,23 @@ export default function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-700 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
+                item.disabled ? (
+                  <span
+                    key={item.href}
+                    className="text-gray-400 block px-3 py-2 rounded-md text-base font-medium cursor-not-allowed"
+                  >
+                    {item.label} (Coming soon)
+                  </span>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-gray-700 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
               ))}
             </div>
           </div>
