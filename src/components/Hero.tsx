@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import DeveloperJourneyMap from './DeveloperJourneyMap'
-import EducationPortfolioMap from './EducationPortfolioMap'
+import EducationStarfield from './EducationStarfield'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -151,22 +151,22 @@ export default function Hero() {
                 </div>
               </button>
 
-              {/* Education Portfolio */}
+              {/* Education Starfield */}
               <button
                 onClick={() => {
                   setShowMapSelection(false)
                   setShowEducationMap(true)
                 }}
-                className="group bg-gradient-to-br from-purple-500/20 to-indigo-500/20 hover:from-purple-500/30 hover:to-indigo-500/30 border border-purple-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
+                className="group bg-gradient-to-br from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 border border-indigo-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
               >
                 <div className="text-center">
-                  <div className="text-4xl mb-4">🎓</div>
-                  <h3 className="text-xl font-bold text-white mb-2">Education Portfolio</h3>
+                  <div className="text-4xl mb-4">✨</div>
+                  <h3 className="text-xl font-bold text-white mb-2">Education Starfield</h3>
                   <p className="text-white/70 text-sm mb-4">
-                    Discover my teaching credentials, certifications, and educational expertise
+                    Navigate through a constellation of my educational expertise
                   </p>
-                  <div className="text-purple-400 text-sm font-medium">
-                    Academic • Professional • Credentials
+                  <div className="text-indigo-400 text-sm font-medium">
+                    Stars • Constellation • Interactive
                   </div>
                 </div>
               </button>
@@ -197,15 +197,15 @@ export default function Hero() {
         }}
       />
 
-      {/* Education Portfolio Map */}
-      <EducationPortfolioMap 
+      {/* Education Starfield */}
+      <EducationStarfield 
         isVisible={showEducationMap}
         onClose={() => setShowEducationMap(false)}
-        onNavigate={(sectionId) => {
-          console.log(`Navigating to: ${sectionId}`)
+        onNavigate={(nodeId: string) => {
+          console.log(`Navigating to: ${nodeId}`)
           setShowEducationMap(false)
           // Here we'll add actual navigation logic later
-          alert(`🎓 Navigating to ${sectionId} section! (Coming soon)`)
+          alert(`✨ Exploring ${nodeId} star! (Coming soon)`)
         }}
       />
     </section>
