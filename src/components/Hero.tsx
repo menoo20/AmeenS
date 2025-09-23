@@ -97,7 +97,7 @@ export default function Hero() {
             This is where I share my{' '}
             <span className="text-white font-semibold bg-purple-500/30 px-1 rounded">adventures</span>, showcase my{' '}
             <span className="text-white font-semibold bg-purple-500/30 px-1 rounded">work</span>, and connect with{' '}
-            <span className="text-yellow-300 font-semibold">amazing fellow learners</span> like you.
+            <span className="text-yellow-300 font-semibold">Education Leaders and Innovators</span> like you.
           </p>
           
           {/* Call to action button */}
