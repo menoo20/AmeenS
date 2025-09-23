@@ -33,6 +33,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
   const [isHovering, setIsHovering] = useState(false)
   const starRefs = useRef<{ [key: string]: THREE.Group }>({})
   const originalStarPositions = useRef<{ [key: string]: THREE.Vector3 }>({})
+  const constellationLines = useRef<Array<{ startId: string; endId: string; line: THREE.Line }>>([])
 
   // Configurable star constellation for educational journey
   const starNodes: StarNode[] = [
@@ -224,7 +225,6 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
 
     // Create constellation lines between related stars
     const createConstellationLines = () => {
-      const lineGeometry = new THREE.BufferGeometry()
       const lineMaterial = new THREE.LineBasicMaterial({
         color: 0x4a5568,
         transparent: true,
@@ -255,6 +255,28 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
           const geometry = new THREE.BufferGeometry().setFromPoints(points)
           const line = new THREE.Line(geometry, lineMaterial)
           scene.add(line)
+          
+          // Store reference for updating
+          constellationLines.current.push({ startId, endId, line })
+        }
+      })
+    }
+
+    // Function to update constellation line positions
+    const updateConstellationLines = () => {
+      constellationLines.current.forEach(({ startId, endId, line }) => {
+        const startGroup = starRefs.current[startId]
+        const endGroup = starRefs.current[endId]
+        
+        if (startGroup && endGroup) {
+          const points = [
+            startGroup.position,
+            endGroup.position
+          ]
+          
+          const geometry = new THREE.BufferGeometry().setFromPoints(points)
+          line.geometry.dispose()
+          line.geometry = geometry
         }
       })
     }
@@ -286,6 +308,9 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
             ring.rotation.z += 0.01
           }
         })
+
+        // Update constellation lines to follow the stars
+        updateConstellationLines()
       }
 
       renderer.render(scene, camera)
