@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 const CERTIFICATES = [
   {
@@ -74,42 +73,13 @@ const CertificatesPage: React.FC = () => {
   }, [current, zoomed]);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-900">
-      {/* Background photo with right-side shadow overlays */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <Image
-          src="/photos/work/at%20my%20office.webp"
-          alt="Work environment background"
-          fill
-          priority
-          className="object-cover object-center opacity-40"
-        />
-        {/* Subtle overall darkening for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 via-indigo-900/30 to-transparent"></div>
-        {/* Right-side shadow/vignette */}
-        <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black/55 to-transparent"></div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-900">
       {/* Top Navigation Menu */}
       <Navigation />
 
-      <div className="flex flex-col items-center justify-center p-8 pt-4">
+      <div className="relative z-10 flex flex-col items-center justify-center p-8 pt-4">
         <h1 className="text-4xl font-bold text-white mb-8">My Certificates & Courses</h1>
       <div className="relative w-full max-w-xl h-96 flex items-center justify-center group">
-        {/* Floating particles around certificate */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-float opacity-60`}
-              style={{
-                left: `${20 + (i * 15)}%`,
-                top: `${10 + (i * 12)}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${3 + (i * 0.5)}s`,
-              }}
-            ></div>
-          ))}
-        </div>
 
         {/* Certificate images */}
         {CERTIFICATES.map((cert, idx) => (
