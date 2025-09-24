@@ -31,6 +31,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
   const [selectedStar, setSelectedStar] = useState<string | null>(null)
   const [showStarDetails, setShowStarDetails] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [starLabels, setStarLabels] = useState<{ [key: string]: { x: number; y: number } }>({})
   const starRefs = useRef<{ [key: string]: THREE.Group }>({})
   const originalStarPositions = useRef<{ [key: string]: THREE.Vector3 }>({})
   const constellationLines = useRef<Array<{ startId: string; endId: string; line: THREE.Line }>>([])
@@ -283,6 +284,27 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
 
     createConstellationLines()
 
+    // Function to update star label positions
+    const updateStarLabelPositions = () => {
+      const newLabels: { [key: string]: { x: number; y: number } } = {}
+      
+      Object.entries(starRefs.current).forEach(([starId, starGroup]) => {
+        const vector = new THREE.Vector3()
+        vector.setFromMatrixPosition(starGroup.matrixWorld)
+        vector.project(camera)
+
+        const x = (vector.x * 0.5 + 0.5) * window.innerWidth
+        const y = (vector.y * -0.5 + 0.5) * window.innerHeight
+
+        // Only show labels for stars that are in front of the camera
+        if (vector.z < 1) {
+          newLabels[starId] = { x, y }
+        }
+      })
+      
+      setStarLabels(newLabels)
+    }
+
     // Animation loop
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate)
@@ -312,6 +334,9 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
         // Update constellation lines to follow the stars
         updateConstellationLines()
       }
+
+      // Update star label positions
+      updateStarLabelPositions()
 
       renderer.render(scene, camera)
     }
@@ -473,6 +498,29 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
     <div className="fixed inset-0 z-50 bg-black overflow-hidden">
       {/* Three.js Canvas */}
       <div ref={mountRef} className="absolute inset-0" />
+
+      {/* Star Labels Overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Object.entries(starLabels).map(([starId, position]) => {
+          const star = starNodes.find(s => s.id === starId)
+          if (!star) return null
+          
+          return (
+            <div
+              key={starId}
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              style={{
+                left: position.x, // Centered horizontally on the star
+                top: position.y - 30,  // More above the star
+              }}
+            >
+              <div className="bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-md text-xs font-medium border border-white/20">
+                {star.title}
+              </div>
+            </div>
+          )
+        })}
+      </div>
       
       {/* Header UI */}
       <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-transparent p-6">

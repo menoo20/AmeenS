@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import DeveloperJourneyMap from './DeveloperJourneyMap'
-import EducationStarfield from './EducationStarfield'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -10,7 +10,7 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showMapSelection, setShowMapSelection] = useState(false)
   const [showDeveloperMap, setShowDeveloperMap] = useState(false)
-  const [showEducationMap, setShowEducationMap] = useState(false)
+  const router = useRouter()
 
   const typewriterWords = ['Ed Tech Specialist', 'Instructional Designer', 'Learning Experience Designer', 'Content Developer', 'English Teacher', 'Curriculum Developer', 'Academic Supervisor']
 
@@ -154,8 +154,7 @@ export default function Hero() {
               {/* Education Starfield */}
               <button
                 onClick={() => {
-                  setShowMapSelection(false)
-                  setShowEducationMap(true)
+                  router.push('/education')
                 }}
                 className="group bg-gradient-to-br from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 border border-indigo-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
               >
@@ -194,18 +193,6 @@ export default function Hero() {
           setShowDeveloperMap(false)
           // Here we'll add actual navigation logic later
           alert(`🚀 Navigating to ${nodeId} section! (Coming soon)`)
-        }}
-      />
-
-      {/* Education Starfield */}
-      <EducationStarfield 
-        isVisible={showEducationMap}
-        onClose={() => setShowEducationMap(false)}
-        onNavigate={(nodeId: string) => {
-          console.log(`Navigating to: ${nodeId}`)
-          setShowEducationMap(false)
-          // Here we'll add actual navigation logic later
-          alert(`✨ Exploring ${nodeId} star! (Coming soon)`)
         }}
       />
     </section>
