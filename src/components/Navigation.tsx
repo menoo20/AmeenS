@@ -8,6 +8,8 @@ export default function Navigation() {
 
   const navItems = [
     { href: '#home', label: 'Home' },
+    { href: '/teaching', label: 'Teaching' },
+    { href: '#developer', label: 'Developer', disabled: true },
     { href: '#about', label: 'About', disabled: true },
     { href: '#experience', label: 'Experience', disabled: true },
     { href: '#gallery', label: 'Gallery', disabled: true },

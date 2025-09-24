@@ -297,10 +297,10 @@ const CertificatesPage: React.FC = () => {
       <div className="fixed bottom-8 left-8 right-8 flex justify-between items-center pointer-events-none">
         {/* Back to Galaxy Button */}
         <button 
-          onClick={() => router.push('/education')}
+          onClick={() => router.push('/teaching/starfield')}
           className="bg-purple-600/90 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
         >
-          ← Back to Galaxy
+          ← Back to Starfield
         </button>
 
         {/* Next Section Button */}
