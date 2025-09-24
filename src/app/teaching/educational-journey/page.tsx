@@ -61,7 +61,7 @@ const educationData: EducationSlide[] = [
     id: 5,
     title: "IELTS Academic - British Council",
     institution: "British Council",
-    location: "Egypt",
+    location: "Saudi Arabia",
     issueDate: "May 2025",
     score: "Overall Band 7.5/C1 Level",
     description: "My most recent achievement represents the culmination of years of continuous learning and professional development. Achieving a C1 level on the IELTS Academic test demonstrates my commitment to maintaining the highest standards in English proficiency. This certification positions me for advanced academic opportunities and international collaborations, reflecting my dedication to lifelong learning and excellence in education.",
