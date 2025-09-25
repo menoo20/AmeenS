@@ -13,9 +13,10 @@ export default function TeachingStarfieldPage() {
       router.push('/teaching/certificates');
     } else if (nodeId === 'educational-background') {
       router.push('/teaching/educational-journey');
+    } else if (nodeId === 'teaching-experience') {
+      router.push('/teaching/experience');
     } else {
       setShowEducationMap(false);
-      // Here we'll add actual navigation logic for other nodes later
       alert(`✨ Exploring ${nodeId} star! (Coming soon)`);
     }
   };
