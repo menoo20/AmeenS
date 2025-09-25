@@ -1,4 +1,4 @@
-// File: F:\work\My website v2\abo-ameen-fullstack\src\app\teaching\starfield\page.tsx
+// File: D:\AmeenS\src\app\teaching\starfield\page.tsx
 import * as entry from '../../../../../src/app/teaching/starfield/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
