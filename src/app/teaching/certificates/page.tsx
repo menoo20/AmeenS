@@ -77,8 +77,8 @@ const CertificatesPage: React.FC = () => {
       {/* Top Navigation Menu */}
       <Navigation />
 
-      <div className="relative z-10 flex flex-col items-center justify-center p-8 pt-4">
-        <h1 className="text-4xl font-bold text-white mb-8">My Certificates & Courses</h1>
+      <div className="relative z-10 flex flex-col items-center justify-center p-8 pt-16 md:pt-32">
+  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-8 mt-24 sm:mt-0">My Certificates & Courses</h1>
       <div className="relative w-full max-w-xl h-96 flex items-center justify-center group">
 
         {/* Certificate images */}
