@@ -27,9 +27,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "September 2020",
     dateTo: "Present",
     images: [
-      "/assets/photos/work/atwork3.webp",
-      "/assets/photos/work/withmystudents2.webp",
-      "/assets/photos/work/atmyoffice.webp"
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
     ],
     responsibilities: [
       "Teaching Advanced English Literature to Grade 11-12 students",
@@ -52,8 +52,8 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "January 2018",
     dateTo: "August 2020",
     images: [
-      "/assets/photos/work/atwork5.webp",
       "/assets/photos/work/withmystudents3.webp",
+      "/assets/photos/work/atwork8.webp",
       "/assets/photos/work/focusmode.webp"
     ],
     responsibilities: [
@@ -77,9 +77,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "September 2015",
     dateTo: "December 2017",
     images: [
-      "/assets/photos/work/atwork7.webp",
+      "/assets/photos/work/atmyoffice.webp",
       "/assets/photos/work/picwiththestaff.webp",
-      "/assets/photos/work/atwork9.webp"
+      "/assets/photos/work/atwork4.webp"
     ],
     responsibilities: [
       "Teaching English to grades 9-12",
