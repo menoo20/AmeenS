@@ -15,16 +15,17 @@ interface TeachingExperience {
   achievements: string[];
   description: string;
   color: string; // For theming each experience
+  logo?: string; // Optional logo image path
 }
 
 // Sample data - will be replaced with real data
 const TEACHING_EXPERIENCES: TeachingExperience[] = [
   {
     id: 1,
-    workplace: "International School of Excellence",
-    position: "Senior English Teacher",
-    location: "Cairo, Egypt",
-    dateFrom: "September 2020",
+    workplace: "Black Gold Institute",
+    position: "English Language Trainer & EdTech Specialist",
+    location: "Dammam, Saudi Arabia",
+    dateFrom: "July 2023",
     dateTo: "Present",
     images: [
       "/assets/photos/work/withsuitatwork.webp",
@@ -32,67 +33,151 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
       "/assets/photos/work/Awardedbymyschool.webp"
     ],
     responsibilities: [
-      "Teaching Advanced English Literature to Grade 11-12 students",
-      "Developing innovative curriculum for creative writing workshops",
-      "Mentoring junior teachers and student teachers"
+      "Delivered English and IELTS training for engineers and professionals",
+      "Designed and implemented a full electronic attendance system",
+      "Created and managed an ILMS platform to track student progress and exams",
+      "Developed and delivered a phonics website for teacher training and practice",
+      "Provided weekly performance analysis reports to management"
     ],
     achievements: [
-      "Increased student pass rates by 25% in Cambridge examinations",
-      "Established the school's first Creative Writing Club",
-      "Received 'Teacher of the Year' award 2023"
+      "Increased attendance tracking efficiency by 30% with electronic systems",
+      "Enhanced multi-branch curriculum implementation",
+      "Improved learning outcomes through integration of EdTech solutions"
     ],
-    description: "My current role has been the pinnacle of my teaching career, where I've been able to combine my passion for literature with innovative teaching methodologies.",
-    color: "from-blue-600 to-purple-600"
+    description: "Currently leading English language training and EdTech initiatives, combining teaching with innovative technology solutions to improve efficiency and student outcomes.",
+    color: "from-blue-600 to-purple-600",
+    logo: "/assets/photos/logos/black-gold-sold-1.png"
   },
   {
     id: 2,
-    workplace: "Al-Nour Academy",
-    position: "English Language Instructor",
-    location: "Alexandria, Egypt",
-    dateFrom: "January 2018",
-    dateTo: "August 2020",
+    workplace: "Preply.com",
+    position: "Online ESL Tutor",
+    location: "Remote",
+    dateFrom: "January 2024",
+    dateTo: "September 2025",
     images: [
-      "/assets/photos/work/withmystudents3.webp",
-      "/assets/photos/work/atwork8.webp",
-      "/assets/photos/work/focusmode.webp"
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
     ],
     responsibilities: [
-      "Teaching ESL to international students",
-      "Coordinating language exchange programs",
-      "Preparing students for IELTS and TOEFL examinations"
+      "Delivered personalized ESL lessons to international learners",
+      "Adapted materials for online teaching environments",
+      "Built strong digital communication and tutoring skills"
     ],
     achievements: [
-      "Developed a comprehensive ESL curriculum",
-      "Achieved 95% student satisfaction rating",
-      "Organized successful international language fair"
+      "Helped diverse learners achieve their English learning goals",
+      "Developed strong virtual teaching presence",
+      "Received positive reviews and high retention rates"
     ],
-    description: "This position allowed me to work with diverse international students, enriching my understanding of cross-cultural communication in education.",
-    color: "from-green-600 to-teal-600"
+    description: "Provided flexible, student-centered English tutoring sessions to learners worldwide through Preply’s platform.",
+    color: "from-purple-500 to-pink-600",
+    logo: "/assets/photos/logos/preply.png"
   },
   {
     id: 3,
-    workplace: "Future Leaders High School",
-    position: "English Teacher & IT Coordinator",
-    location: "Giza, Egypt",
-    dateFrom: "September 2015",
-    dateTo: "December 2017",
+    workplace: "Tarbya Namouthajiyah Schools",
+    position: "English Second Language Teacher",
+    location: "Riyadh, Saudi Arabia",
+    dateFrom: "March 2021",
+    dateTo: "December 2022",
     images: [
-      "/assets/photos/work/atmyoffice.webp",
-      "/assets/photos/work/picwiththestaff.webp",
-      "/assets/photos/work/atwork4.webp"
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
     ],
     responsibilities: [
-      "Teaching English to grades 9-12",
-      "Managing school's IT infrastructure",
-      "Training staff on educational technology"
+      "Delivered English lessons to primary and preparatory school students",
+      "Used communicative language teaching (CLT) methods tailored to learning styles",
+      "Conducted assessments and adapted teaching strategies"
     ],
     achievements: [
-      "Integrated technology into English curriculum",
-      "Reduced IT-related issues by 40%",
-      "Led digital literacy workshops for teachers"
+      "Enhanced student participation and motivation",
+      "Improved progress tracking with formative assessments",
+      "Built a positive and engaging classroom environment"
     ],
-    description: "Here I discovered my passion for educational technology, combining my teaching skills with technical expertise to create engaging digital learning experiences.",
-    color: "from-orange-600 to-red-600"
+    description: "Focused on delivering engaging English lessons while fostering a supportive environment for younger learners.",
+    color: "from-yellow-500 to-orange-600",
+    logo: "/assets/photos/logos/تربية.png"
+  },
+  {
+    id: 4,
+    workplace: "British Institute",
+    position: "English Language Instructor",
+    location: "Ismailia, Egypt",
+    dateFrom: "2020",
+    dateTo: "2021",
+    images: [
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
+    ],
+    responsibilities: [
+      "Taught IELTS Academic and General Training preparation courses",
+      "Delivered TOEFL PBT preparation classes",
+      "Conducted General English programs across different proficiency levels",
+      "Led Conversational English sessions to enhance fluency and confidence"
+    ],
+    achievements: [
+      "Helped students achieve higher IELTS band scores",
+      "Improved learners’ academic and professional communication",
+      "Designed flexible lesson plans tailored to exam preparation and fluency development"
+    ],
+    description: "At the British Institute, I taught a range of English courses including IELTS, TOEFL, and General English, focusing on equipping learners with both academic and conversational language skills.",
+    color: "from-green-600 to-teal-600",
+    logo: "/assets/photos/logos/eli.jpeg"
+  },
+  {
+    id: 5,
+    workplace: "Belarabyapps.com",
+    position: "Web Content Developer & Team Lead",
+    location: "Ismailia, Egypt",
+    dateFrom: "February 2020",
+    dateTo: "January 2021",
+    images: [
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
+    ],
+    responsibilities: [
+      "Led a team of three in creating interactive content for children",
+      "Developed a long-term content plan for consistent engagement",
+      "Managed production of articles, stories, PowerPoint slides, and videos"
+    ],
+    achievements: [
+      "Increased engagement metrics by 50% through interactive content",
+      "Boosted platform subscriptions by 20%",
+      "Successfully assigned and coordinated roles among designers, animators, and voice-over artists"
+    ],
+    description: "Worked as both developer and team leader, managing content pipelines and ensuring the quality and engagement of children’s educational materials.",
+    color: "from-pink-500 to-red-600",
+    logo: "/assets/photos/logos/belarabyapps.webp"
+  },
+  {
+    id: 6,
+    workplace: "Jawatha Private School",
+    position: "English Teacher",
+    location: "Al-Ahsa, Saudi Arabia",
+    dateFrom: "August 2016",
+    dateTo: "June 2017",
+    images: [
+      "/assets/photos/work/withsuitatwork.webp",
+      "/assets/photos/work/apicwithmystudents.webp",
+      "/assets/photos/work/Awardedbymyschool.webp"
+    ],
+    responsibilities: [
+      "Taught English to primary and preparatory students",
+      "Developed lesson plans aligned with curriculum goals",
+      "Encouraged student participation through interactive activities"
+    ],
+    achievements: [
+      "Strengthened students’ foundational English skills",
+      "Created engaging classroom activities to boost interest in English",
+      "Received positive feedback from school administration for dedication and results"
+    ],
+    description: "My first teaching role in Saudi Arabia, where I gained valuable classroom management experience while helping students build a strong foundation in English.",
+  color: "from-indigo-500 to-blue-600",
+  logo: "/assets/photos/logos/Jawatha.png"
   }
 ];
 
@@ -193,7 +278,16 @@ const TeachingExperiencePage: React.FC = () => {
                     {experience.dateFrom} - {experience.dateTo}
                   </span>
                 </div>
-                <h2 className="text-4xl font-bold mb-4">{experience.workplace}</h2>
+                <h2 className="text-4xl font-bold mb-4 flex items-center gap-3">
+                  {experience.logo && (
+                    <img
+                      src={experience.logo}
+                      alt={experience.workplace + ' logo'}
+                      className="h-10 w-10 object-contain rounded bg-white p-1 shadow"
+                    />
+                  )}
+                  {experience.workplace}
+                </h2>
                 <h3 className="text-2xl font-semibold mb-4 opacity-90">{experience.position}</h3>
                 <p className="text-lg mb-6 opacity-80">{experience.location}</p>
                 
