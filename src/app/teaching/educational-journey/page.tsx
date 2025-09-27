@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
 interface EducationSlide {
   id: number
@@ -155,42 +156,21 @@ export default function EducationalJourneyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Fixed Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 transition-all duration-300"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
+    <>
+      <Navigation />
 
-      {/* Navigation */}
-      <nav className="fixed top-1 w-full z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0">
-              <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
-                Abo Ameen
-              </Link>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Home
-              </Link>
-              <Link href="/teaching/starfield" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Teaching Starfield
-              </Link>
-              <Link href="/teaching/certificates" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
-                Certificates
-              </Link>
-            </div>
-          </div>
+      <div className="min-h-screen bg-gray-50">
+        {/* Fixed Progress Bar */}
+        <div className="fixed top-16 left-0 w-full h-1 bg-gray-200 z-40">
+          <div 
+            className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 transition-all duration-300"
+            style={{ width: `${scrollProgress}%` }}
+          />
         </div>
-      </nav>
 
-      {/* Main Content */}
-      <div className="pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Main Content */}
+        <div className="pt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 tracking-tight">
@@ -370,8 +350,8 @@ export default function EducationalJourneyPage() {
         </div>
       </div>
 
-      {/* Zoom Modal */}
-      {isZoomed && (
+  {/* Zoom Modal */}
+  {isZoomed && (
         <div 
           className="fixed inset-0 bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
           style={{ zIndex: 999999 }}
@@ -447,6 +427,6 @@ export default function EducationalJourneyPage() {
           background: linear-gradient(180deg, #2563eb, #7c3aed);
         }
       `}</style>
-    </div>
+    </>
   )
 }

@@ -2,20 +2,33 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+const primaryNavItems = [
+  { href: '/', label: 'Home' },
+  { href: '/teaching/starfield', label: 'Teaching' },
+  { href: '/blog', label: 'Blog' },
+]
+
+const upcomingNavItems = [
+  { label: 'Developer' },
+  { label: 'About' },
+  { label: 'Experience' },
+  { label: 'Gallery' },
+  { label: 'Contact' },
+]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
-  const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '/teaching', label: 'Teaching' },
-    { href: '#developer', label: 'Developer', disabled: true },
-    { href: '#about', label: 'About', disabled: true },
-    { href: '#experience', label: 'Experience', disabled: true },
-    { href: '#gallery', label: 'Gallery', disabled: true },
-    { href: '#contact', label: 'Contact', disabled: true },
-    { href: '/blog', label: 'Blog' },
-  ]
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    if (href.startsWith('/teaching')) return pathname.startsWith('/teaching')
+    return pathname.startsWith(href)
+  }
+
+  const linkBaseClasses = 'px-3 py-2 rounded-md font-medium transition-colors'
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
@@ -30,25 +43,33 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                item.disabled ? (
-                  <span
-                    key={item.href}
-                    className="text-gray-400 px-3 py-2 rounded-md text-sm font-medium cursor-not-allowed"
-                    title="Coming soon"
-                  >
-                    {item.label}
+            <div className="ml-10 flex items-center space-x-4">
+              {primaryNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${linkBaseClasses} text-sm ${
+                    isActive(item.href)
+                      ? 'text-purple-600'
+                      : 'text-gray-700 hover:text-purple-600'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              {upcomingNavItems.map((item) => (
+                <span
+                  key={item.label}
+                  className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-400 cursor-not-allowed select-none"
+                  aria-disabled="true"
+                  title={`${item.label} section is coming soon`}
+                >
+                  {item.label}
+                  <span className="text-[10px] uppercase tracking-wide text-purple-500 bg-purple-400/10 border border-purple-400/40 rounded-full px-1.5 py-0.5">
+                    Soon
                   </span>
-                ) : (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                )
+                </span>
               ))}
             </div>
           </div>
@@ -74,25 +95,40 @@ export default function Navigation() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navItems.map((item) => (
-                item.disabled ? (
-                  <span
-                    key={item.href}
-                    className="text-gray-400 block px-3 py-2 rounded-md text-base font-medium cursor-not-allowed"
-                  >
-                    {item.label} (Coming soon)
-                  </span>
-                ) : (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="text-gray-700 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                )
+              {primaryNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${linkBaseClasses} block text-base ${
+                    isActive(item.href)
+                      ? 'text-purple-600'
+                      : 'text-gray-700 hover:text-purple-600'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
               ))}
+
+              <div className="mt-4 border-t border-gray-200/70 pt-3">
+                <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+                  Coming Soon
+                </p>
+                <div className="space-y-1">
+                  {upcomingNavItems.map((item) => (
+                    <span
+                      key={item.label}
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 cursor-not-allowed"
+                      aria-disabled="true"
+                    >
+                      {item.label}
+                      <span className="ml-2 text-xs uppercase tracking-wide text-purple-400">
+                        (Soon)
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}
