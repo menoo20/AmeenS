@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { useRouter } from 'next/navigation';
 
@@ -16,6 +17,48 @@ interface TeachingExperience {
   description: string;
   color: string; // For theming each experience
   logo?: string; // Optional logo image path
+  skills?: string[]; // Skills used in this role
+  technologies?: string[]; // Technologies/tools used
+}
+
+// Error Boundary Component
+class ExperienceErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Teaching Experience Error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+          <div className="text-center p-8">
+            <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
+            <p className="mb-4">We're having trouble loading the teaching experiences.</p>
+            <button 
+              onClick={() => this.setState({ hasError: false })}
+              className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
 // Sample data - will be replaced with real data
@@ -46,7 +89,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     ],
     description: "Currently leading English language training and EdTech initiatives, combining teaching with innovative technology solutions to improve efficiency and student outcomes.",
     color: "from-blue-600 to-purple-600",
-    logo: "/assets/photos/logos/black-gold-sold-1.png"
+    logo: "/assets/photos/logos/black-gold-sold-1.png",
+    skills: ["English Teaching", "IELTS Training", "EdTech", "Curriculum Development", "Team Leadership"],
+    technologies: ["ILMS Platform", "Phonics Website", "Electronic Attendance", "Performance Analytics"]
   },
   {
     id: 2,
@@ -72,7 +117,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     ],
     description: "Provided flexible, student-centered English tutoring sessions to learners worldwide through Preply’s platform.",
     color: "from-purple-500 to-pink-600",
-    logo: "/assets/photos/logos/preply.png"
+    logo: "/assets/photos/logos/preply.png",
+    skills: ["Online ESL Teaching", "One-on-One Tutoring", "Personalized Learning", "Digital Communication", "Virtual Classroom Management", "Curriculum Adaptation", "Student Assessment", "Cross-Cultural Communication", "Flexible Teaching Methods"],
+    technologies: ["Preply Platform", "Microsoft Teams", "Zoom", "Google Meet", "Digital Whiteboards", "Screen Sharing Tools", "Online Learning Resources", "PDF Editors", "Video Conferencing", "Cloud Storage", "Interactive Learning Apps", "Scheduling Software"]
   },
   {
     id: 3,
@@ -98,19 +145,49 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     ],
     description: "Focused on delivering engaging English lessons while fostering a supportive environment for younger learners.",
     color: "from-yellow-500 to-orange-600",
-    logo: "/assets/photos/logos/تربية.png"
+    logo: "/assets/photos/logos/تربية.png",
+    skills: ["ESL Teaching", "Classroom Management", "Curriculum Development", "Student Assessment", "Communicative Language Teaching"],
+    technologies: ["Interactive Whiteboards", "Language Learning Apps", "Assessment Software", "Educational Games"]
   },
   {
     id: 4,
+    workplace: "Belarabyapps.com",
+    position: "Web Content Developer & Team Lead",
+    location: "Ismailia, Egypt",
+    dateFrom: "February 2020",
+    dateTo: "January 2021",
+    images: [
+      "/assets/photos/work/belaraby2.png",
+      "/assets/photos/work/broadcast2.jpg",
+      "/assets/photos/work/belaraby3.jpg"
+    ],
+    responsibilities: [
+      "Led a team of three in creating interactive content for children",
+      "Developed a long-term content plan for consistent engagement",
+      "Managed production of articles, stories, PowerPoint slides, and videos"
+    ],
+    achievements: [
+      "Helped students achieve higher IELTS band scores",
+      "Improved learners’ academic and professional communication",
+      "Designed flexible lesson plans tailored to exam preparation and fluency development"
+    ],
+      description: "Worked as both developer and team leader, managing content pipelines and ensuring the quality and engagement of children's educational materials.",
+      color: "from-cyan-500 to-blue-600",
+      logo: "/assets/photos/logos/belarabyapps.webp",
+      skills: ["Web Development", "Content Creation", "Team Leadership", "Project Management", "UI/UX Design"],
+      technologies: ["HTML/CSS", "JavaScript", "Content Management", "Video Production", "Adobe Creative Suite"]
+  },
+  {
+    id: 5,
     workplace: "British Institute",
     position: "English Language Instructor",
     location: "Ismailia, Egypt",
     dateFrom: "2020",
     dateTo: "2021",
     images: [
-      "/assets/photos/work/withsuitatwork.webp",
-      "/assets/photos/work/apicwithmystudents.webp",
-      "/assets/photos/work/Awardedbymyschool.webp"
+      "/assets/photos/work/auc1.JPG",
+      "/assets/photos/work/NotCourses.jpg",
+      "/assets/photos/work/IMAG0405.jpg"
     ],
     responsibilities: [
       "Taught IELTS Academic and General Training preparation courses",
@@ -120,38 +197,14 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     ],
     achievements: [
       "Helped students achieve higher IELTS band scores",
-      "Improved learners’ academic and professional communication",
+      "Improved learners' academic and professional communication",
       "Designed flexible lesson plans tailored to exam preparation and fluency development"
     ],
-    description: "At the British Institute, I taught a range of English courses including IELTS, TOEFL, and General English, focusing on equipping learners with both academic and conversational language skills.",
-    color: "from-green-600 to-teal-600",
-    logo: "/assets/photos/logos/eli.jpeg"
-  },
-  {
-    id: 5,
-    workplace: "Belarabyapps.com",
-    position: "Web Content Developer & Team Lead",
-    location: "Ismailia, Egypt",
-    dateFrom: "February 2020",
-    dateTo: "January 2021",
-    images: [
-      "/assets/photos/work/withsuitatwork.webp",
-      "/assets/photos/work/apicwithmystudents.webp",
-      "/assets/photos/work/Awardedbymyschool.webp"
-    ],
-    responsibilities: [
-      "Led a team of three in creating interactive content for children",
-      "Developed a long-term content plan for consistent engagement",
-      "Managed production of articles, stories, PowerPoint slides, and videos"
-    ],
-    achievements: [
-      "Increased engagement metrics by 50% through interactive content",
-      "Boosted platform subscriptions by 20%",
-      "Successfully assigned and coordinated roles among designers, animators, and voice-over artists"
-    ],
-    description: "Worked as both developer and team leader, managing content pipelines and ensuring the quality and engagement of children’s educational materials.",
-    color: "from-pink-500 to-red-600",
-    logo: "/assets/photos/logos/belarabyapps.webp"
+      description: "At the British Institute, I taught a range of English courses including IELTS, TOEFL, and General English, focusing on equipping learners with both academic and conversational language skills.",
+      color: "from-cyan-500 to-blue-600",
+      logo: "/assets/photos/logos/ELI.jpeg",
+      skills: ["IELTS Training", "TOEFL Preparation", "Academic English", "General English", "Conversation Classes", "Test Preparation", "Language Assessment"],
+      technologies: ["Language Lab Equipment", "Audio-Visual Materials", "Online Testing Platforms", "Cambridge Assessment Tools", "Interactive Whiteboards", "Digital Learning Resources"]
   },
   {
     id: 6,
@@ -161,9 +214,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "August 2016",
     dateTo: "June 2017",
     images: [
-      "/assets/photos/work/withsuitatwork.webp",
-      "/assets/photos/work/apicwithmystudents.webp",
-      "/assets/photos/work/Awardedbymyschool.webp"
+      "/assets/photos/work/jawatha2.jpg",
+      "/assets/photos/work/jawatha4.jpg",
+      "/assets/photos/work/Jawath1.jpg"
     ],
     responsibilities: [
       "Taught English to primary and preparatory students",
@@ -176,17 +229,36 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
       "Received positive feedback from school administration for dedication and results"
     ],
     description: "My first teaching role in Saudi Arabia, where I gained valuable classroom management experience while helping students build a strong foundation in English.",
-  color: "from-indigo-500 to-blue-600",
-  logo: "/assets/photos/logos/Jawatha.png"
+    color: "from-indigo-500 to-blue-600",
+    logo: "/assets/photos/logos/Jawatha.png",
+    skills: ["Elementary English Teaching", "Classroom Management", "Lesson Planning", "Student Engagement", "Foundation Building"],
+    technologies: ["Interactive Whiteboards", "Educational Software", "Audio-Visual Equipment", "Learning Games"]
   }
 ];
 
 const TeachingExperiencePage: React.FC = () => {
   const [currentSection, setCurrentSection] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
+  const [visibleSections, setVisibleSections] = useState<number[]>([]);
+  const [imageLoading, setImageLoading] = useState<{[key: string]: boolean}>({});
   const router = useRouter();
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Image loading handler
+  const handleImageLoad = (imageUrl: string) => {
+    setImageLoading(prev => ({ ...prev, [imageUrl]: false }));
+  };
+
+  // Initialize image loading states
+  useEffect(() => {
+    const loadingStates: {[key: string]: boolean} = {};
+    TEACHING_EXPERIENCES.forEach(exp => {
+      exp.images.forEach(img => {
+        loadingStates[img] = true;
+      });
+    });
+    setImageLoading(loadingStates);
+  }, []);
 
   useEffect(() => {
     // Initialize window height
@@ -194,22 +266,50 @@ const TeachingExperiencePage: React.FC = () => {
       setWindowHeight(window.innerHeight);
     }
 
-    const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        setScrollY(window.scrollY);
-        
-        // Determine which section is currently in view
-        const currentWindowHeight = window.innerHeight;
-        const scrollPosition = window.scrollY + currentWindowHeight / 2;
-        
-        sectionRefs.current.forEach((ref, index) => {
-          if (ref) {
-            const { offsetTop, offsetHeight } = ref;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              setCurrentSection(index);
-            }
+    // Intersection Observer for smooth animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const index = parseInt(entry.target.getAttribute('data-section') || '0');
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
           }
         });
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    // Observe all sections
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking && typeof window !== 'undefined') {
+        requestAnimationFrame(() => {
+          // Determine which section is currently in view
+          const currentWindowHeight = window.innerHeight;
+          const scrollPosition = window.scrollY + currentWindowHeight / 2;
+          
+          sectionRefs.current.forEach((ref, index) => {
+            if (ref) {
+              const { offsetTop, offsetHeight } = ref;
+              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                setCurrentSection(index);
+              }
+            }
+          });
+          
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -220,12 +320,13 @@ const TeachingExperiencePage: React.FC = () => {
     };
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
       window.addEventListener('resize', handleResize);
       handleScroll(); // Initialize on mount
     }
     
     return () => {
+      observer.disconnect();
       if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleResize);
@@ -234,18 +335,23 @@ const TeachingExperiencePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
+    <ExperienceErrorBoundary>
+      <div className="min-h-screen bg-gray-900">
+        <Navigation />
+        
+
+        
+        {/* Hero Section */}
+        <section 
+          className="h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden"
+          aria-label="Teaching Journey Introduction"
+        >
         <div 
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: 'url(/assets/photos/work/atmyoffice.webp)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: `translateY(${scrollY * 0.5}px)`
+            backgroundPosition: 'center'
           }}
         />
         <div className="relative z-10 text-center text-white px-4">
@@ -262,39 +368,43 @@ const TeachingExperiencePage: React.FC = () => {
             </svg>
           </div>
         </div>
-      </div>
+        </section>
 
-      {/* Teaching Experience Sections */}
+        {/* Teaching Experience Sections */}
       {TEACHING_EXPERIENCES.map((experience, index) => (
         <React.Fragment key={experience.id}>
           <div
             ref={(el) => { sectionRefs.current[index] = el; }}
-            className="min-h-screen flex items-center relative overflow-hidden"
+            data-section={index}
+            className={`min-h-screen flex items-center relative overflow-hidden transition-all duration-1000 ${
+              visibleSections.includes(index) 
+                ? 'animate-fade-in opacity-100 transform translate-y-0' 
+                : 'opacity-0 transform translate-y-10'
+            }`}
+            role="article"
+            aria-label={`${experience.workplace} experience`}
+            tabIndex={0}
           >
-            {/* Background with parallax effect */}
+            {/* Static gradient background */}
             <div 
               className={`absolute inset-0 bg-gradient-to-br ${experience.color} opacity-90`}
-              style={{
-                transform: `translateY(${(scrollY - (index + 1) * windowHeight) * 0.3}px)`
-              }}
             />
             
-            {/* Background image */}
+            {/* Static background image */}
             <div 
               className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage: `url(${experience.images[0]})`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                transform: `translateY(${(scrollY - (index + 1) * windowHeight) * 0.5}px)`
+                backgroundPosition: 'center'
               }}
             />
             
             {/* Content */}
-            <div className="relative z-10 container mx-auto px-4 py-16">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Text Content */}
-                <div className={`text-white ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                <div className={`text-white space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="mb-4">
                     <span className="text-sm font-medium opacity-80">
                       {experience.dateFrom} - {experience.dateTo}
@@ -329,7 +439,7 @@ const TeachingExperiencePage: React.FC = () => {
                   </div>
                   
                   {/* Achievements */}
-                  <div>
+                  <div className="mb-8">
                     <h4 className="text-xl font-semibold mb-4">Notable Achievements</h4>
                     <ul className="space-y-2">
                       {experience.achievements.map((achievement, idx) => (
@@ -340,24 +450,75 @@ const TeachingExperiencePage: React.FC = () => {
                       ))}
                     </ul>
                   </div>
+                  
+                  {/* Skills and Technologies */}
+                  {(experience.skills || experience.technologies) && (
+                    <div className="space-y-4">
+                      {experience.skills && (
+                        <div>
+                          <h4 className="text-lg font-semibold mb-3">Key Skills</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {experience.skills.map((skill, idx) => (
+                              <span
+                                key={idx}
+                                className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-200 cursor-default"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {experience.technologies && (
+                        <div>
+                          <h4 className="text-lg font-semibold mb-3">Technologies & Tools</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {experience.technologies.map((tech, idx) => (
+                              <span
+                                key={idx}
+                                className="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium border border-blue-400/30 hover:bg-blue-500/30 transition-all duration-200 cursor-default"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
                 
                 {/* Image Gallery */}
-                <div className={`grid grid-cols-2 gap-4 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                  <div className="col-span-2 relative">
-                    <img
+                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <div className="sm:col-span-2 relative group">
+                    {/* Loading skeleton */}
+                    {imageLoading[experience.images[0]] && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
+                    )}
+                    
+                    <Image
                       src={experience.images[0]}
                       alt={`${experience.workplace} - Main`}
-                      className={`w-full h-64 object-cover rounded-lg shadow-xl ${experience.id === 2 ? 'object-top' : ''}`}
+                      width={800}
+                      height={400}
+                      className={`w-full h-64 object-cover rounded-lg shadow-xl transition-all duration-300 ${
+                        experience.id === 2 ? 'group-hover:shadow-2xl' : 'group-hover:shadow-2xl group-hover:scale-[1.02]'
+                      } ${
+                        experience.id === 2 || experience.id === 6 ? 'object-top' : ''
+                      } ${imageLoading[experience.images[0]] ? 'opacity-0' : 'opacity-100'}`}
+                      onLoad={() => handleImageLoad(experience.images[0])}
+                      priority={index < 2}
+                      loading={index < 2 ? 'eager' : 'lazy'}
                     />
                     {/* YouTube play button overlay for Preply (id 2) */}
                     {experience.id === 2 && (
                       <div 
-                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-all duration-300 rounded-lg cursor-pointer group"
+                        className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg cursor-pointer"
                         onClick={() => window.open('https://youtu.be/vYnEsEPVUH4?si=uZHME2N8E501TgaC', '_blank')}
                       >
-                        <div className="bg-red-600 hover:bg-red-500 rounded-full p-6 transform group-hover:scale-110 transition-all duration-300 shadow-2xl">
-                          <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <div className="bg-red-600 rounded-full p-3 shadow-2xl">
+                          <svg className="w-8 h-8 text-white ml-0" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                           </svg>
                         </div>
@@ -368,22 +529,44 @@ const TeachingExperiencePage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <img
-                    src={experience.images[1]}
-                    alt={`${experience.workplace} - Secondary`}
-                    className="w-full h-32 object-cover object-bottom rounded-lg shadow-xl"
-                  />
-                  <img
-                    src={experience.images[2]}
-                    alt={`${experience.workplace} - Tertiary`}
-                    className={`w-full h-32 object-cover rounded-lg shadow-xl ${experience.id === 1 || experience.id === 3 ? 'object-top' : 'object-bottom'}`}
-                  />
+                  <div className="relative group">
+                    {imageLoading[experience.images[1]] && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
+                    )}
+                    <Image
+                      src={experience.images[1]}
+                      alt={`${experience.workplace} - Secondary`}
+                      width={400}
+                      height={200}
+                      className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                        experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
+                      } ${imageLoading[experience.images[1]] ? 'opacity-0' : 'opacity-100'}`}
+                      onLoad={() => handleImageLoad(experience.images[1])}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="relative group">
+                    {imageLoading[experience.images[2]] && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
+                    )}
+                    <Image
+                      src={experience.images[2]}
+                      alt={`${experience.workplace} - Tertiary`}
+                      width={400}
+                      height={200}
+                      className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                        experience.id === 1 || experience.id === 3 ? 'object-top' : experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
+                      } ${imageLoading[experience.images[2]] ? 'opacity-0' : 'opacity-100'}`}
+                      onLoad={() => handleImageLoad(experience.images[2])}
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Career Transition Section - appears after British Institute (id 4) */}
+          {/* Career Transition Section - appears after Belarabyapps (id 4) */}
           {experience.id === 4 && (
             <div className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black">
               {/* Animated circuit board background */}
@@ -582,6 +765,16 @@ const TeachingExperiencePage: React.FC = () => {
           to { opacity: 1; transform: translateY(0); }
         }
         
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(50px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+          50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+        }
+        
         .animate-fade-in {
           animation: fade-in 1s ease-out forwards;
         }
@@ -589,8 +782,73 @@ const TeachingExperiencePage: React.FC = () => {
         .animate-fade-in-delay {
           animation: fade-in 1s ease-out 0.5s forwards;
         }
+        
+        .animate-slide-up {
+          animation: slide-up 0.8s ease-out forwards;
+        }
+        
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* Performance optimizations */
+        .bg-gradient-to-br {
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          will-change: auto;
+        }
+        
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Prevent layout shifts */
+        .min-h-screen {
+          contain: layout style paint;
+        }
+        
+        /* Mobile touch improvements */
+        @media (max-width: 768px) {
+          .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          
+          .grid {
+            gap: 1rem;
+          }
+          
+          .text-4xl {
+            font-size: 2.5rem;
+          }
+          
+          .text-6xl {
+            font-size: 3.5rem;
+          }
+        }
+        
+        /* Improved focus styles for accessibility */
+        button:focus,
+        [tabindex]:focus {
+          outline: 2px solid #60a5fa;
+          outline-offset: 2px;
+        }
+        
+        /* Loading skeleton animation */
+        @keyframes skeleton {
+          0% { background-position: -200px 0; }
+          100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        .animate-pulse {
+          background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+          background-size: 200px 100%;
+          animation: skeleton 2s infinite;
+        }
       `}</style>
     </div>
+    </ExperienceErrorBoundary>
   );
 };
 
