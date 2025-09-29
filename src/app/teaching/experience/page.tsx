@@ -90,7 +90,6 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     description: "Currently leading English language training and EdTech initiatives, combining teaching with innovative technology solutions to improve efficiency and student outcomes.",
     color: "from-blue-600 to-purple-600",
     logo: "/assets/photos/logos/black-gold-sold-1.png",
-    skills: ["English Teaching", "IELTS Training", "EdTech", "Curriculum Development", "Team Leadership"],
     technologies: ["ILMS Platform", "Phonics Website", "Electronic Attendance", "Performance Analytics"]
   },
   {
@@ -118,7 +117,6 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     description: "Provided flexible, student-centered English tutoring sessions to learners worldwide through Preply’s platform.",
     color: "from-purple-500 to-pink-600",
     logo: "/assets/photos/logos/preply.png",
-    skills: ["Online ESL Teaching", "One-on-One Tutoring", "Personalized Learning", "Digital Communication", "Virtual Classroom Management", "Curriculum Adaptation", "Student Assessment", "Cross-Cultural Communication", "Flexible Teaching Methods"],
     technologies: ["Preply Platform", "Microsoft Teams", "Zoom", "Google Meet", "Digital Whiteboards", "Screen Sharing Tools", "Online Learning Resources", "PDF Editors", "Video Conferencing", "Cloud Storage", "Interactive Learning Apps", "Scheduling Software"]
   },
   {
@@ -146,7 +144,6 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     description: "Focused on delivering engaging English lessons while fostering a supportive environment for younger learners.",
     color: "from-yellow-500 to-orange-600",
     logo: "/assets/photos/logos/تربية.png",
-    skills: ["ESL Teaching", "Classroom Management", "Curriculum Development", "Student Assessment", "Communicative Language Teaching"],
     technologies: ["Interactive Whiteboards", "Language Learning Apps", "Assessment Software", "Educational Games"]
   },
   {
@@ -174,7 +171,6 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
       description: "Worked as both developer and team leader, managing content pipelines and ensuring the quality and engagement of children's educational materials.",
       color: "from-cyan-500 to-blue-600",
       logo: "/assets/photos/logos/belarabyapps.webp",
-      skills: ["Web Development", "Content Creation", "Team Leadership", "Project Management", "UI/UX Design"],
       technologies: ["HTML/CSS", "JavaScript", "Content Management", "Video Production", "Adobe Creative Suite"]
   },
   {
@@ -203,7 +199,6 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
       description: "At the British Institute, I taught a range of English courses including IELTS, TOEFL, and General English, focusing on equipping learners with both academic and conversational language skills.",
       color: "from-cyan-500 to-blue-600",
       logo: "/assets/photos/logos/ELI.jpeg",
-      skills: ["IELTS Training", "TOEFL Preparation", "Academic English", "General English", "Conversation Classes", "Test Preparation", "Language Assessment"],
       technologies: ["Language Lab Equipment", "Audio-Visual Materials", "Online Testing Platforms", "Cambridge Assessment Tools", "Interactive Whiteboards", "Digital Learning Resources"]
   },
   {
@@ -231,12 +226,12 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     description: "My first teaching role in Saudi Arabia, where I gained valuable classroom management experience while helping students build a strong foundation in English.",
     color: "from-indigo-500 to-blue-600",
     logo: "/assets/photos/logos/Jawatha.png",
-    skills: ["Elementary English Teaching", "Classroom Management", "Lesson Planning", "Student Engagement", "Foundation Building"],
     technologies: ["Interactive Whiteboards", "Educational Software", "Audio-Visual Equipment", "Learning Games"]
   }
 ];
 
 const TeachingExperiencePage: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
   const [visibleSections, setVisibleSections] = useState<number[]>([]);
@@ -249,8 +244,15 @@ const TeachingExperiencePage: React.FC = () => {
     setImageLoading(prev => ({ ...prev, [imageUrl]: false }));
   };
 
+  // Prevent hydration errors
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Initialize image loading states
   useEffect(() => {
+    if (!mounted) return;
+    
     const loadingStates: {[key: string]: boolean} = {};
     TEACHING_EXPERIENCES.forEach(exp => {
       exp.images.forEach(img => {
@@ -258,9 +260,11 @@ const TeachingExperiencePage: React.FC = () => {
       });
     });
     setImageLoading(loadingStates);
-  }, []);
+  }, [mounted]);
 
   useEffect(() => {
+    if (!mounted) return;
+    
     // Initialize window height
     if (typeof window !== 'undefined') {
       setWindowHeight(window.innerHeight);
@@ -334,6 +338,18 @@ const TeachingExperiencePage: React.FC = () => {
     };
   }, []);
 
+  // Prevent hydration mismatch during SSR
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-900">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ExperienceErrorBoundary>
       <div className="min-h-screen bg-gray-900">
@@ -378,8 +394,8 @@ const TeachingExperiencePage: React.FC = () => {
             data-section={index}
             className={`min-h-screen flex items-center relative overflow-hidden transition-all duration-1000 ${
               visibleSections.includes(index) 
-                ? 'animate-fade-in opacity-100 transform translate-y-0' 
-                : 'opacity-0 transform translate-y-10'
+                ? 'animate-fade-in' 
+                : ''
             }`}
             role="article"
             aria-label={`${experience.workplace} experience`}
@@ -508,8 +524,8 @@ const TeachingExperiencePage: React.FC = () => {
                         experience.id === 2 || experience.id === 6 ? 'object-top' : ''
                       } ${imageLoading[experience.images[0]] ? 'opacity-0' : 'opacity-100'}`}
                       onLoad={() => handleImageLoad(experience.images[0])}
-                      priority={index < 2}
-                      loading={index < 2 ? 'eager' : 'lazy'}
+                      priority={true}
+                      loading='eager'
                     />
                     {/* YouTube play button overlay for Preply (id 2) */}
                     {experience.id === 2 && (
@@ -542,7 +558,7 @@ const TeachingExperiencePage: React.FC = () => {
                         experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
                       } ${imageLoading[experience.images[1]] ? 'opacity-0' : 'opacity-100'}`}
                       onLoad={() => handleImageLoad(experience.images[1])}
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                   <div className="relative group">
@@ -558,7 +574,7 @@ const TeachingExperiencePage: React.FC = () => {
                         experience.id === 1 || experience.id === 3 ? 'object-top' : experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
                       } ${imageLoading[experience.images[2]] ? 'opacity-0' : 'opacity-100'}`}
                       onLoad={() => handleImageLoad(experience.images[2])}
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                 </div>

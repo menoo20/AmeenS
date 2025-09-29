@@ -305,7 +305,7 @@ const CertificatesPage: React.FC = () => {
 
         {/* Next Section Button */}
         <button 
-          onClick={() => router.push('/experience')}
+          onClick={() => router.push('/teaching/experience')}
           className="bg-blue-600/90 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
         >
           Experience →

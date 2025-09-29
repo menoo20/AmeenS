@@ -146,14 +146,14 @@ export default function EducationalJourneyPage() {
   }, [isZoomed])
 
   const openZoom = (imageSrc: string) => {
-    setZoomedImage(imageSrc)
-    setIsZoomed(true)
-  }
+    setZoomedImage(imageSrc);
+    setIsZoomed(true);
+  };
 
   const closeZoom = () => {
-    setIsZoomed(false)
-    setZoomedImage('')
-  }
+    setIsZoomed(false);
+    setZoomedImage('');
+  };
 
   return (
     <>
@@ -427,6 +427,7 @@ export default function EducationalJourneyPage() {
           background: linear-gradient(180deg, #2563eb, #7c3aed);
         }
       `}</style>
-    </>
+      </div>
+      </>
   )
 }
