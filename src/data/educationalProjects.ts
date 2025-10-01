@@ -8,7 +8,7 @@ export interface EducationalProject {
   summary: string; // Brief summary for card display
   
   // Categorization
-  category: 'platform' | 'website' | 'system' | 'content' | 'tool';
+  category: 'platform' | 'website' | 'system' | 'content' | 'tool' | 'analytics';
   tags: string[];
   
   // Timeline
@@ -19,7 +19,7 @@ export interface EducationalProject {
   // Visual Identity
   cardColor: string; // Tailwind gradient classes
   icon: string; // Emoji
-  image: string; // Card background image
+  images: string[]; // Multiple images for slideshow
   
   // External Links
   links: {
@@ -43,167 +43,206 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     id: "student-management-system",
     title: "Student Management System",
     subtitle: "Comprehensive Academic Platform",
-    description: "A full-stack web application designed to manage student enrollment, track academic progress, handle course scheduling, and provide analytics for educational institutions. Features include student portals, instructor dashboards, grade management, and real-time reporting.",
-    summary: "Full-stack student management platform with enrollment tracking, grade management, and analytics dashboards for educational institutions.",
+    description: "A React-based web application designed to manage student enrollment, track exam results, handle group scheduling, and provide performance analytics for vocational training institutes. Features include student registration, exam management, grade tracking with percentage calculations, syllabus management, and real-time reporting with search functionality.",
+    summary: "Vocational training management platform with student enrollment, exam result tracking, group management, and performance analytics dashboards.",
     category: "platform",
-    tags: ["Web App", "Database", "Dashboard", "Analytics"],
-    startDate: "2023",
+    tags: ["React App", "JSON Database", "Dashboard", "Analytics", "Vocational Training"],
+    startDate: "2024",
     status: "live",
     cardColor: "from-blue-600 to-purple-600",
     icon: "🎓",
-    image: "/assets/photos/work/atwork6.webp",
+    images: [
+      "/assets/photos/Thumbnails/studentLMS.png",
+      "/assets/photos/Thumbnails/studentLMS2.png",
+      "/assets/photos/Thumbnails/studentLMS3.png"
+    ],
     links: {
-      demo: "https://menoo20.github.io/studentLMS/resources",
       github: "https://github.com/menoo20/studentLMS",
       website: "https://menoo20.github.io/studentLMS"
     },
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "Local Storage", "Responsive Design"],
+    technologies: ["React", "Vite", "Tailwind CSS", "JavaScript", "JSON Database", "GitHub Pages", "Responsive Design"],
     features: [
-      "Student enrollment and profile management",
-      "Course scheduling and resource management",
-      "Grade tracking and progress analytics",
-      "Interactive dashboard for administrators",
-      "Real-time data visualization",
-      "Mobile-responsive interface"
+      "Student enrollment and profile management across multiple groups",
+      "Group-based scheduling and resource management", 
+      "Exam result tracking with percentage-based grading",
+      "Interactive dashboard with real-time statistics",
+      "Advanced search functionality by student name",
+      "Mobile-responsive interface with optimized layouts",
+      "Syllabus management with group-specific content",
+      "Automated duplicate detection and cleanup",
+      "Data backup and integrity management",
+      "Multi-group exam assignment and filtering"
     ]
   },
   {
-    id: "phonics-learning-website",
-    title: "Interactive Phonics Learning Hub",
-    subtitle: "English Pronunciation Practice Platform",
-    description: "An interactive web platform designed to help students practice English phonics through visual and audio exercises. Features pronunciation comparisons between UK and US accents, interactive voice recognition, and progress tracking for systematic phonics learning.",
-    summary: "Interactive web platform for English phonics practice with UK/US pronunciation comparison and voice recognition technology.",
+    id: "jolly-phonics-content-platform",
+    title: "Kids Activities Online - Jolly Phonics Platform",
+    subtitle: "Comprehensive Digital Phonics Curriculum & Content Development",
+    description: "As the lead content developer for Kids Activities Online, I designed and created a comprehensive digital phonics learning platform featuring the complete Jolly Phonics methodology. This educational platform includes interactive curriculum covering all 42 graphemes, systematic phase-based learning (Phases 1-6), multimedia content creation with stories, games, videos, and extensive worksheet collections. The platform serves as a complete educational resource for teachers and parents worldwide.",
+    summary: "Content developer for comprehensive Jolly Phonics digital curriculum platform featuring 42 graphemes, interactive lessons, multimedia content, and educational resources.",
+    category: "content",
+    tags: ["Content Development", "Jolly Phonics Curriculum", "Educational Platform", "Digital Learning", "Phonics Methodology", "Interactive Content"],
+    startDate: "2021",
+    endDate: "2024",
+    status: "live",
+    cardColor: "from-emerald-500 to-blue-600",
+    icon: "📚",
+    images: [
+      "/assets/photos/Thumbnails/kidsactivities.jpg",
+      "/assets/photos/Thumbnails/kidsactivities2.png",
+      "/assets/photos/Thumbnails/kidsactivities3.png"
+    ],
+    links: {
+      website: "https://www.kidsactivities.online/jolly-phonics/",
+      demo: "https://www.kidsactivities.online/how-to-teach-jolly-phonics-step-by-step/",
+      documentation: "https://www.kidsactivities.online/jolly-phonics/"
+    },
+    technologies: ["WordPress", "Educational Content Design", "Multimedia Production", "Interactive Learning Design", "PDF Creation", "Video Production", "Audio Recording"],
+    features: [
+      "Complete 42 graphemes curriculum development with systematic progression",
+      "Phase-based learning structure (Phases 1-6) with clear learning objectives",
+      "Interactive story-based learning with each letter sound contextualized",
+      "Comprehensive worksheet collections for tracing, writing, and assessment",
+      "Multimedia content including educational videos and audio pronunciations",
+      "Step-by-step teaching methodology guides for educators and parents",
+      "Advanced phonics concepts: split digraphs, alternative vowels, and consonant patterns",
+      "Free educational resources with structured learning pathways",
+      "Mobile-responsive educational content accessible on all devices",
+      "Evidence-based phonics instruction following Jolly Phonics methodology",
+      "Teacher training materials and implementation guides",
+      "Assessment tools and progress tracking resources"
+    ]
+  },
+  {
+    id: "jolly-phonics-hub",
+    title: "Jolly Phonics Learning Hub",
+    subtitle: "Interactive Web-Based Phonics Learning Platform",
+    description: "A comprehensive web-based phonics learning platform specifically designed around the Jolly Phonics methodology. Features interactive sound teaching, listening tests, and a personal pronunciation dictionary with UK and US pronunciations. Includes systematic phonics groups (1-7) plus advanced concepts like split digraphs, alternative vowels, and consonants.",
+    summary: "Interactive Jolly Phonics learning platform with sound teaching, listening tests, and pronunciation dictionary supporting UK/US accents.",
     category: "website",
-    tags: ["Phonics", "Language Learning", "Interactive", "Audio"],
+    tags: ["Jolly Phonics", "Language Learning", "Phonics Education", "Audio Learning", "Dictionary"],
     startDate: "2024",
     status: "live",
-    cardColor: "from-green-500 to-teal-600",
-    icon: "🗣️",
-    image: "/assets/photos/work/atwork10.webp",
+    cardColor: "from-blue-500 to-purple-600",
+    icon: "🎵",
+    images: [
+      "/assets/photos/Thumbnails/Jollyphonics.png",
+      "/assets/photos/Thumbnails/Jollyphonics2.png",
+      "/assets/photos/Thumbnails/Jollyphonics3.png"
+    ],
     links: {
       demo: "https://menoo20.github.io/JollyPhonicsHub/",
       github: "https://github.com/menoo20/JollyPhonicsHub",
       website: "https://menoo20.github.io/JollyPhonicsHub/"
     },
-    technologies: ["HTML", "CSS", "JavaScript", "Web Audio API", "Speech Recognition", "Bootstrap"],
+    technologies: ["HTML5", "CSS3", "Vanilla JavaScript", "Web Audio API", "Python", "Flask", "JSON"],
     features: [
-      "Interactive phonics exercises with audio feedback",
-      "UK vs US pronunciation comparison tools",
-      "Voice recognition for pronunciation practice",
-      "Progress tracking and learning analytics",
-      "Gamified learning experience",
-      "Teacher resource section"
+      "Jolly Phonics Sound Teacher with 7 systematic groups",
+      "Interactive listening tests with gap-fill exercises", 
+      "Personal pronunciation dictionary with search functionality",
+      "UK and US pronunciation audio support",
+      "Advanced phonics concepts (split digraphs, alternative sounds)",
+      "Audio file management and download integration",
+      "Progress tracking and mistake review",
+      "Responsive design for mobile and desktop",
+      "Local storage for personal word collections",
+      "Offline-capable audio playback"
     ]
   },
   {
-    id: "ilms-attendance-system",
-    title: "ILMS Attendance & Learning Platform",
-    subtitle: "Integrated Learning Management System",
-    description: "A comprehensive learning management system with electronic attendance tracking, student progress monitoring, exam management, and performance analytics. Built for Black Gold Institute to streamline educational operations and enhance learning outcomes.",
-    summary: "Comprehensive LMS with electronic attendance, progress tracking, and performance analytics for educational institutions.",
-    category: "system",
-    tags: ["LMS", "Attendance", "Analytics", "Education"],
-    startDate: "2023",
-    endDate: "2024",
+    id: "black-gold-attendance-analytics",
+    title: "Black Gold Attendance Analytics System",
+    subtitle: "Multi-Week Attendance Analysis Platform",
+    description: "A comprehensive web-based attendance analytics system featuring multi-week data tracking, interactive dashboards, mobile-responsive design, and automated statistical analysis. Built for Black Gold Institute to provide real-time insights into student attendance patterns across multiple groups and time periods.",
+    summary: "Professional attendance analytics platform with interactive dashboards, mobile responsiveness, and comprehensive reporting for educational institutions.",
+    category: "analytics",
+    tags: ["Attendance Analytics", "Data Visualization", "Dashboard", "Education", "Statistics"],
+    startDate: "2025-08",
+    endDate: "2025-09",
     status: "completed",
-    cardColor: "from-yellow-500 to-orange-600",
+    cardColor: "from-blue-500 to-purple-600",
     icon: "📊",
-    image: "/assets/photos/work/atwork11.webp",
+    images: [
+      "/assets/photos/Thumbnails/attendaceStatistics.png",
+      "/assets/photos/Thumbnails/attendaceStatistics2.png",
+      "/assets/photos/Thumbnails/attendaceStatistics3.png",
+      "/assets/photos/Thumbnails/attendaceStatistics4.png"
+    ],
     links: {
-      documentation: "https://docs.google.com/document/d/1X2Y3Z4...",
-      video: "https://youtu.be/attendance-demo"
+      demo: "https://menoo20.github.io/black-gold-attendance/",
+      github: "https://github.com/menoo20/black-gold-attendance",
+      documentation: "https://github.com/menoo20/black-gold-attendance/blob/main/README_COMPANY.md"
     },
-    technologies: ["PHP", "MySQL", "JavaScript", "Chart.js", "Bootstrap", "RESTful API"],
+    technologies: ["Python", "HTML5", "CSS3", "JavaScript", "Chart.js", "GitHub Pages", "Excel Integration", "Pandas"],
     features: [
-      "Electronic attendance tracking system",
-      "Student progress monitoring dashboard",
-      "Automated exam scheduling and management",
-      "Real-time performance analytics",
-      "Multi-branch support and synchronization",
-      "Weekly performance reporting"
+      "Multi-week attendance tracking and comparison",
+      "Interactive Chart.js visualizations",
+      "Mobile-responsive dashboard design",
+      "Automated Excel data processing",
+      "Real-time attendance percentage calculations",
+      "Group-by-group statistical analysis",
+      "Professional GitHub Pages deployment",
+      "Secure Google Drive integration for detailed reports",
+      "Weekly trend analysis and reporting",
+      "Black Gold corporate branding integration"
     ]
   },
   {
-    id: "teaching-portfolio-website",
-    title: "Digital Teaching Portfolio",
-    subtitle: "Modern Educational Showcase Platform",
-    description: "A sophisticated Next.js website showcasing teaching experience, educational projects, and professional development. Features interactive 3D elements, responsive design, and dynamic content management for presenting educational achievements and methodologies.",
-    summary: "Modern Next.js portfolio showcasing teaching experience with interactive elements and responsive design.",
-    category: "website",
-    tags: ["Portfolio", "Next.js", "3D", "Responsive"],
-    startDate: "2024",
-    status: "ongoing",
-    cardColor: "from-purple-600 to-pink-600",
-    icon: "💼",
-    image: "/assets/photos/personal/coding.webp",
-    links: {
-      website: "https://abo-ameen-portfolio.vercel.app",
-      github: "https://github.com/menoo20/abo-ameen-fullstack"
-    },
-    technologies: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS", "GSAP", "Vercel"],
-    features: [
-      "Interactive 3D teaching experience showcase",
-      "Responsive starfield navigation system",
-      "Dynamic project galleries with animations",
-      "Professional certificate vault display",
-      "Contact integration with email services",
-      "Performance-optimized image handling"
-    ]
-  },
-  {
-    id: "educational-content-creator",
-    title: "EdTech Content Development Tools",
-    subtitle: "Digital Learning Resources Platform",
-    description: "A suite of tools for creating interactive educational content including lesson plan generators, quiz builders, and multimedia resource organizers. Designed to help educators transition from traditional to digital teaching methodologies efficiently.",
-    summary: "Suite of digital tools for educators to create interactive content, quizzes, and multimedia learning resources.",
-    category: "tool",
-    tags: ["Content Creation", "EdTech", "Interactive", "Tools"],
-    startDate: "2022",
-    endDate: "2023",
-    status: "completed",
-    cardColor: "from-indigo-600 to-cyan-600",
-    icon: "🛠️",
-    image: "/assets/photos/work/atwork5.webp",
-    links: {
-      demo: "https://educational-tools-demo.com",
-      documentation: "https://docs.educational-tools.com"
-    },
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io", "PDF.js"],
-    features: [
-      "Interactive lesson plan builder",
-      "Multimedia quiz and assessment creator",
-      "Resource library management system",
-      "Collaborative content sharing platform",
-      "Analytics for content effectiveness",
-      "Export to multiple formats (PDF, SCORM, HTML)"
-    ]
-  },
-  {
-    id: "virtual-classroom-platform",
-    title: "Virtual Classroom Integration",
-    subtitle: "Remote Learning Enhancement System",
-    description: "A comprehensive virtual learning environment that bridges the gap between online and traditional classroom experiences. Features real-time collaboration, interactive whiteboards, breakout room management, and seamless integration with existing LMS platforms.",
-    summary: "Virtual learning environment with real-time collaboration, interactive tools, and LMS integration for remote education.",
+    id: "osha-30-construction-safety-quiz",
+    title: "OSHA-30 Construction Safety Training Quiz",
+    subtitle: "Interactive Web-Based Safety Training Platform",
+    description: "A comprehensive interactive quiz application for OSHA 30-Hour Construction Safety Training featuring 28 individual module tests, paired chapter assessments, and a comprehensive 100-question final exam. Built with modern web technologies to provide an engaging learning experience for construction safety professionals.",
+    summary: "Professional educational platform with interactive quizzes, progress tracking, and comprehensive OSHA construction safety training modules for workplace safety certification.",
     category: "platform",
-    tags: ["Virtual Learning", "Collaboration", "Remote", "Integration"],
-    startDate: "2021",
-    endDate: "2022",
+    tags: ["Educational Technology", "Safety Training", "Interactive Quiz", "OSHA Certification", "Construction Safety", "E-Learning"],
+    startDate: "2025-08",
+    endDate: "2025-10",
     status: "completed",
-    cardColor: "from-emerald-600 to-blue-600",
-    icon: "🖥️",
-    image: "/assets/photos/work/atwork7.webp",
+    cardColor: "from-orange-500 to-red-600",
+    icon: "🏗️",
+    images: [
+      "/assets/photos/Thumbnails/Osha.png",
+      "/assets/photos/Thumbnails/Osha2.png",
+      "/assets/photos/Thumbnails/Osha3.png"
+    ],
     links: {
-      video: "https://youtu.be/virtual-classroom-demo",
-      documentation: "https://virtual-classroom-docs.com"
+      demo: "https://osha-quiz-app.vercel.app/",
+      github: "https://github.com/menoo20/osha-construction-quiz",
+      documentation: "https://github.com/menoo20/osha-construction-quiz/blob/main/README.md"
     },
-    technologies: ["WebRTC", "Socket.io", "React", "Express", "MongoDB", "Canvas API"],
+    technologies: [
+      "HTML5", 
+      "CSS3", 
+      "JavaScript ES6+", 
+      "Node.js", 
+      "Vercel", 
+      "JSON", 
+      "Progressive Web App", 
+      "Responsive Design",
+      "Authentication API",
+      "Local Storage",
+      "Electron (Desktop App)"
+    ],
     features: [
-      "Real-time video conferencing and screen sharing",
-      "Interactive whiteboard with collaboration tools",
-      "Breakout room management for group activities",
-      "Attendance tracking and participation metrics",
-      "Recording and playback capabilities",
-      "Integration with popular LMS platforms"
+      "28 individual OSHA module quizzes with 4-12 questions each",
+      "Paired chapter tests combining related topics (20-24 questions)",
+      "Comprehensive 100-question final cumulative exam",
+      "Multi-user authentication and progress tracking system",
+      "Real-time scoring and instant feedback mechanisms",
+      "Mobile-responsive design with touch-friendly interface",
+      "Keyboard navigation support (arrow keys, escape)",
+      "Progress persistence with localStorage and cloud sync",
+      "Professional Black Gold Institute branding integration",
+      "Offline-capable Progressive Web App functionality",
+      "Desktop application version with Electron framework",
+      "Advanced color contrast and accessibility improvements",
+      "Interactive question types including multiple choice and matching",
+      "Comprehensive question bank with OSHA standard references",
+      "Session management and user profile system",
+      "Deployment-ready with Vercel integration",
+      "Development server with hot reload capabilities",
+      "Modular architecture for easy content updates"
     ]
   }
+  
 ];
