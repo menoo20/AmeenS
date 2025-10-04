@@ -6,66 +6,59 @@ import { useRouter } from 'next/navigation';
 
 const CERTIFICATES = [
   {
-    src: '/assets/certificates/Teaching/ba-cert.jpg',
-    title: 'Bachelor of Arts in English Language',
-    date: '2013',
-    issue: "Suez Canal University",
-    description: 'I earned my Bachelor of Arts degree in English Language and Literature from Suez Canal University. This comprehensive program provided me with a deep understanding of English linguistics, literature, and language teaching methodologies.'
+    src: '/assets/certificates/programming/1.png',
+    title: 'Advanced Frontend Development',
+    date: 'September 26, 2021',
+    issue: "Udacity",
+    description: 'I completed the Advanced Frontend Development course. This course covered modern frontend technologies including React, Redux, and responsive design principles. It enhanced my skills in building dynamic and user-friendly web applications.'
   },
   {
-    src: '/assets/certificates/Teaching/PGDE.jpg',
-    title: 'Postgraduate Diploma in Education (PGDE)',
-    date: '2014',
-    issue: "Suez Canal University",
-    description: 'I completed the Postgraduate Diploma in Education, specializing in English language teaching. This program equipped me with advanced pedagogical skills and modern teaching methodologies for effective classroom instruction.'
+    src: '/assets/certificates/programming/2.png',
+    title: 'React + Redux',
+    date: 'August 12, 2021',
+    issue: "Sololearn",
+    description: 'I completed the React + Redux course. This course focused on building scalable and maintainable web applications using React and Redux. It deepened my understanding of state management and component-based architecture.'
   },
   {
-    src: '/assets/certificates/Teaching/TEFL-AUC.jpg',
-    title: 'Teaching English as a Foreign Language (TEFL)',
-    date: '2017',
-    issue: "American University in Cairo (AUC)",
-    description: 'I obtained my TEFL certification from the American University in Cairo. This intensive program focused on practical teaching techniques, curriculum design, and classroom management for teaching English to non-native speakers.'
+    src: '/assets/certificates/programming/3.png',
+    title: 'Full Stack Web Development',
+    date: 'June 5, 2019',
+    issue: "Udacity",
+    description: 'I completed the Full Stack Web Development course. This course provided a comprehensive overview of both frontend and backend development, covering technologies such as Node.js, Express, and MongoDB.'
   },
   {
-    src: '/assets/certificates/Teaching/TOEFL-PBT.jpg',
-    title: 'TOEFL PBT Certificate',
-    date: '2018',
-    issue: "Amideast",
-    description: 'I achieved a high score on the TOEFL Paper-Based Test, demonstrating my proficiency in English language skills including reading, writing, listening, and structure. This certification validates my English language competency at an advanced level.'
+    src: '/assets/certificates/programming/4.png',
+    title: 'The Web Developer Bootcamp',
+    date: 'August 17, 2019',
+    issue: "Udemy",
+    description: 'I completed The Web Developer Bootcamp course with Colt Steele. This course covered a wide range of web development topics, including HTML, CSS, JavaScript, Node.js, and more. It provided a solid foundation for my web development journey.'
   },
   {
-    src: '/assets/certificates/Teaching/IELTS-Academic-Cetr.png',
-    title: 'IELTS Academic Certificate',
-    date: '2025',
-    issue: "British Council",
-    description: 'I successfully completed the IELTS Academic test with a strong overall band score. This internationally recognized certification demonstrates my English language proficiency across all four skills: listening, reading, writing, and speaking.'
+    src: '/assets/certificates/programming/5.png',
+    title: 'Full Stack Web Development with React',
+    date: 'February 20, 2021',
+    issue: "Information Technology Institute (ITI)",
+    description: 'I completed the Full Stack Web Development with React course. This course focused on building modern web applications using React, Redux, and other related technologies.'
   },
   {
-    src: '/assets/certificates/Teaching/Awarding-Cert.jpg',
-    title: 'Awarding Certificate',
-    date: '2018',
-    issue: "Tarbya Namouthajiyah Schools",
-    description: 'I received this official recognition certificate from the Egyptian Ministry of Education for excellence in teaching and outstanding contribution to English language education.'
+    src: '/assets/certificates/programming/6.png',
+    title: 'Professional Frontend Developer',
+    date: 'January 22, 2022',
+    issue: "Udacity",
+    description: 'I completed the Professional Frontend Developer course. This course focused on advanced frontend development techniques, including performance optimization, accessibility, and best practices for building scalable web applications.'
   },
   {
-    src: '/assets/certificates/Teaching/Electronic-preparation.png',
-    title: 'Electronic Course Preparation',
-    date: '2022',
-    issue: "Classera - The Leading E-Learning Platform in MENA",
-    description: 'I completed this professional development course focused on digital teaching tools and e-learning methodologies. The course covered effective online course design, digital assessment strategies, and technology integration in education.'
-  },
-  {
-    src: '/assets/certificates/Teaching/Personal-Branding.jpeg',
-    title: 'Personal Branding for Educators',
-    date: '2025',
-    issue: "Linkedin Learning",
-    description: 'I completed this professional development course on personal branding and online presence for educators. The course covered building a professional identity, creating educational content, and leveraging digital platforms for teaching impact.'
+    src: '/assets/certificates/programming/CS50x.png',
+    title: 'CS50x Certificate',
+    date: 'March 15, 2023',
+    issue: "Harvard University", 
+    description: 'I completed the CS50x course offered by Harvard University. This course is an introduction to computer science and programming, covering fundamental concepts and problem-solving techniques.'
   },
 ];
 
 const SLIDE_INTERVAL = 4000;
 
-const CertificatesPage: React.FC = () => {
+const DeveloperCertificatesPage: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [zoomed, setZoomed] = useState<number | null>(null);
   const [magnified, setMagnified] = useState(false);
@@ -85,7 +78,7 @@ const CertificatesPage: React.FC = () => {
       <Navigation />
 
       <div className="relative z-10 flex flex-col items-center justify-center p-8 pt-16 md:pt-32">
-  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-8 mt-24 sm:mt-0">Teaching Certificates & Qualifications</h1>
+  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-8 mt-24 sm:mt-0">Programming Certificates & Courses</h1>
       <div className="relative w-full max-w-xl h-96 flex items-center justify-center group">
 
         {/* Certificate images */}
@@ -206,11 +199,11 @@ const CertificatesPage: React.FC = () => {
 
             {/* Scrollable content area with hidden scrollbar */}
             <div className="overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-hide">
-              {/* Scroll indicator - fades in/out based on scroll position */}
+              {/* Scroll indicator */}
               <div className="absolute right-4 top-32 bottom-4 w-1 bg-gradient-to-b from-transparent via-purple-200/50 to-transparent rounded-full pointer-events-none z-20 opacity-50"></div>
               
               {/* Certificate Image Section */}
-              <div className="p-4 sm:p-6">
+            <div className="p-4 sm:p-6">
               <div 
                 className="relative group cursor-zoom-in bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-100 hover:border-purple-200 transition-all duration-300 hover:shadow-xl"
                 onClick={() => setMagnified(true)}
@@ -269,8 +262,8 @@ const CertificatesPage: React.FC = () => {
 
                 {/* Skills Tags */}
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Teaching Excellence</span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Educational Leadership</span>
+                  <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Professional Development</span>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Technical Skills</span>
                 </div>
               </div>
             </div>
@@ -325,20 +318,20 @@ const CertificatesPage: React.FC = () => {
 
       {/* Navigation Buttons */}
       <div className="fixed bottom-8 left-8 right-8 flex justify-between items-center pointer-events-none">
-        {/* Back to Galaxy Button */}
+        {/* Back Button */}
         <button 
-          onClick={() => router.push('/teaching/starfield')}
+          onClick={() => router.push('/')}
           className="bg-purple-600/90 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
         >
-          ← Back to Starfield
+          ← Back to Home
         </button>
 
         {/* Next Section Button */}
         <button 
-          onClick={() => router.push('/teaching/experience')}
+          onClick={() => router.push('/')}
           className="bg-blue-600/90 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
         >
-          Experience →
+          Home →
         </button>
       </div>
       </div>
@@ -346,4 +339,4 @@ const CertificatesPage: React.FC = () => {
   );
 };
 
-export default CertificatesPage;
+export default DeveloperCertificatesPage;

@@ -35,6 +35,27 @@
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-y {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(10deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(0deg);
+  }
+}
+
 /* Animation utilities */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-in-out;
@@ -46,6 +67,18 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-rotate-y {
+  animation: rotate-y 4s ease-in-out infinite;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 /* Text gradient utility */
@@ -107,4 +140,14 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #9333ea, #2563eb);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }

@@ -43,8 +43,8 @@ const educationData: EducationSlide[] = [
     title: "FELT Diploma (Foreign English Language Teaching)",
     institution: "American University",
     location: "Cairo, Egypt", 
-    duration: "September 2019 — October 2020",
-    description: "After years of teaching experience, I felt the need to specialize further and enhance my expertise in English language instruction. This advanced diploma marked a pivotal moment in my professional development, focusing specifically on second language acquisition and modern teaching methodologies. It equipped me with sophisticated techniques to help non-native speakers master English, opening doors to international teaching opportunities and cross-cultural educational experiences.",
+    duration: "October 2017",
+    description: "After two years of hands-on teaching experience, I realized that the classroom had taught me lessons no textbook could capture. Yet I also recognized gaps between what I practiced and what I could achieve. This diploma became my bridge between real-world experience and structured pedagogy. Through comprehensive coursework in second language acquisition, classroom management techniques, and modern teaching methodologies, I refined my instincts into expertise. The program deepened my understanding of how students truly learn, equipping me with evidence-based strategies that transformed my approach to lesson planning, student assessment, and creating engaging learning environments. It was the perfect blend of theory meeting practice, sharpening both my skills and my confidence as an educator.",
     image: "/assets/certificates/Teaching/TEFL-AUC.jpg",
     altText: "FELT Diploma Certificate"
   },
