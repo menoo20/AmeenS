@@ -72,17 +72,6 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       category: 'projects'
     },
     {
-      id: 'personal-details',
-      title: 'Personal Details',
-      subtitle: 'About Me',
-      description: 'Personal background, interests, philosophy, and the human side behind my educational expertise.',
-      icon: '👨‍🏫',
-      position: { x: 3, y: -1, z: -2 },
-      color: '#ef4444',
-      size: 0.11,
-      category: 'personal'
-    },
-    {
       id: 'teaching-experience',
       title: 'Teaching Experience',
       subtitle: 'Classroom Excellence',
@@ -239,8 +228,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
         ['teaching-experience', 'esl-expertise'],
         ['esl-expertise', 'gamification-learning'],
         ['educational-projects', 'gamification-learning'],
-        ['research-publications', 'educational-background'],
-        ['personal-details', 'teaching-experience']
+        ['research-publications', 'educational-background']
       ]
 
       connections.forEach(([startId, endId]) => {

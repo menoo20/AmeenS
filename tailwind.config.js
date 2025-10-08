@@ -30,6 +30,7 @@ module.exports = {
         'bounce-slow': 'bounce 2s infinite',
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
         'slide-up-fade': 'slideUpFade 1s ease-out forwards',
+        'scan': 'scan 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {

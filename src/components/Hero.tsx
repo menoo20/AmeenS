@@ -191,8 +191,19 @@ export default function Hero() {
         onNavigate={(nodeId) => {
           console.log(`Navigating to: ${nodeId}`)
           setShowDeveloperMap(false)
-          // Here we'll add actual navigation logic later
-          alert(`🚀 Navigating to ${nodeId} section! (Coming soon)`)
+          
+          // Navigate to the appropriate page based on nodeId
+          if (nodeId === 'certificates') {
+            router.push('/developer/certificates')
+          } else if (nodeId === 'about') {
+            router.push('/developer/about')
+          } else if (nodeId === 'skills') {
+            router.push('/developer/skills')
+          } else if (nodeId === 'projects') {
+            router.push('/developer/projects')
+          } else if (nodeId === 'contact') {
+            router.push('/developer/contact')
+          }
         }}
       />
     </section>

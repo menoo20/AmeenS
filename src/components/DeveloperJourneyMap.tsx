@@ -54,12 +54,12 @@ export default function DeveloperJourneyMap({ isVisible, onClose, onNavigate }: 
     },
     {
       id: 'certificates',
-      label: 'achievements',
+      label: 'Certifications',
       codeSnippet: '{"certificates": "unlocked", "status": "certified"}',
       icon: '🏆',
       position: { x: 28, y: 70 },
       color: '#ffd93d',
-      description: 'View my certifications and achievements'
+      description: 'View my certifications and credentials'
     },
     {
       id: 'contact',

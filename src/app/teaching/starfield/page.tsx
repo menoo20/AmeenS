@@ -20,9 +20,7 @@ export default function TeachingStarfieldPage() {
       router.push('/teaching/educational-projects');
     } 
     // Navigate to under-construction sections
-    else if (nodeId === 'personal-details') {
-      router.push('/teaching/personal-details');
-    } else if (nodeId === 'esl-expertise') {
+    else if (nodeId === 'esl-expertise') {
       router.push('/teaching/esl-expertise');
     } else if (nodeId === 'gamification-learning') {
       router.push('/teaching/gamification-learning');

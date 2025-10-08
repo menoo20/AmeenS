@@ -326,12 +326,15 @@ const DeveloperCertificatesPage: React.FC = () => {
           ← Back to Home
         </button>
 
-        {/* Next Section Button */}
+        {/* Next Section Button - Navigate back to Journey Map */}
         <button 
-          onClick={() => router.push('/')}
-          className="bg-blue-600/90 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
+          onClick={() => router.push('/developer')}
+          className="bg-blue-600/90 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20 flex items-center gap-2"
         >
-          Home →
+          <span>Explore More</span>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
         </button>
       </div>
       </div>
