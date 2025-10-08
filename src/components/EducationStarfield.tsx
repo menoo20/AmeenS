@@ -84,9 +84,9 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
     },
     {
       id: 'esl-expertise',
-      title: 'ESL Expertise',
-      subtitle: 'Language Teaching Mastery',
-      description: 'Specialized expertise in English as a Second Language instruction, methodologies, and cultural adaptation.',
+      title: 'Educational Services',
+      subtitle: 'Teaching & Web Solutions',
+      description: 'Comprehensive educational services including IELTS/SEPT preparation, online tutoring, educator portfolios, and LMS development.',
       icon: '🌍',
       position: { x: 1, y: 1, z: -4 },
       color: '#06b6d4',

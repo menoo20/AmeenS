@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FaTools, FaRocket, FaArrowLeft } from 'react-icons/fa';
+import Navigation from './Navigation';
 
 interface UnderConstructionProps {
   title: string;
@@ -24,14 +25,16 @@ export default function UnderConstruction({
   const router = useRouter();
 
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center p-4 sm:p-8"
-      style={{
-        background: `linear-gradient(135deg, ${color}15 0%, #1a1a2e 50%, #0a0a0a 100%)`
-      }}
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <>
+      <Navigation />
+      <div 
+        className="min-h-screen flex items-center justify-center p-4 sm:p-8"
+        style={{
+          background: `linear-gradient(135deg, ${color}15 0%, #1a1a2e 50%, #0a0a0a 100%)`
+        }}
+      >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
@@ -233,5 +236,6 @@ export default function UnderConstruction({
         </div>
       </div>
     </div>
+    </>
   );
 }

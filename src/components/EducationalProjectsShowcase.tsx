@@ -39,10 +39,14 @@ const ProjectSlideshow: React.FC<{ images: string[]; title: string; onImageClick
               index === currentIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
             }`}
           >
-            <img
+            <Image
               src={img}
               alt={`${title} - Screenshot ${index + 1}`}
+              width={800}
+              height={600}
               className="w-full h-auto rounded-2xl shadow-2xl"
+              loading={index === 0 ? "eager" : "lazy"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
             />
           </div>
         ))}

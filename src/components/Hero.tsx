@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import DeveloperJourneyMap from './DeveloperJourneyMap'
+import Image from 'next/image'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
   const [typewriterText, setTypewriterText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showMapSelection, setShowMapSelection] = useState(false)
-  const [showDeveloperMap, setShowDeveloperMap] = useState(false)
   const router = useRouter()
 
   const typewriterWords = ['Ed Tech Specialist', 'Instructional Designer', 'Learning Experience Designer', 'Content Developer', 'English Teacher', 'Curriculum Developer', 'Academic Supervisor']
@@ -53,17 +52,15 @@ export default function Hero() {
         <div className="animate-fade-in">
           {/* Profile Image */}
           <div className="mb-8">
-            <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200">
-              <img
+            <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200 relative">
+              <Image
                 src="/assets/photos/personal/My image portrait.webp"
-                alt="Abo Ameen"
-                className="w-full h-full object-cover object-center"
+                alt="Abo Ameen - Educator and Full-Stack Developer"
+                fill
+                priority
+                className="object-cover object-center"
                 style={{ objectPosition: 'center 10%' }}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.parentElement!.innerHTML = '<div class="w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 text-4xl">👨‍💼</div>';
-                }}
+                sizes="(max-width: 768px) 208px, 208px"
               />
             </div>
           </div>
@@ -135,7 +132,7 @@ export default function Hero() {
               <button
                 onClick={() => {
                   setShowMapSelection(false)
-                  setShowDeveloperMap(true)
+                  router.push('/developer')
                 }}
                 className="group bg-gradient-to-br from-green-500/20 to-blue-500/20 hover:from-green-500/30 hover:to-blue-500/30 border border-green-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
               >
@@ -154,6 +151,7 @@ export default function Hero() {
               {/* Teaching Starfield */}
               <button
                 onClick={() => {
+                  setShowMapSelection(false)
                   router.push('/teaching/starfield')
                 }}
                 className="group bg-gradient-to-br from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 border border-indigo-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
@@ -183,29 +181,6 @@ export default function Hero() {
           </div>
         </div>
       )}
-
-      {/* Developer Journey Map */}
-      <DeveloperJourneyMap 
-        isVisible={showDeveloperMap}
-        onClose={() => setShowDeveloperMap(false)}
-        onNavigate={(nodeId) => {
-          console.log(`Navigating to: ${nodeId}`)
-          setShowDeveloperMap(false)
-          
-          // Navigate to the appropriate page based on nodeId
-          if (nodeId === 'certificates') {
-            router.push('/developer/certificates')
-          } else if (nodeId === 'about') {
-            router.push('/developer/about')
-          } else if (nodeId === 'skills') {
-            router.push('/developer/skills')
-          } else if (nodeId === 'projects') {
-            router.push('/developer/projects')
-          } else if (nodeId === 'contact') {
-            router.push('/developer/contact')
-          }
-        }}
-      />
     </section>
   )
 }

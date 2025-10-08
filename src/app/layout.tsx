@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Abo Ameen | Digital Home',
   description: 'Welcome to my digital space - showcasing my journey as an educator, developer, and lifelong learner.',
-  keywords: ['teacher', 'educator', 'developer', 'programming', 'portfolio', 'blog'],
+  keywords: ['teacher', 'educator', 'developer', 'programming', 'portfolio', 'blog', 'ESL teacher', 'full-stack developer', 'Ed Tech specialist'],
   authors: [{ name: 'Abo Ameen' }],
   creator: 'Abo Ameen',
   publisher: 'Abo Ameen',
@@ -23,11 +23,27 @@ export const metadata = {
     title: 'Abo Ameen | Digital Home',
     description: 'Welcome to my digital space - showcasing my journey as an educator, developer, and lifelong learner.',
     siteName: 'Abo Ameen Digital Home',
+    images: [
+      {
+        url: 'https://aboameen.dev/assets/photos/personal/My image portrait.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Abo Ameen - Educator & Developer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Abo Ameen | Digital Home',
     description: 'Welcome to my digital space - showcasing my journey as an educator, developer, and lifelong learner.',
+    creator: '@learn_english_with_mr',
+    images: ['https://aboameen.dev/assets/photos/personal/My image portrait.webp'],
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification code
+  },
+  alternates: {
+    canonical: 'https://aboameen.dev',
   },
 }
 
