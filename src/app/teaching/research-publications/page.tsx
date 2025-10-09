@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import { 
   EDUCATIONAL_VIDEOS, 
@@ -11,13 +12,27 @@ import {
   getCategoriesWithCounts,
   type EducationalVideo 
 } from '@/data/educationalVideos';
-import { FaYoutube, FaPlay, FaTimes, FaExternalLinkAlt, FaClock, FaEye, FaArrowLeft, FaChevronRight, FaVideo } from 'react-icons/fa';
+import { FaYoutube, FaPlay, FaTimes, FaExternalLinkAlt, FaClock, FaEye, FaArrowLeft, FaChevronRight, FaVideo, FaArrowUp } from 'react-icons/fa';
 
 export default function ResearchPublicationsPage() {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedVideo, setSelectedVideo] = useState<EducationalVideo | null>(null);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   
   const categories = getCategoriesWithCounts();
   const featuredVideos = getFeaturedVideos();
@@ -250,6 +265,22 @@ export default function ResearchPublicationsPage() {
       {showVideoModal && selectedVideo && (
         <VideoModal video={selectedVideo} onClose={closeVideoModal} />
       )}
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 group"
+            aria-label="Scroll to top"
+          >
+            <FaArrowUp className="w-6 h-6 group-hover:translate-y-[-2px] transition-transform" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

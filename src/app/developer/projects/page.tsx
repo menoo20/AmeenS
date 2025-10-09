@@ -2,15 +2,30 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import FadingImageCarousel from '@/components/FadingImageCarousel';
 import { PROJECTS, PROJECT_CATEGORIES, type Project } from '@/data/projects';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaFilter } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaFilter, FaArrowUp } from 'react-icons/fa';
 
 export default function DeveloperProjectsPage() {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const filteredProjects = selectedCategory === 'All' 
     ? PROJECTS 
@@ -105,6 +120,22 @@ export default function DeveloperProjectsPage() {
           </button>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 group"
+            aria-label="Scroll to top"
+          >
+            <FaArrowUp className="w-6 h-6 group-hover:translate-y-[-2px] transition-transform" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -239,3 +270,4 @@ function ProjectCard({ project, featured = false, isHovered, onHover }: ProjectC
     </div>
   );
 }
+

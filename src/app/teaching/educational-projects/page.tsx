@@ -1,12 +1,47 @@
-import React from 'react';
+'use client'
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import EducationalProjectsShowcase from '@/components/EducationalProjectsShowcase';
 
 const EducationalProjectsPage: React.FC = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
       <EducationalProjectsShowcase />
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 group"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="w-6 h-6 group-hover:translate-y-[-2px] transition-transform" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

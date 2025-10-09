@@ -6,16 +6,10 @@ import { usePathname } from 'next/navigation'
 
 const primaryNavItems = [
   { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
   { href: '/teaching/starfield', label: 'Teaching' },
+  { href: '/developer', label: 'Developer' },
   { href: '/blog', label: 'Blog' },
-]
-
-const upcomingNavItems = [
-  { label: 'Developer' },
-  { label: 'About' },
-  { label: 'Experience' },
-  { label: 'Gallery' },
-  { label: 'Contact' },
 ]
 
 export default function Navigation() {
@@ -25,6 +19,7 @@ export default function Navigation() {
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
     if (href.startsWith('/teaching')) return pathname.startsWith('/teaching')
+    if (href.startsWith('/developer')) return pathname.startsWith('/developer')
     return pathname.startsWith(href)
   }
 
@@ -56,20 +51,6 @@ export default function Navigation() {
                 >
                   {item.label}
                 </Link>
-              ))}
-
-              {upcomingNavItems.map((item) => (
-                <span
-                  key={item.label}
-                  className="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-400 cursor-not-allowed select-none"
-                  aria-disabled="true"
-                  title={`${item.label} section is coming soon`}
-                >
-                  {item.label}
-                  <span className="text-[10px] uppercase tracking-wide text-purple-500 bg-purple-400/10 border border-purple-400/40 rounded-full px-1.5 py-0.5">
-                    Soon
-                  </span>
-                </span>
               ))}
             </div>
           </div>
@@ -109,26 +90,6 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
-
-              <div className="mt-4 border-t border-gray-200/70 pt-3">
-                <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
-                  Coming Soon
-                </p>
-                <div className="space-y-1">
-                  {upcomingNavItems.map((item) => (
-                    <span
-                      key={item.label}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 cursor-not-allowed"
-                      aria-disabled="true"
-                    >
-                      {item.label}
-                      <span className="ml-2 text-xs uppercase tracking-wide text-purple-400">
-                        (Soon)
-                      </span>
-                    </span>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         )}
