@@ -37,14 +37,15 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
   const constellationLines = useRef<Array<{ startId: string; endId: string; line: THREE.Line }>>([])
 
   // Configurable star constellation for educational journey
-  const starNodes: StarNode[] = [
+  // Base star positions (will be scaled for mobile)
+  const starNodesBase: StarNode[] = [
     {
       id: 'educational-background',
       title: 'Educational Background',
       subtitle: 'Academic Foundation',
       description: 'My formal education journey including degrees, universities, and academic achievements that built the foundation of my expertise.',
       icon: '🎓',
-      position: { x: -3, y: 2, z: -2 },
+      position: { x: -2, y: 2.5, z: -2 }, // Top left - increased Y for more spread
       color: '#3b82f6',
       size: 0.15,
       category: 'foundation'
@@ -55,7 +56,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       subtitle: 'Professional Development',
       description: 'Professional certifications, specialized courses, and continuous learning achievements that enhance my teaching capabilities.',
       icon: '📜',
-      position: { x: 2, y: 3, z: -1 },
+      position: { x: 2.5, y: 3.5, z: -1 }, // Top right - highest position
       color: '#f59e0b',
       size: 0.12,
       category: 'credentials'
@@ -66,7 +67,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       subtitle: 'Designed Learning Experiences',
       description: 'Custom-designed educational projects, curricula, and learning experiences I\'ve created for various educational contexts.',
       icon: '🚀',
-      position: { x: -1, y: -2, z: -3 },
+      position: { x: 0.5, y: -2.5, z: -3 }, // Bottom center - lower position
       color: '#10b981',
       size: 0.13,
       category: 'projects'
@@ -77,7 +78,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       subtitle: 'Classroom Excellence',
       description: 'Years of hands-on teaching experience across different levels, institutions, and educational contexts.',
       icon: '🏫',
-      position: { x: -2, y: 0, z: -1 },
+      position: { x: 2.5, y: 0.5, z: -1 }, // Middle left - slightly above center
       color: '#8b5cf6',
       size: 0.14,
       category: 'experience'
@@ -88,21 +89,10 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       subtitle: 'Teaching & Web Solutions',
       description: 'Comprehensive educational services including IELTS/SEPT preparation, online tutoring, educator portfolios, and LMS development.',
       icon: '🌍',
-      position: { x: 1, y: 1, z: -4 },
+      position: { x: 1, y: 1.5, z: -4 }, // Middle right - above center
       color: '#06b6d4',
       size: 0.12,
       category: 'specialization'
-    },
-    {
-      id: 'gamification-learning',
-      title: 'Gamification & Learning',
-      subtitle: 'Interactive Education',
-      description: 'Innovative approaches to gamified learning, educational technology integration, and student engagement strategies.',
-      icon: '🎮',
-      position: { x: 0, y: -3, z: -1 },
-      color: '#ec4899',
-      size: 0.13,
-      category: 'innovation'
     },
     {
       id: 'research-publications',
@@ -110,12 +100,28 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       subtitle: 'Teaching Demonstrations',
       description: 'Instructional videos showcasing practical teaching methodologies, ESL strategies, and educational technology applications.',
       icon: '🎬',
-      position: { x: -4, y: -1, z: -3 },
+      position: { x: -2.5, y: -1.5, z: -3 }, // Bottom left - lower position
       color: '#f97316',
       size: 0.11,
       category: 'research'
     }
   ]
+
+  // Check if mobile and scale positions accordingly
+  const isMobileDevice = typeof window !== 'undefined' && window.innerWidth < 768
+  const positionScale = isMobileDevice ? 0.45 : 1 // Scale down positions by 55% on mobile (more aggressive)
+  const starSizeScale = isMobileDevice ? 0.7 : 1 // Scale down star sizes on mobile
+
+  // Apply position scaling for mobile
+  const starNodes: StarNode[] = starNodesBase.map(node => ({
+    ...node,
+    position: {
+      x: node.position.x * positionScale,
+      y: node.position.y * positionScale,
+      z: node.position.z * positionScale
+    },
+    size: node.size * starSizeScale // Scale down star sizes on mobile
+  }))
 
   useEffect(() => {
     if (!isVisible || !mountRef.current) return
@@ -125,14 +131,24 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
     scene.background = new THREE.Color(0x0a0a0a) // Deep space black
     sceneRef.current = scene
 
-    // Camera setup
+    // Check if mobile device
+    const isMobile = window.innerWidth < 768
+
+    // Calculate the center of all stars for proper camera targeting
+    const centerX = starNodes.reduce((sum, star) => sum + star.position.x, 0) / starNodes.length
+    const centerY = starNodes.reduce((sum, star) => sum + star.position.y, 0) / starNodes.length
+    const centerZ = starNodes.reduce((sum, star) => sum + star.position.z, 0) / starNodes.length
+
+    // Camera setup with mobile-responsive positioning and FOV
     const camera = new THREE.PerspectiveCamera(
-      75,
+      isMobile ? 90 : 75, // Much wider field of view on mobile (90° vs 75°)
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     )
-    camera.position.set(0, 0, 5)
+    // Position camera - closer on mobile since stars are scaled down
+    camera.position.set(0, 0, isMobile ? 4 : 5)
+    camera.lookAt(centerX, centerY, centerZ) // Look at constellation center
     cameraRef.current = camera
 
     // Renderer setup
@@ -146,7 +162,7 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
     // Create starfield background
     const createStarfield = () => {
       const starGeometry = new THREE.BufferGeometry()
-      const starCount = 2000
+      const starCount = isMobile ? 1000 : 2000 // Fewer stars on mobile for better performance
       const positions = new Float32Array(starCount * 3)
 
       for (let i = 0; i < starCount * 3; i += 3) {
@@ -159,9 +175,9 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       
       const starMaterial = new THREE.PointsMaterial({
         color: 0xffffff,
-        size: 2,
+        size: isMobile ? 1.5 : 2, // Smaller background stars on mobile
         transparent: true,
-        opacity: 0.6
+        opacity: isMobile ? 0.4 : 0.6 // Less prominent on mobile
       })
 
       const stars = new THREE.Points(starGeometry, starMaterial)
@@ -226,8 +242,8 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
         ['educational-background', 'certificates-courses'],
         ['certificates-courses', 'teaching-experience'],
         ['teaching-experience', 'esl-expertise'],
-        ['esl-expertise', 'gamification-learning'],
-        ['educational-projects', 'gamification-learning'],
+        ['esl-expertise', 'educational-projects'],
+        ['educational-projects', 'research-publications'],
         ['research-publications', 'educational-background']
       ]
 
@@ -439,14 +455,98 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       }
     }
 
+    // Touch event handlers for mobile
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        const touch = event.touches[0]
+        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1
+        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1
+
+        raycaster.setFromCamera(mouse, camera)
+        
+        const intersects = raycaster.intersectObjects(
+          Object.values(starRefs.current).map(group => group.children[0])
+        )
+
+        if (intersects.length > 0) {
+          if (!isHovering) {
+            setIsHovering(true)
+            Object.values(starRefs.current).forEach(starGroup => {
+              gsap.killTweensOf(starGroup.position)
+              gsap.killTweensOf(starGroup.rotation)
+            })
+          }
+
+          const hoveredStar = intersects[0].object.parent as THREE.Group
+          gsap.to(hoveredStar.scale, {
+            x: 1.5,
+            y: 1.5,
+            z: 1.5,
+            duration: 0.3
+          })
+
+          Object.values(starRefs.current).forEach(starGroup => {
+            if (starGroup !== hoveredStar) {
+              const starMesh = starGroup.children[0] as THREE.Mesh
+              if (starMesh && starMesh.material) {
+                gsap.to(starMesh.material, {
+                  opacity: 0.3,
+                  duration: 0.3
+                })
+              }
+            }
+          })
+        }
+      }
+    }
+
+    const handleTouchEnd = (event: TouchEvent) => {
+      if (event.changedTouches.length > 0) {
+        const touch = event.changedTouches[0]
+        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1
+        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1
+
+        raycaster.setFromCamera(mouse, camera)
+        
+        const intersects = raycaster.intersectObjects(
+          Object.values(starRefs.current).map(group => group.children[0])
+        )
+
+        if (intersects.length > 0) {
+          const clickedStar = intersects[0].object.parent as THREE.Group
+          const starId = Object.keys(starRefs.current).find(
+            id => starRefs.current[id] === clickedStar
+          )
+          
+          if (starId) {
+            setSelectedStar(starId)
+            setShowStarDetails(true)
+            
+            gsap.to(clickedStar.scale, {
+              x: 2,
+              y: 2,
+              z: 2,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1
+            })
+          }
+        }
+      }
+    }
+
     renderer.domElement.addEventListener('mousemove', handleMouseMove)
     renderer.domElement.addEventListener('click', handleClick)
+    renderer.domElement.addEventListener('touchmove', handleTouchMove, { passive: true })
+    renderer.domElement.addEventListener('touchend', handleTouchEnd)
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize)
       renderer.domElement.removeEventListener('mousemove', handleMouseMove)
       renderer.domElement.removeEventListener('click', handleClick)
+      renderer.domElement.removeEventListener('touchmove', handleTouchMove)
+      renderer.domElement.removeEventListener('touchend', handleTouchEnd)
       
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
@@ -493,16 +593,18 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
           const star = starNodes.find(s => s.id === starId)
           if (!star) return null
           
+          const isMobileView = typeof window !== 'undefined' && window.innerWidth < 768
+          
           return (
             <div
               key={starId}
               className="absolute transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
               style={{
-                left: position.x, // Centered horizontally on the star
-                top: position.y - 30,  // More above the star
+                left: position.x,
+                top: position.y - (isMobileView ? 20 : 30), // Closer label on mobile
               }}
             >
-              <div className="bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-md text-xs font-medium border border-white/20">
+              <div className="bg-black/70 backdrop-blur-sm text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-[10px] sm:text-xs font-medium border border-white/20 whitespace-nowrap">
                 {star.title}
               </div>
             </div>
@@ -511,27 +613,27 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
       </div>
       
       {/* Header UI */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-transparent p-6">
+      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-transparent p-3 sm:p-6">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <div className="text-2xl">✨</div>
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="text-xl sm:text-2xl">✨</div>
             <div>
-              <h1 className="text-2xl font-bold text-white">Educational Constellation</h1>
-              <p className="text-white/70">Navigate through my academic and professional stars</p>
+              <h1 className="text-lg sm:text-2xl font-bold text-white">Educational Constellation</h1>
+              <p className="text-xs sm:text-base text-white/70 hidden sm:block">Navigate through my academic and professional stars</p>
             </div>
           </div>
           
           <button
             onClick={onClose}
-            className="bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-300 hover:text-red-200 px-4 py-2 rounded-lg transition-all duration-300 backdrop-blur-sm"
+            className="bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-300 hover:text-red-200 px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
           >
             ✕
           </button>
         </div>
       </div>
 
-      {/* Instructions */}
-      <div className="absolute bottom-6 left-6 bg-black/50 backdrop-blur-lg rounded-lg p-4 text-white max-w-md">
+      {/* Instructions - Hidden on mobile, visible on tablet and up */}
+      <div className="hidden lg:block absolute bottom-6 left-6 bg-black/50 backdrop-blur-lg rounded-lg p-4 text-white max-w-md">
         <h3 className="font-semibold mb-2">✨ Navigation Guide</h3>
         <ul className="text-sm space-y-1 text-white/80">
           <li>• Hover over stars to pause the cosmos and highlight them</li>
@@ -544,14 +646,14 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
 
       {/* Star Details Modal */}
       {showStarDetails && selectedStarData && (
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-20">
-          <div className="bg-gray-900/90 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-8 max-w-2xl w-full mx-4 shadow-2xl">
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center space-x-4">
-                <div className="text-4xl">{selectedStarData.icon}</div>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-20 p-4">
+          <div className="bg-gray-900/90 backdrop-blur-lg rounded-2xl border border-gray-700/50 p-4 sm:p-8 max-w-2xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-start justify-between mb-4 sm:mb-6">
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                <div className="text-2xl sm:text-4xl">{selectedStarData.icon}</div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">{selectedStarData.title}</h2>
-                  <p className="text-lg text-gray-300">{selectedStarData.subtitle}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">{selectedStarData.title}</h2>
+                  <p className="text-sm sm:text-lg text-gray-300">{selectedStarData.subtitle}</p>
                   <div className="text-xs px-3 py-1 bg-gray-700/50 rounded-full text-gray-400 mt-2 inline-block">
                     {selectedStarData.category}
                   </div>
@@ -559,29 +661,29 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
               </div>
               <button
                 onClick={() => setShowStarDetails(false)}
-                className="text-gray-400 hover:text-white transition-colors text-xl"
+                className="text-gray-400 hover:text-white transition-colors text-xl flex-shrink-0 ml-2"
               >
                 ✕
               </button>
             </div>
             
-            <p className="text-gray-200 text-lg leading-relaxed mb-8">
+            <p className="text-gray-200 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8">
               {selectedStarData.description}
             </p>
             
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
               <button
                 onClick={() => {
                   onNavigate(selectedStarData.id)
                   setShowStarDetails(false)
                 }}
-                className="bg-blue-500/20 hover:bg-blue-500/30 border border-blue-400/30 text-blue-300 hover:text-blue-200 px-6 py-3 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                className="bg-blue-500/20 hover:bg-blue-500/30 border border-blue-400/30 text-blue-300 hover:text-blue-200 px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
               >
                 🚀 Explore This Star
               </button>
               <button
                 onClick={() => setShowStarDetails(false)}
-                className="bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/50 text-gray-300 hover:text-white px-6 py-3 rounded-lg transition-all duration-300 backdrop-blur-sm"
+                className="bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/50 text-gray-300 hover:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
               >
                 Continue Stargazing
               </button>
@@ -590,21 +692,21 @@ export default function EducationStarfield({ isVisible, onClose, onNavigate }: E
         </div>
       )}
 
-      {/* Constellation Map */}
-      <div className="absolute bottom-6 right-6 bg-black/50 backdrop-blur-lg rounded-lg p-4 text-white max-w-xs">
-        <h3 className="font-semibold mb-3 text-center">🌌 Constellation Map</h3>
-        <div className="grid grid-cols-2 gap-2 text-xs">
+      {/* Constellation Map - Responsive positioning */}
+      <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 bg-black/50 backdrop-blur-lg rounded-lg p-3 sm:p-4 text-white w-[calc(100%-1.5rem)] sm:w-auto sm:max-w-xs">
+        <h3 className="font-semibold mb-2 sm:mb-3 text-center text-sm sm:text-base">🌌 Constellation Map</h3>
+        <div className="grid grid-cols-2 gap-1 sm:gap-2 text-xs max-h-[30vh] sm:max-h-none overflow-y-auto">
           {starNodes.map(star => (
             <div
               key={star.id}
-              className="flex items-center space-x-2 p-2 rounded cursor-pointer hover:bg-white/10 transition-colors"
+              className="flex items-center space-x-1 sm:space-x-2 p-1.5 sm:p-2 rounded cursor-pointer hover:bg-white/10 transition-colors"
               onClick={() => {
                 setSelectedStar(star.id)
                 setShowStarDetails(true)
               }}
             >
-              <div style={{ color: star.color }} className="text-sm">●</div>
-              <span className="text-white/80 truncate">{star.title}</span>
+              <div style={{ color: star.color }} className="text-xs sm:text-sm flex-shrink-0">●</div>
+              <span className="text-white/80 truncate text-xs">{star.title}</span>
             </div>
           ))}
         </div>
