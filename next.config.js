@@ -38,9 +38,9 @@ const nextConfig = {
   },
   output: 'export',
   compress: true,
-  // Remove basePath and assetPrefix - add manually if deploying to username.github.io/repo-name
-  // basePath: '/repo-name',
-  // assetPrefix: '/repo-name/',
+  // GitHub Pages deployment configuration
+  basePath: '/AmeenS',
+  assetPrefix: '/AmeenS/',
   
   async headers() {
     return [
