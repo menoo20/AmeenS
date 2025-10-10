@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import { aboutMeData } from '@/data/aboutMe'
 import { BookOpen, Code, GraduationCap, Sparkles, MapPin, Briefcase, Heart, ChevronRight, ArrowUp } from 'lucide-react'
+import { getAssetPath } from '@/lib/utils'
 
 export default function AboutMePage() {
   const [selectedChapter, setSelectedChapter] = useState(0)
@@ -64,7 +65,7 @@ export default function AboutMePage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
               <Image
-                src="/assets/photos/personal/My image portrait.webp"
+                src={getAssetPath("/assets/photos/personal/My image portrait.webp")}
                 alt={aboutMeData.personalInfo.name}
                 width={180}
                 height={180}
@@ -162,7 +163,7 @@ export default function AboutMePage() {
                 {/* Image Section */}
                 <div className={`relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'flex items-center' : ''}`}>
                   <Image
-                    src={currentChapter.image}
+                    src={getAssetPath(currentChapter.image)}
                     alt={currentChapter.title}
                     width={1200}
                     height={800}

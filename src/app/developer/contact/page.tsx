@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Navigation from '@/components/Navigation';
+import { getAssetPath } from '@/lib/utils';
 import { 
   Mail, Phone, MapPin, Linkedin, Github, Globe,
   MessageCircle, Youtube, Calendar, Map,
@@ -355,7 +356,7 @@ export default function DeveloperContactPage() {
       <div className="fixed -bottom-12 right-28 lg:right-32 z-30 pointer-events-none hidden md:block animate-fadeInUp">
         <div className="animate-floatUpDown">
           <img 
-            src="/assets/photos/personal/trphoto.webp" 
+            src={getAssetPath("/assets/photos/personal/trphoto.webp")}
             alt="Abo Ameen"
             className="h-80 lg:h-96 w-auto object-contain object-bottom drop-shadow-2xl"
             style={{

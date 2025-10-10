@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { useRouter } from 'next/navigation';
+import { getAssetPath } from '@/lib/utils';
 
 interface TeachingExperience {
   id: number;
@@ -410,7 +411,7 @@ const TeachingExperiencePage: React.FC = () => {
             <div 
               className="absolute inset-0 opacity-20"
               style={{
-                backgroundImage: `url(${experience.images[0]})`,
+                backgroundImage: `url(${getAssetPath(experience.images[0])})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
@@ -660,7 +661,7 @@ const TeachingExperiencePage: React.FC = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-green-400/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                     <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-4 border border-gray-700/50 group-hover:border-green-400/30 transition-all duration-500">
                       <img
-                        src="/assets/photos/personal/coding.webp"
+                        src={getAssetPath("/assets/photos/personal/coding.webp")}
                         alt="Programming journey - Developer workspace"
                         className="w-full h-80 object-cover rounded-xl shadow-2xl"
                       />

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Navigation from '@/components/Navigation'
+import { getAssetPath } from '@/lib/utils'
 
 interface EducationSlide {
   id: number
@@ -216,10 +217,10 @@ export default function EducationalJourneyPage() {
                   
                   {/* Image Column */}
                   <div className={`order-1 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div className="relative group cursor-pointer" onClick={() => openZoom(education.image)}>
+                    <div className="relative group cursor-pointer" onClick={() => openZoom(getAssetPath(education.image))}>
                       <div className="relative overflow-hidden rounded-3xl shadow-xl bg-white border border-gray-200">
                         <img
-                          src={education.image}
+                          src={getAssetPath(education.image)}
                           alt={education.altText}
                           className="w-full h-auto object-cover"
                         />

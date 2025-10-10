@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { getAssetPath } from '@/lib/utils';
 
 interface FadingImageCarouselProps {
   images: string[];
@@ -78,7 +79,7 @@ export default function FadingImageCarousel({
     return (
       <div className={`relative w-full h-full ${className}`}>
         <Image
-          src={images[0]}
+          src={getAssetPath(images[0])}
           alt={alt}
           fill
           className="object-cover"
@@ -113,7 +114,7 @@ export default function FadingImageCarousel({
           >
             {shouldLoad && (
               <Image
-                src={image}
+                src={getAssetPath(image)}
                 alt={`${alt} - Image ${index + 1}`}
                 fill
                 className="object-cover"

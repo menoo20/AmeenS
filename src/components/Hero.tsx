@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { getAssetPath } from '@/lib/utils'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -54,7 +55,7 @@ export default function Hero() {
           <div className="mb-8">
             <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200 relative">
               <Image
-                src="/assets/photos/personal/My image portrait.webp"
+                src={getAssetPath("/assets/photos/personal/My image portrait.webp")}
                 alt="Abo Ameen - Educator and Full-Stack Developer"
                 fill
                 priority
