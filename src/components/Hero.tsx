@@ -116,67 +116,127 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Map Selection Modal */}
+      {/* Map Selection Modal - Tech & Sleek Version */}
       {showMapSelection && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 p-8 max-w-2xl w-full">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-4">Choose Your Journey</h2>
-              <p className="text-white/80 text-lg">
-                Explore my professional expertise through different perspectives
-              </p>
-            </div>
+        <div className="fixed inset-0 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-slate-900/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          {/* Animated background particles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          </div>
+
+          {/* Modal Container */}
+          <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-3xl border border-white/10 p-8 max-w-3xl w-full shadow-2xl">
+            {/* Tech grid pattern */}
+            <div className="absolute inset-0 opacity-5"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '20px 20px'
+              }}
+            ></div>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Developer Journey */}
-              <button
-                onClick={() => {
-                  setShowMapSelection(false)
-                  router.push('/developer')
-                }}
-                className="group bg-gradient-to-br from-green-500/20 to-blue-500/20 hover:from-green-500/30 hover:to-blue-500/30 border border-green-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
-              >
-                <div className="text-center">
-                  <div className="text-4xl mb-4">💻</div>
-                  <h3 className="text-xl font-bold text-white mb-2">Developer Journey</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Explore my technical skills, projects, and coding expertise
-                  </p>
-                  <div className="text-green-400 text-sm font-medium">
-                    Terminal • Code • Projects
+            {/* Glowing corner accents */}
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 opacity-30 blur-2xl rounded-full"></div>
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 opacity-30 blur-2xl rounded-full"></div>
+
+            <div className="relative z-10">
+              {/* Header */}
+              <div className="text-center mb-10">
+                <div className="inline-block mb-4">
+                  <div className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm">
+                    <span className="text-blue-300 text-sm font-semibold tracking-wider">NAVIGATION</span>
                   </div>
                 </div>
-              </button>
-
-              {/* Teaching Starfield */}
-              <button
-                onClick={() => {
-                  setShowMapSelection(false)
-                  router.push('/teaching/starfield')
-                }}
-                className="group bg-gradient-to-br from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 border border-indigo-400/30 rounded-xl p-6 transition-all duration-300 hover:scale-105"
-              >
-                <div className="text-center">
-                  <div className="text-4xl mb-4">✨</div>
-                  <h3 className="text-xl font-bold text-white mb-2">Teaching Starfield</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    Navigate through a constellation of my educational expertise
-                  </p>
-                  <div className="text-indigo-400 text-sm font-medium">
-                    Stars • Constellation • Interactive
+                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-3">
+                  Choose Your Journey
+                </h2>
+                <p className="text-gray-300 text-lg">
+                  Explore my professional expertise through different perspectives
+                </p>
+              </div>
+              
+              {/* Cards Grid */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {/* Developer Journey Card */}
+                <button
+                  onClick={() => {
+                    setShowMapSelection(false)
+                    router.push('/developer')
+                  }}
+                  className="group relative overflow-hidden bg-gradient-to-br from-green-900/40 to-blue-900/40 hover:from-green-900/60 hover:to-blue-900/60 border border-green-500/30 hover:border-green-400/50 rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20"
+                >
+                  {/* Animated scan line */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-400/10 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
+                  
+                  {/* Tech corner brackets */}
+                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-green-400/50"></div>
+                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-green-400/50"></div>
+                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-green-400/50"></div>
+                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-green-400/50"></div>
+                  
+                  <div className="relative text-center">
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💻</div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors">Developer Journey</h3>
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                      Explore my technical skills, projects, and coding expertise
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-green-400 text-sm font-medium">
+                      <span>Terminal</span>
+                      <span>•</span>
+                      <span>Code</span>
+                      <span>•</span>
+                      <span>Projects</span>
+                    </div>
                   </div>
-                </div>
-              </button>
-            </div>
+                </button>
 
-            {/* Close Button */}
-            <div className="text-center mt-6">
-              <button
-                onClick={() => setShowMapSelection(false)}
-                className="text-white/60 hover:text-white transition-colors text-sm"
-              >
-                ✕ Close
-              </button>
+                {/* Teaching Starfield Card */}
+                <button
+                  onClick={() => {
+                    setShowMapSelection(false)
+                    router.push('/teaching/starfield')
+                  }}
+                  className="group relative overflow-hidden bg-gradient-to-br from-indigo-900/40 to-purple-900/40 hover:from-indigo-900/60 hover:to-purple-900/60 border border-indigo-500/30 hover:border-indigo-400/50 rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                >
+                  {/* Animated scan line */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/10 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
+                  
+                  {/* Tech corner brackets */}
+                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-purple-400/50"></div>
+                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-purple-400/50"></div>
+                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-purple-400/50"></div>
+                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-purple-400/50"></div>
+                  
+                  <div className="relative text-center">
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">✨</div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Teaching Starfield</h3>
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                      Navigate through a constellation of my educational expertise
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-indigo-400 text-sm font-medium">
+                      <span>Stars</span>
+                      <span>•</span>
+                      <span>Constellation</span>
+                      <span>•</span>
+                      <span>Interactive</span>
+                    </div>
+                  </div>
+                </button>
+              </div>
+
+              {/* Close Button */}
+              <div className="text-center">
+                <button
+                  onClick={() => setShowMapSelection(false)}
+                  className="group inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-gray-400 hover:text-white transition-all duration-300 rounded-xl"
+                >
+                  <span className="text-sm font-medium">✕ Close</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
