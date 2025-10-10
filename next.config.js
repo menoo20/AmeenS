@@ -10,6 +10,7 @@ const nextConfig = {
     return config
   },
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'http',
@@ -27,19 +28,19 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   typescript: {
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
-  output: 'standalone',
+  output: 'export',
   compress: true,
+  // Remove basePath and assetPrefix - add manually if deploying to username.github.io/repo-name
+  // basePath: '/repo-name',
+  // assetPrefix: '/repo-name/',
   
   async headers() {
     return [

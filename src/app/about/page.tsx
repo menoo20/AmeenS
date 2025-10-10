@@ -158,19 +158,21 @@ export default function AboutMePage() {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-slate-900/50 via-indigo-900/30 to-slate-900/50 backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden shadow-2xl"
             >
-              <div className="flex flex-col lg:flex-row lg:items-stretch">
+              <div className={`flex flex-col lg:flex-row ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? '' : 'lg:items-center'}`}>
                 {/* Image Section */}
-                <div className="relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 lg:self-start">
+                <div className={`relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'flex items-center' : ''}`}>
                   <Image
                     src={currentChapter.image}
                     alt={currentChapter.title}
                     width={1200}
                     height={800}
-                    className="w-full h-auto block"
+                    className={`w-full h-auto block ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'rounded-tr-2xl rounded-br-2xl' : ''}`}
                     style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
                     unoptimized
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                  {![1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                  )}
                   
                   {/* Chapter Badge */}
                   <div className="absolute top-6 left-6 z-10">
@@ -219,16 +221,30 @@ export default function AboutMePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-900/30 to-slate-900/30 backdrop-blur-lg rounded-2xl border border-blue-500/20 p-8"
+            className="group relative overflow-hidden bg-gradient-to-br from-blue-900/30 to-slate-900/30 backdrop-blur-lg rounded-2xl border border-blue-500/20 hover:border-blue-500/40 p-8 transition-all duration-500 hover:scale-[1.02]"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-blue-500/20 rounded-lg">
-                <GraduationCap className="w-8 h-8 text-blue-400" />
+            {/* Tech grid pattern */}
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '20px 20px'
+              }}
+            ></div>
+            
+            {/* Animated corner accent */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-500 rounded-full group-hover:w-40 group-hover:h-40"></div>
+            
+            <div className="flex items-center gap-3 mb-6 relative z-10">
+              <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors duration-300">
+                <GraduationCap className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="text-2xl font-bold text-white">Teaching Expertise</h3>
             </div>
             
-            <ul className="space-y-3">
+            <ul className="space-y-3 relative z-10">
               {aboutMeData.expertise.teaching.map((skill, index) => (
                 <motion.li
                   key={index}
@@ -236,13 +252,16 @@ export default function AboutMePage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-3 text-white/80"
+                  className="flex items-start gap-3 text-white/80 hover:text-white transition-colors duration-200"
                 >
                   <Sparkles className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
                   <span>{skill}</span>
                 </motion.li>
               ))}
             </ul>
+            
+            {/* Scan line effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-400/5 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
           </motion.div>
 
           {/* Technical Expertise */}
@@ -250,16 +269,30 @@ export default function AboutMePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-purple-900/30 to-slate-900/30 backdrop-blur-lg rounded-2xl border border-purple-500/20 p-8"
+            className="group relative overflow-hidden bg-gradient-to-br from-purple-900/30 to-slate-900/30 backdrop-blur-lg rounded-2xl border border-purple-500/20 hover:border-purple-500/40 p-8 transition-all duration-500 hover:scale-[1.02]"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-purple-500/20 rounded-lg">
-                <Code className="w-8 h-8 text-purple-400" />
+            {/* Tech grid pattern */}
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '20px 20px'
+              }}
+            ></div>
+            
+            {/* Animated corner accent */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-500 rounded-full group-hover:w-40 group-hover:h-40"></div>
+            
+            <div className="flex items-center gap-3 mb-6 relative z-10">
+              <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors duration-300">
+                <Code className="w-8 h-8 text-purple-400 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h3 className="text-2xl font-bold text-white">Technical Expertise</h3>
             </div>
             
-            <ul className="space-y-3">
+            <ul className="space-y-3 relative z-10">
               {aboutMeData.expertise.technical.map((skill, index) => (
                 <motion.li
                   key={index}
@@ -267,13 +300,16 @@ export default function AboutMePage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-3 text-white/80"
+                  className="flex items-start gap-3 text-white/80 hover:text-white transition-colors duration-200"
                 >
                   <Sparkles className="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" />
                   <span>{skill}</span>
                 </motion.li>
               ))}
             </ul>
+            
+            {/* Scan line effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/5 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
           </motion.div>
         </div>
 
@@ -299,9 +335,33 @@ export default function AboutMePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-4 transition-all"
+                className="group relative overflow-hidden rounded-lg transition-all duration-500 hover:scale-105 cursor-pointer"
               >
-                <p className="text-white/80">{focus}</p>
+                {/* Animated gradient glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 to-purple-500/40 opacity-40 blur-xl group-hover:opacity-70 transition-opacity duration-500"></div>
+                
+                {/* Card content */}
+                <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border border-white/10 group-hover:border-white/30 rounded-lg p-4 h-full transition-all duration-300">
+                  
+                  {/* Tech grid pattern */}
+                  <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                      `,
+                      backgroundSize: '15px 15px'
+                    }}
+                  ></div>
+                  
+                  {/* Animated corner accent */}
+                  <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-500 rounded-full"></div>
+                  
+                  <p className="text-white/90 relative z-10">{focus}</p>
+                  
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
+                </div>
               </motion.div>
             ))}
           </div>
