@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import { aboutMeData } from '@/data/aboutMe'
@@ -64,12 +63,14 @@ export default function AboutMePage() {
           <div className="flex justify-center mb-6">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
-              <Image
+              <img
                 src={getAssetPath("/assets/photos/personal/My image portrait.webp")}
                 alt={aboutMeData.personalInfo.name}
-                width={180}
-                height={180}
+                width="180"
+                height="180"
                 className="relative rounded-full border-4 border-white/20 shadow-2xl"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>
@@ -162,14 +163,13 @@ export default function AboutMePage() {
               <div className={`flex flex-col lg:flex-row ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? '' : 'lg:items-center'}`}>
                 {/* Image Section */}
                 <div className={`relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'flex items-center' : ''}`}>
-                  <Image
+                  <img
                     src={getAssetPath(currentChapter.image)}
                     alt={currentChapter.title}
-                    width={1200}
-                    height={800}
                     className={`w-full h-auto block ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'rounded-tr-2xl rounded-br-2xl' : ''}`}
                     style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
-                    unoptimized
+                    loading="lazy"
+                    decoding="async"
                   />
                   {![1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) && (
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>

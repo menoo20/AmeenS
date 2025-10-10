@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { getAssetPath } from '@/lib/utils'
 
 export default function Hero() {
@@ -53,15 +52,14 @@ export default function Hero() {
         <div className="animate-fade-in">
           {/* Profile Image */}
           <div className="mb-8">
-            <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200 relative">
-              <Image
+            <div className="w-52 h-52 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200">
+              <img
                 src={getAssetPath("/assets/photos/personal/My image portrait.webp")}
                 alt="Abo Ameen - Educator and Full-Stack Developer"
-                fill
-                priority
-                className="object-cover object-center"
+                className="w-full h-full object-cover object-center"
                 style={{ objectPosition: 'center 10%' }}
-                sizes="(max-width: 768px) 208px, 208px"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>

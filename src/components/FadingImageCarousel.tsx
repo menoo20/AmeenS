@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
 
 interface FadingImageCarouselProps {
@@ -78,14 +77,12 @@ export default function FadingImageCarousel({
   if (images.length === 1) {
     return (
       <div className={`relative w-full h-full ${className}`}>
-        <Image
+        <img
           src={getAssetPath(images[0])}
           alt={alt}
-          fill
-          className="object-cover"
-          priority
-          quality={85}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     );
@@ -113,15 +110,12 @@ export default function FadingImageCarousel({
             }}
           >
             {shouldLoad && (
-              <Image
+              <img
                 src={getAssetPath(image)}
                 alt={`${alt} - Image ${index + 1}`}
-                fill
-                className="object-cover"
-                priority={index === 0} // Only first image gets priority
+                className="w-full h-full object-cover"
                 loading={index === 0 ? 'eager' : 'lazy'}
-                quality={85} // High quality, optimized size
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                decoding="async"
               />
             )}
           </div>
