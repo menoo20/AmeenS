@@ -9,7 +9,6 @@ const primaryNavItems = [
   { href: '/about', label: 'About' },
   { href: '/teaching/starfield', label: 'Teaching' },
   { href: '/developer', label: 'Developer' },
-  { href: '/blog', label: 'Blog' },
 ]
 
 export default function Navigation() {
