@@ -2,15 +2,19 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const MAX_WIDTH = 1920;
-const MAX_HEIGHT = 1080;
-const QUALITY = 80;
+const MAX_WIDTH = 1200;
+const MAX_HEIGHT = 1200; // Keeps aspect ratio, just ensures no dimension exceeds this
+const QUALITY = 85;
 
-// Directories to optimize
+// Directories to optimize - ALL image directories in the project
 const dirsToOptimize = [
   'public/assets/photos/personal',
   'public/assets/photos/work',
-  'public/assets/projects'
+  'public/assets/photos/logos',
+  'public/assets/photos/Thumbnails',
+  'public/assets/projects',
+  'public/assets/certificates/programming',
+  'public/assets/certificates/Teaching'
 ];
 
 async function optimizeImage(filePath) {
@@ -86,7 +90,10 @@ async function optimizeDirectory(dirPath) {
     const filePath = path.join(dirPath, file);
     const stat = fs.statSync(filePath);
     
-    if (stat.isFile()) {
+    if (stat.isDirectory()) {
+      // Recursively process subdirectories
+      await optimizeDirectory(filePath);
+    } else if (stat.isFile()) {
       await optimizeImage(filePath);
     }
   }
