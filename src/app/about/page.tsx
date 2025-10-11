@@ -168,7 +168,7 @@ export default function AboutMePage() {
                     alt={currentChapter.title}
                     className={`w-full h-auto block ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'rounded-tr-2xl rounded-br-2xl' : ''}`}
                     style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                   />
                   {![1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) && (

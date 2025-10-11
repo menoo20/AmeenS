@@ -45,7 +45,7 @@ const ProjectSlideshow: React.FC<{ images: string[]; title: string; onImageClick
               width={800}
               height={600}
               className="w-full h-auto rounded-2xl shadow-2xl"
-              loading={index === 0 ? "eager" : "lazy"}
+              loading="eager"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
             />
           </div>

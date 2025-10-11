@@ -81,7 +81,7 @@ export default function FadingImageCarousel({
           src={getAssetPath(images[0])}
           alt={alt}
           className="w-full h-full object-cover"
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </div>
@@ -114,7 +114,7 @@ export default function FadingImageCarousel({
                 src={getAssetPath(image)}
                 alt={`${alt} - Image ${index + 1}`}
                 className="w-full h-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
+                loading="eager"
                 decoding="async"
               />
             )}
