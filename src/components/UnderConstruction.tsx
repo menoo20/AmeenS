@@ -28,7 +28,7 @@ export default function UnderConstruction({
     <>
       <Navigation />
       <div 
-        className="min-h-screen flex items-center justify-center p-4 sm:p-8"
+        className="min-h-screen flex items-center justify-center p-4 sm:p-8 pt-24 sm:pt-28"
         style={{
           background: `linear-gradient(135deg, ${color}15 0%, #1a1a2e 50%, #0a0a0a 100%)`
         }}
