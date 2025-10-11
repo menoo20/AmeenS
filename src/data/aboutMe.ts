@@ -31,13 +31,13 @@ export const aboutMeData = {
       chapter: "The Dual Educator",
       title: "Teaching Across Borders and Screens",
       narrative: "Since January 2024, I've been an online ESL tutor on Preply.com, delivering personalized lessons to international learners while adapting materials for remote environments. This dual role—teaching vocational trainees and professionals at Black Gold Institute while tutoring globally online—has sharpened my ability to connect with diverse learners. Whether it's IELTS preparation, Business English, or foundational phonics using Jolly Phonics methods, I tailor every session to unlock potential.",
-      image: "/assets/photos/work/apicwithmystudents.webp"
+      image: "/assets/photos/work/apicwithmystudents.jpeg"
     },
     {
       chapter: "The Content Creator",
       title: "Classrooms Are Not Enough",
       narrative: "Beyond the classroom, I bring education to screens worldwide. As a content creator, I produce educational videos that break down complex topics into engaging, digestible content. From English language tutorials to tech explanations, my videos combine my teaching expertise with multimedia storytelling. I script, record, edit, and publish content that reaches learners who might never step into a traditional classroom. Each video is carefully crafted to maintain attention, deliver value, and inspire action. In the digital age, quality educational content is currency—and I'm minting it daily.",
-      image: "/assets/photos/work/atwork12.webp"
+      image: "/assets/photos/work/atwork12.jpeg"
     },
     {
       chapter: "The Safety Guardian",
@@ -55,19 +55,19 @@ export const aboutMeData = {
       chapter: "The System Builder",
       title: "Automating What Matters",
       narrative: "With 7+ years of teaching experience and a strong technical background, I've learned to work smarter. I've established electronic attendance systems that increased tracking efficiency by 30%, created iLMS platforms for multi-branch curriculum implementation, and explored automation systems for work opportunity tracking. I provide weekly attendance and performance analysis reports that support management decision-making. I build systems that free educators to focus on what matters most: teaching.",
-      image: "/assets/photos/work/atwork6.webp"
+      image: "/assets/photos/work/atwork6.jpeg"
     },
     {
       chapter: "The Continuous Learner",
       title: "Never Stopping, Always Growing",
       narrative: "At 34, I'm far from finished. I always explore emerging EdTech trends, and investigate AI agent development. I watch thought-provoking series, follow BBC Learning English, and constantly push myself to learn something new. I work on improving my American English pronunciation, study advanced programming techniques, and explore educational platform development. Self-development isn't just an option in world with rapid change",
-      image: "/assets/photos/work/Awardedbymyschool.webp"
+      image: "/assets/photos/work/Awardedbymyschool.jpeg"
     },
     {
       chapter: "The Vision Forward",
       title: "Leading Tomorrow's Education",
       narrative: "My journey from Ismailia to Dammam, from classroom teacher to EdTech specialist, from team member to leader reflects one truth: education transforms when innovation meets dedication. I'm seeking to leverage my background into a Head of Department role, where I can lead teams, drive academic standards, and continue building bridges between traditional teaching excellence and cutting-edge technology. Every lesson taught, every system built, every student empowered—they all serve one mission: making quality education accessible to everyone ready to reach higher.",
-      image: "/assets/photos/work/withsuitatwork.webp"
+      image: "/assets/photos/work/withsuitatwork.jpeg"
     }
   ],
   
