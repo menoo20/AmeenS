@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
-    "deploy": "npm run build && gh-pages -d out -t true",
+    "deploy": "npm run build && gh-pages -d out --dotfiles",
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
