@@ -95,9 +95,9 @@ export default function ResearchPublicationsPage() {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 opacity-40 blur-lg group-hover:opacity-60 transition-opacity duration-500"></div>
               
               {/* Main badge container with darker background */}
-              <div className="relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-black/80 via-gray-900/80 to-black/80 backdrop-blur-xl rounded-full border-2 border-cyan-400/60 shadow-xl shadow-cyan-500/20 group-hover:shadow-cyan-500/30 group-hover:scale-105 transition-all duration-300">
+              <div className="relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-gradient-to-r from-black/80 via-gray-900/80 to-black/80 backdrop-blur-xl rounded-full border-2 border-cyan-400/60 shadow-xl shadow-cyan-500/20 group-hover:shadow-cyan-500/30 group-hover:scale-105 transition-all duration-300">
                 {/* Static 3D Video Icon - No rotation */}
-                <div className="relative w-12 h-12 flex items-center justify-center">
+                <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center flex-shrink-0">
                   {/* Reduced glow effects */}
                   <div className="absolute inset-0 blur-md bg-cyan-400 rounded-full opacity-30"></div>
                   
@@ -105,24 +105,24 @@ export default function ResearchPublicationsPage() {
                   <div className="relative preserve-3d">
                     {/* Back layer - slightly offset */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                      <FaVideo className="w-8 h-8 text-purple-400" />
+                      <FaVideo className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-purple-400" />
                     </div>
                     
                     {/* Middle layer */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-40">
-                      <FaVideo className="w-9 h-9 text-blue-400" />
+                      <FaVideo className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 text-blue-400" />
                     </div>
                     
                     {/* Front layer - main icon */}
                     <div className="relative flex items-center justify-center">
-                      <FaVideo className="w-10 h-10 text-cyan-300 drop-shadow-lg" />
+                      <FaVideo className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-cyan-300 drop-shadow-lg" />
                     </div>
                   </div>
                 </div>
                 
                 {/* Text without excessive highlighting */}
                 <div className="relative overflow-hidden">
-                  <span className="relative z-10 font-black text-base tracking-[0.2em] text-cyan-100">
+                  <span className="relative z-10 font-black text-xs sm:text-sm md:text-base tracking-wider sm:tracking-wide md:tracking-[0.2em] text-cyan-100">
                     TEACHING DEMONSTRATIONS
                   </span>
                   {/* Shimmer overlay */}
@@ -130,10 +130,10 @@ export default function ResearchPublicationsPage() {
                 </div>
                 
                 {/* Pulsing dots decoration */}
-                <div className="flex gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse shadow-md shadow-cyan-400/30"></div>
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-300 animate-pulse shadow-md shadow-blue-400/30" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-1.5 h-1.5 rounded-full bg-purple-300 animate-pulse shadow-md shadow-purple-400/30" style={{ animationDelay: '0.4s' }}></div>
+                <div className="flex gap-1 sm:gap-1.5 flex-shrink-0">
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-cyan-300 animate-pulse shadow-md shadow-cyan-400/30"></div>
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-blue-300 animate-pulse shadow-md shadow-blue-400/30" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-purple-300 animate-pulse shadow-md shadow-purple-400/30" style={{ animationDelay: '0.4s' }}></div>
                 </div>
               </div>
             </div>

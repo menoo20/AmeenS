@@ -117,7 +117,7 @@ export default function Hero() {
 
       {/* Map Selection Modal - Tech & Sleek Version */}
       {showMapSelection && (
-        <div className="fixed inset-0 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-slate-900/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-slate-900/95 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4">
           {/* Animated background particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -126,7 +126,7 @@ export default function Hero() {
           </div>
 
           {/* Modal Container */}
-          <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-3xl border border-white/10 p-8 max-w-3xl w-full shadow-2xl">
+          <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 p-4 sm:p-6 md:p-8 max-w-3xl w-full shadow-2xl">
             {/* Tech grid pattern */}
             <div className="absolute inset-0 opacity-5"
               style={{
@@ -144,46 +144,46 @@ export default function Hero() {
 
             <div className="relative z-10">
               {/* Header */}
-              <div className="text-center mb-10">
-                <div className="inline-block mb-4">
-                  <div className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm">
-                    <span className="text-blue-300 text-sm font-semibold tracking-wider">NAVIGATION</span>
+              <div className="text-center mb-6 sm:mb-8 md:mb-10">
+                <div className="inline-block mb-3 sm:mb-4">
+                  <div className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm">
+                    <span className="text-blue-300 text-xs sm:text-sm font-semibold tracking-wider">NAVIGATION</span>
                   </div>
                 </div>
-                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-3">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mb-2 sm:mb-3 px-2">
                   Choose Your Journey
                 </h2>
-                <p className="text-gray-300 text-lg">
+                <p className="text-gray-300 text-sm sm:text-base md:text-lg px-4">
                   Explore my professional expertise through different perspectives
                 </p>
               </div>
               
               {/* Cards Grid */}
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8">
                 {/* Developer Journey Card */}
                 <button
                   onClick={() => {
                     setShowMapSelection(false)
                     router.push('/developer')
                   }}
-                  className="group relative overflow-hidden bg-gradient-to-br from-green-900/40 to-blue-900/40 hover:from-green-900/60 hover:to-blue-900/60 border border-green-500/30 hover:border-green-400/50 rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20"
+                  className="group relative overflow-hidden bg-gradient-to-br from-green-900/40 to-blue-900/40 hover:from-green-900/60 hover:to-blue-900/60 border border-green-500/30 hover:border-green-400/50 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20"
                 >
                   {/* Animated scan line */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-400/10 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
                   
                   {/* Tech corner brackets */}
-                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-green-400/50"></div>
-                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-green-400/50"></div>
-                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-green-400/50"></div>
-                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-green-400/50"></div>
+                  <div className="absolute top-2 left-2 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-l-2 border-green-400/50"></div>
+                  <div className="absolute top-2 right-2 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-r-2 border-green-400/50"></div>
+                  <div className="absolute bottom-2 left-2 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-l-2 border-green-400/50"></div>
+                  <div className="absolute bottom-2 right-2 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-r-2 border-green-400/50"></div>
                   
                   <div className="relative text-center">
-                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💻</div>
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors">Developer Journey</h3>
-                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">💻</div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-green-300 transition-colors">Developer Journey</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                       Explore my technical skills, projects, and coding expertise
                     </p>
-                    <div className="flex items-center justify-center gap-2 text-green-400 text-sm font-medium">
+                    <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-green-400 text-xs sm:text-sm font-medium">
                       <span>Terminal</span>
                       <span>•</span>
                       <span>Code</span>
@@ -199,24 +199,24 @@ export default function Hero() {
                     setShowMapSelection(false)
                     router.push('/teaching/starfield')
                   }}
-                  className="group relative overflow-hidden bg-gradient-to-br from-indigo-900/40 to-purple-900/40 hover:from-indigo-900/60 hover:to-purple-900/60 border border-indigo-500/30 hover:border-indigo-400/50 rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                  className="group relative overflow-hidden bg-gradient-to-br from-indigo-900/40 to-purple-900/40 hover:from-indigo-900/60 hover:to-purple-900/60 border border-indigo-500/30 hover:border-indigo-400/50 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
                 >
                   {/* Animated scan line */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-400/10 to-transparent h-full transition-all duration-1000 group-hover:translate-y-full -translate-y-full"></div>
                   
                   {/* Tech corner brackets */}
-                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-purple-400/50"></div>
-                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-purple-400/50"></div>
-                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-purple-400/50"></div>
-                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-purple-400/50"></div>
+                  <div className="absolute top-2 left-2 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-l-2 border-purple-400/50"></div>
+                  <div className="absolute top-2 right-2 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-r-2 border-purple-400/50"></div>
+                  <div className="absolute bottom-2 left-2 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-l-2 border-purple-400/50"></div>
+                  <div className="absolute bottom-2 right-2 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-r-2 border-purple-400/50"></div>
                   
                   <div className="relative text-center">
-                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">✨</div>
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Teaching Starfield</h3>
-                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                    <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">✨</div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-purple-300 transition-colors">Teaching Starfield</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                       Navigate through a constellation of my educational expertise
                     </p>
-                    <div className="flex items-center justify-center gap-2 text-indigo-400 text-sm font-medium">
+                    <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-indigo-400 text-xs sm:text-sm font-medium">
                       <span>Stars</span>
                       <span>•</span>
                       <span>Constellation</span>
@@ -231,9 +231,9 @@ export default function Hero() {
               <div className="text-center">
                 <button
                   onClick={() => setShowMapSelection(false)}
-                  className="group inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-gray-400 hover:text-white transition-all duration-300 rounded-xl"
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-gray-400 hover:text-white transition-all duration-300 rounded-xl"
                 >
-                  <span className="text-sm font-medium">✕ Close</span>
+                  <span className="text-xs sm:text-sm font-medium">✕ Close</span>
                 </button>
               </div>
             </div>

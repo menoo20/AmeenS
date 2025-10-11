@@ -244,28 +244,28 @@ export default function DeveloperJourneyMap({ isVisible, onClose, onNavigate }: 
               key={node.id}
               ref={el => { if (el) nodesRef.current[index] = el }}
               data-node-id={node.id}
-              className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 group"
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
               style={{ 
                 left: `${node.position.x}%`, 
                 top: `${node.position.y}%` 
               }}
-              onClick={() => handleNodeClick(node)}
             >
               {/* Node Glow Effect */}
               <div 
-                className="absolute inset-0 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                 style={{ backgroundColor: node.color }}
               ></div>
               
-              {/* Main Node */}
+              {/* Main Node - Only the circle is clickable */}
               <div 
-                className="relative rounded-full border-2 flex flex-col items-center justify-center bg-gray-800 group-hover:scale-110 transition-transform duration-300"
+                className="relative rounded-full border-2 flex flex-col items-center justify-center bg-gray-800 group-hover:scale-110 transition-transform duration-300 cursor-pointer"
                 style={{ 
                   borderColor: node.color, 
                   boxShadow: `0 0 20px ${node.color}40`,
                   width: node.id === 'certificates' ? '9.2rem' : '9rem',
                   height: node.id === 'certificates' ? '9.2rem' : '9rem'
                 }}
+                onClick={() => handleNodeClick(node)}
               >
                 <div className={`mb-2 ${node.id === 'certificates' ? 'text-4xl' : 'text-3xl'}`}>{node.icon}</div>
                 <div 
@@ -279,7 +279,7 @@ export default function DeveloperJourneyMap({ isVisible, onClose, onNavigate }: 
               </div>
 
               {/* Tooltip with Smart Positioning */}
-              <div className={`absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-900 border border-green-400/30 rounded-lg p-3 min-w-48 text-center z-10 ${
+              <div className={`absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-900 border border-green-400/30 rounded-lg p-3 min-w-48 text-center z-10 pointer-events-none ${
                 // Smart positioning based on node location
                 node.position.y > 60 
                   ? 'bottom-44 left-1/2 transform -translate-x-1/2' // Bottom circles: show tooltip above
