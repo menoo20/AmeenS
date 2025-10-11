@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { EDUCATIONAL_PROJECTS, type EducationalProject } from '@/data/educationalProjects';
+import { getAssetPath } from '@/lib/utils';
 import { FaGithub, FaExternalLinkAlt, FaBook, FaVideo, FaChevronLeft, FaChevronRight, FaSearchPlus, FaTimes } from 'react-icons/fa';
 
 // Flexible Slideshow Component - Handles all image sizes
@@ -40,7 +41,7 @@ const ProjectSlideshow: React.FC<{ images: string[]; title: string; onImageClick
             }`}
           >
             <Image
-              src={img}
+              src={getAssetPath(img)}
               alt={`${title} - Screenshot ${index + 1}`}
               width={800}
               height={600}
@@ -196,7 +197,7 @@ const ImageModal: React.FC<{
           >
             <div className="relative w-full h-full">
               <Image
-                src={img}
+                src={getAssetPath(img)}
                 alt={`${title} - Screenshot ${index + 1}`}
                 fill
                 className="object-contain"
