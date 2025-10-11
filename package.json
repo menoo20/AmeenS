@@ -1,7 +1,7 @@
 {
-  "name": "abo-ameen-fullstack",
+  "name": "abo-ameen-portfolio",
   "version": "1.0.0",
-  "description": "Abo Ameen's Complete Digital Home - Fullstack Portfolio with Admin Dashboard",
+  "description": "Abo Ameen's Static Portfolio Website - Educator & Developer Showcase",
   "private": true,
   "scripts": {
     "dev": "next dev",

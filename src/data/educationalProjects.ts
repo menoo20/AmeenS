@@ -143,7 +143,7 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-blue-500 to-purple-600",
     icon: "📊",
     images: [
-      "/assets/photos/Thumbnails/attendaceStatistics.webp",
+      "/assets/photos/Thumbnails/attendaceStatistics.png",
       "/assets/photos/Thumbnails/attendaceStatistics2.webp",
       "/assets/photos/Thumbnails/attendaceStatistics3.webp",
       "/assets/photos/Thumbnails/attendaceStatistics4.webp"

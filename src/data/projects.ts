@@ -190,7 +190,7 @@ export const PROJECTS: Project[] = [
     thumbnail: '/assets/projects/BankLP1.webp',
     images: [
       '/assets/projects/BankLP1.webp',
-      '/assets/projects/BankLP2.webp'
+      
     ],
     liveUrl: 'https://menoo20.github.io/easybank-landing-page/',
     githubUrl: 'https://github.com/menoo20/easybank-landing-page',

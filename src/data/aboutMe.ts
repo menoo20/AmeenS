@@ -13,7 +13,7 @@ export const aboutMeData = {
       chapter: "The Foundation",
       title: "Roots in the Nile Valley",
       narrative: "Born and raised in Egypt, I discovered early on that my passion lay at the intersection of education and technology. After earning my Bachelor of Arts and Humanities from Suez Canal University in 2013, followed by a PGDE the next year, I began shaping my identity as an educator. But I wanted more—a FELT Diploma from the American University in Cairo (2019-2020), a TOEFL PBT, and eventually an IELTS Academic band score of 7.5 in 2025. Each certificate was a stepping stone toward excellence.",
-      image: "/assets/photos/personal/my pharonic ancestors.webp"
+      image: "/assets/photos/personal/mypharonicancestors.jpg"
     },
     {
       chapter: "The Digital Pioneer",
@@ -25,7 +25,7 @@ export const aboutMeData = {
       chapter: "The Kingdom Years Begin",
       title: "From Riyadh to Dammam",
       narrative: "In March 2021, I moved to Riyadh to teach at Tarbya Namouthajiyah Schools, where I delivered engaging English lessons to primary and preparatory students using communicative language teaching methods. By 2023, I had relocated to Dammam, joining Black Gold Higher Institute as an English Language Trainer and EdTech Specialist. Here, I designed a full electronic attendance system for 500+ students, created an iLMS platform to track progress and resources, and developed a phonics training website used for both teacher workshops and student practice. Saudi Arabia became my laboratory for innovation.",
-      image: "/assets/photos/work/withmystudents3.webp"
+      image: "/assets/photos/work/withmystudents3.jpg"
     },
     {
       chapter: "The Dual Educator",
@@ -43,13 +43,13 @@ export const aboutMeData = {
       chapter: "The Safety Guardian",
       title: "Beyond Language to Life Skills",
       narrative: "Education should empower and protect. That's why I expanded into OSHA safety standards and HSE protocols, teaching safety courses to vocational trainees at Black Gold Institute. I create comprehensive materials covering walking and working surfaces, fall protection, confined spaces, welding safety, scaffolding, ladder classifications, and emergency action procedures. Every PowerPoint, every visual, every explanation is designed to ensure my students not only pass exams but stay safe on the job.",
-      image: "/assets/photos/work/atwork10.webp"
+      image: "/assets/photos/work/atwork10.jpg"
     },
     {
       chapter: "The AI Collaborator",
       title: "Evaluating the Future",
       narrative: "I don't fear artificial intelligence—I study it. I work on AI model evaluation projects, conducting detailed comparative assessments of ChatGPT and Gemini using criteria like factuality, comprehensiveness, safety, and helpfulness. I perform systematic fact-checking with error severity ratings, contribute to data annotation tasks, and explore GitHub Copilot integration with VS Code. I investigate how AI can enhance educational content creation while maintaining quality control. In the age of AI, I'm both student and evaluator.",
-      image: "/assets/photos/Thumbnails/attendaceStatistics.webp"
+      image: "/assets/photos/Thumbnails/attendaceStatistics.png"
     },
     {
       chapter: "The System Builder",

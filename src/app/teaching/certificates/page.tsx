@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const CERTIFICATES = [
   {
-    src: '/assets/certificates/Teaching/ba-cert.webp',
+    src: '/assets/certificates/Teaching/ba-cert.jpg',
     title: 'Bachelor of Arts in English Language',
     date: '2013',
     issue: "Suez Canal University",

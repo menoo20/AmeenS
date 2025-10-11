@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import ScrollToTop from '@/components/ScrollToTop';
 import { useRouter } from 'next/navigation';
 import { getAssetPath } from '@/lib/utils';
 
@@ -74,7 +75,7 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     images: [
       "/assets/photos/work/apicwithmystudents.webp",
       "/assets/photos/work/atwork6.webp",
-      "/assets/photos/work/atwork10.webp"
+      "/assets/photos/work/atwork10.jpg"
     ],
     responsibilities: [
       "Delivered English and IELTS training for engineers and professionals",
@@ -130,7 +131,7 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     images: [
       "/assets/photos/work/Awardedbymyschool.webp",
       "/assets/photos/work/atwork11.webp",
-      "/assets/photos/work/withmystudents3.webp"
+      "/assets/photos/work/withmystudents3.jpg"
     ],
     responsibilities: [
       "Delivered English lessons to primary and preparatory school students",
@@ -211,7 +212,7 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateTo: "June 2017",
     images: [
       "/assets/photos/work/jawatha2.webp",
-      "/assets/photos/work/atwork10.webp",
+      "/assets/photos/work/atwork10.jpg",
       "/assets/photos/work/atwork12.webp"
     ],
     responsibilities: [
@@ -546,38 +547,43 @@ const TeachingExperiencePage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <div className="relative group">
-                    {imageLoading[experience.images[1]] && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
-                    )}
-                    <Image
-                      src={experience.images[1]}
-                      alt={`${experience.workplace} - Secondary`}
-                      width={400}
-                      height={200}
-                      className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
-                        experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
-                      } ${imageLoading[experience.images[1]] ? 'opacity-0' : 'opacity-100'}`}
-                      onLoad={() => handleImageLoad(experience.images[1])}
-                      loading="eager"
-                    />
-                  </div>
-                  <div className="relative group">
-                    {imageLoading[experience.images[2]] && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
-                    )}
-                    <Image
-                      src={experience.images[2]}
-                      alt={`${experience.workplace} - Tertiary`}
-                      width={400}
-                      height={200}
-                      className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
-                        experience.id === 1 || experience.id === 3 ? 'object-top' : experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
-                      } ${imageLoading[experience.images[2]] ? 'opacity-0' : 'opacity-100'}`}
-                      onLoad={() => handleImageLoad(experience.images[2])}
-                      loading="eager"
-                    />
-                  </div>
+                  {/* Only show additional images if NOT Jawatha (id: 6) */}
+                  {experience.id !== 6 && (
+                    <>
+                      <div className="relative group">
+                        {imageLoading[experience.images[1]] && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
+                        )}
+                        <Image
+                          src={experience.images[1]}
+                          alt={`${experience.workplace} - Secondary`}
+                          width={400}
+                          height={200}
+                          className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                            experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
+                          } ${imageLoading[experience.images[1]] ? 'opacity-0' : 'opacity-100'}`}
+                          onLoad={() => handleImageLoad(experience.images[1])}
+                          loading="eager"
+                        />
+                      </div>
+                      <div className="relative group">
+                        {imageLoading[experience.images[2]] && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
+                        )}
+                        <Image
+                          src={experience.images[2]}
+                          alt={`${experience.workplace} - Tertiary`}
+                          width={400}
+                          height={200}
+                          className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                            experience.id === 1 || experience.id === 3 ? 'object-top' : experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
+                          } ${imageLoading[experience.images[2]] ? 'opacity-0' : 'opacity-100'}`}
+                          onLoad={() => handleImageLoad(experience.images[2])}
+                          loading="eager"
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -775,6 +781,9 @@ const TeachingExperiencePage: React.FC = () => {
           <span>Back to Constellation</span>
         </button>
       </div>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
 
       <style jsx>{`
         @keyframes fade-in {

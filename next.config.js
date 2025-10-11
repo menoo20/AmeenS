@@ -1,5 +1,8 @@
 const path = require('path')
 
+// Use basePath only in production (GitHub Pages)
+const isProduction = process.env.NODE_ENV === 'production'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
@@ -38,41 +41,14 @@ const nextConfig = {
   },
   output: 'export',
   compress: true,
-  // GitHub Pages deployment configuration
-  basePath: '/AmeenS',
-  assetPrefix: '/AmeenS/',
-  
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
-  },
-  
-  async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
+  // GitHub Pages deployment configuration (only in production)
+  ...(isProduction && {
+    basePath: '/AmeenS',
+    assetPrefix: '/AmeenS/',
+  }),
 };
+
+// Note: headers() and redirects() removed - they don't work with static export
+// For static sites, these features must be handled by the hosting platform
 
 module.exports = nextConfig;

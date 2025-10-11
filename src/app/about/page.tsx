@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/Navigation'
+import ScrollToTop from '@/components/ScrollToTop'
 import { aboutMeData } from '@/data/aboutMe'
-import { BookOpen, Code, GraduationCap, Sparkles, MapPin, Briefcase, Heart, ChevronRight, ArrowUp } from 'lucide-react'
+import { BookOpen, Code, GraduationCap, Sparkles, MapPin, Briefcase, Heart, ChevronRight } from 'lucide-react'
 import { getAssetPath } from '@/lib/utils'
 
 export default function AboutMePage() {
   const [selectedChapter, setSelectedChapter] = useState(0)
   const [isAutoPlay, setIsAutoPlay] = useState(false)
-  const [showScrollTop, setShowScrollTop] = useState(false)
 
   // Auto-play chapters
   useEffect(() => {
@@ -24,20 +24,6 @@ export default function AboutMePage() {
     
     return () => clearInterval(interval)
   }, [isAutoPlay])
-
-  // Show scroll to top button when user scrolls down
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400)
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   const currentChapter = aboutMeData.storyChapters[selectedChapter]
 
@@ -160,27 +146,20 @@ export default function AboutMePage() {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-slate-900/50 via-indigo-900/30 to-slate-900/50 backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden shadow-2xl"
             >
-              <div className={`flex flex-col lg:flex-row ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? '' : 'lg:items-center'}`}>
+              <div className={`flex flex-col lg:flex-row ${[1, 3, 4, 5, 6, 7, 9].includes(selectedChapter) ? '' : 'lg:items-center'}`}>
                 {/* Image Section */}
-                <div className={`relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'flex items-center' : ''}`}>
+                <div className={`relative w-full lg:w-1/2 overflow-hidden flex-shrink-0 ${[1, 3, 4, 5, 6, 7, 9].includes(selectedChapter) ? 'flex items-center' : ''}`}>
                   <img
                     src={getAssetPath(currentChapter.image)}
                     alt={currentChapter.title}
-                    className={`w-full h-auto block ${[1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) ? 'rounded-tr-2xl rounded-br-2xl' : ''}`}
+                    className={`w-full h-auto block ${[1, 3, 4, 5, 6, 7, 9].includes(selectedChapter) ? 'rounded-tr-2xl rounded-br-2xl' : ''}`}
                     style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
                     loading="eager"
                     decoding="async"
                   />
-                  {![1, 2, 3, 4, 5, 7, 9].includes(selectedChapter) && (
+                  {![1, 3, 4, 5, 6, 7, 9].includes(selectedChapter) && (
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
                   )}
-                  
-                  {/* Chapter Badge */}
-                  <div className="absolute top-6 left-6 z-10">
-                    <div className="bg-blue-500/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                      {currentChapter.chapter}
-                    </div>
-                  </div>
                 </div>
 
                 {/* Content Section */}
@@ -394,20 +373,7 @@ export default function AboutMePage() {
       </div>
 
       {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 group"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-6 h-6 group-hover:translate-y-[-2px] transition-transform" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      <ScrollToTop />
     </div>
   )
 }

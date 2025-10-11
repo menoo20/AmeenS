@@ -26,7 +26,7 @@ const educationData: EducationSlide[] = [
     location: "Ismailia, Egypt",
     duration: "August 2009 — June 2013",
     description: "My educational journey began with this foundational four-year program that opened my mind to the world of humanities and critical thinking. This degree was my first step toward understanding how language shapes culture and communication. It provided me with the analytical skills and broad knowledge base that would later prove invaluable in my teaching career, setting the stage for my lifelong commitment to education and personal growth.",
-    image: "/assets/certificates/Teaching/ba-cert.webp",
+    image: "/assets/certificates/Teaching/ba-cert.jpg",
     altText: "Bachelor of Arts and Humanities Certificate"
   },
   {
