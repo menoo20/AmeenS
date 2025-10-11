@@ -145,7 +145,7 @@ export const EDUCATIONAL_VIDEOS: EducationalVideo[] = [
       'Time management in speaking tests'
     ],
     targetAudience: 'IELTS candidates, Language test takers, ESL speaking students',
-    featured: true
+    featured: false
   },
   {
     id: 'ielts-reading-strategies',
@@ -188,7 +188,7 @@ export const EDUCATIONAL_VIDEOS: EducationalVideo[] = [
       'Fluency development without partners'
     ],
     targetAudience: 'Independent language learners, Speaking test candidates, Self-study students',
-    featured: false
+    featured: true
   },
 
   // ============= TEACHING INNOVATION & ONLINE PEDAGOGY =============

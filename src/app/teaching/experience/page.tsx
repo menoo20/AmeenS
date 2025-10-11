@@ -431,7 +431,7 @@ const TeachingExperiencePage: React.FC = () => {
                   <h2 className="text-4xl font-bold mb-4 flex items-center gap-3">
                     {experience.logo && (
                       <img
-                        src={experience.logo}
+                        src={getAssetPath(experience.logo)}
                         alt={experience.workplace + ' logo'}
                         className="h-10 w-10 object-contain rounded bg-white p-1 shadow"
                       />
@@ -516,7 +516,7 @@ const TeachingExperiencePage: React.FC = () => {
                     )}
                     
                     <Image
-                      src={experience.images[0]}
+                      src={getAssetPath(experience.images[0])}
                       alt={`${experience.workplace} - Main`}
                       width={800}
                       height={400}
@@ -555,7 +555,7 @@ const TeachingExperiencePage: React.FC = () => {
                           <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
                         )}
                         <Image
-                          src={experience.images[1]}
+                          src={getAssetPath(experience.images[1])}
                           alt={`${experience.workplace} - Secondary`}
                           width={400}
                           height={200}
@@ -571,7 +571,7 @@ const TeachingExperiencePage: React.FC = () => {
                           <div className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 rounded-lg animate-pulse" />
                         )}
                         <Image
-                          src={experience.images[2]}
+                          src={getAssetPath(experience.images[2])}
                           alt={`${experience.workplace} - Tertiary`}
                           width={400}
                           height={200}
