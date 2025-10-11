@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { useRouter } from 'next/navigation';
+import { getAssetPath } from '@/lib/utils';
 
 const CERTIFICATES = [
   {
@@ -100,7 +101,7 @@ const CertificatesPage: React.FC = () => {
             onClick={() => current === idx && setZoomed(idx)}
           >
             <img
-              src={cert.src}
+              src={getAssetPath(cert.src)}
               alt={cert.title}
               className="w-full h-full object-contain rounded-xl transition-all duration-500 cursor-pointer"
               style={{ 
@@ -216,7 +217,7 @@ const CertificatesPage: React.FC = () => {
                 onClick={() => setMagnified(true)}
               >
                 <img 
-                  src={CERTIFICATES[zoomed].src} 
+                  src={getAssetPath(CERTIFICATES[zoomed].src)} 
                   alt={CERTIFICATES[zoomed].title} 
                   className="w-full h-48 sm:h-64 object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-105" 
                 />
@@ -287,7 +288,7 @@ const CertificatesPage: React.FC = () => {
         >
           <div className="relative w-full h-full flex items-center justify-center">
             <img 
-              src={CERTIFICATES[zoomed].src} 
+              src={getAssetPath(CERTIFICATES[zoomed].src)} 
               alt={CERTIFICATES[zoomed].title} 
               className="max-w-full max-h-full object-contain shadow-2xl rounded-lg animate-in zoom-in-95 duration-300" 
             />
