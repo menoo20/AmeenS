@@ -6,49 +6,49 @@ import { useRouter } from 'next/navigation';
 
 const CERTIFICATES = [
   {
-    src: '/assets/certificates/programming/1.png',
+    src: '/assets/certificates/programming/1.webp',
     title: 'Advanced Frontend Development',
     date: 'September 26, 2021',
     issue: "Udacity",
     description: 'I completed the Advanced Frontend Development course. This course covered modern frontend technologies including React, Redux, and responsive design principles. It enhanced my skills in building dynamic and user-friendly web applications.'
   },
   {
-    src: '/assets/certificates/programming/2.png',
+    src: '/assets/certificates/programming/2.webp',
     title: 'React + Redux',
     date: 'August 12, 2021',
     issue: "Sololearn",
     description: 'I completed the React + Redux course. This course focused on building scalable and maintainable web applications using React and Redux. It deepened my understanding of state management and component-based architecture.'
   },
   {
-    src: '/assets/certificates/programming/3.png',
+    src: '/assets/certificates/programming/3.webp',
     title: 'Full Stack Web Development',
     date: 'June 5, 2019',
     issue: "Udacity",
     description: 'I completed the Full Stack Web Development course. This course provided a comprehensive overview of both frontend and backend development, covering technologies such as Node.js, Express, and MongoDB.'
   },
   {
-    src: '/assets/certificates/programming/4.png',
+    src: '/assets/certificates/programming/4.webp',
     title: 'The Web Developer Bootcamp',
     date: 'August 17, 2019',
     issue: "Udemy",
     description: 'I completed The Web Developer Bootcamp course with Colt Steele. This course covered a wide range of web development topics, including HTML, CSS, JavaScript, Node.js, and more. It provided a solid foundation for my web development journey.'
   },
   {
-    src: '/assets/certificates/programming/5.png',
+    src: '/assets/certificates/programming/5.webp',
     title: 'Full Stack Web Development with React',
     date: 'February 20, 2021',
     issue: "Information Technology Institute (ITI)",
     description: 'I completed the Full Stack Web Development with React course. This course focused on building modern web applications using React, Redux, and other related technologies.'
   },
   {
-    src: '/assets/certificates/programming/6.png',
+    src: '/assets/certificates/programming/6.webp',
     title: 'Professional Frontend Developer',
     date: 'January 22, 2022',
     issue: "Udacity",
     description: 'I completed the Professional Frontend Developer course. This course focused on advanced frontend development techniques, including performance optimization, accessibility, and best practices for building scalable web applications.'
   },
   {
-    src: '/assets/certificates/programming/CS50x.png',
+    src: '/assets/certificates/programming/CS50x.webp',
     title: 'CS50x Certificate',
     date: 'March 15, 2023',
     issue: "Harvard University", 

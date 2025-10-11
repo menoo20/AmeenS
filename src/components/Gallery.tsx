@@ -17,11 +17,11 @@ export default function Gallery() {
     // In a real app, this would fetch from an API
     // For now, we'll use placeholder data
     const mockCertificates: Certificate[] = [
-      { filename: 'CS50x.png', path: '/assets/certificates/programming/CS50x.png', category: 'programming' },
-      { filename: '1.png', path: '/assets/certificates/programming/1.png', category: 'programming' },
-      { filename: '2.png', path: '/assets/certificates/programming/2.png', category: 'programming' },
-      { filename: 'ba cert.jpg', path: '/assets/certificates/teaching/ba cert.jpg', category: 'teaching' },
-      { filename: 'IELTS Academic Cetr.png', path: '/assets/certificates/teaching/IELTS Academic Cetr.png', category: 'teaching' },
+      { filename: 'CS50x.webp', path: '/assets/certificates/programming/CS50x.webp', category: 'programming' },
+      { filename: '1.webp', path: '/assets/certificates/programming/1.webp', category: 'programming' },
+      { filename: '2.webp', path: '/assets/certificates/programming/2.webp', category: 'programming' },
+      { filename: 'ba-cert.webp', path: '/assets/certificates/Teaching/ba-cert.webp', category: 'teaching' },
+      { filename: 'IELTS-Academic-Cetr.webp', path: '/assets/certificates/Teaching/IELTS-Academic-Cetr.webp', category: 'teaching' },
     ]
     setCertificates(mockCertificates)
   }, [])

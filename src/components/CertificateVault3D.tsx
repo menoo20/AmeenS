@@ -3,13 +3,13 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 
 const CERTIFICATE_IMAGES = [
-  '/assets/certificates/programming/1.png',
-  '/assets/certificates/programming/2.png',
-  '/assets/certificates/programming/3.png',
-  '/assets/certificates/programming/4.png',
-  '/assets/certificates/programming/5.png',
-  '/assets/certificates/programming/6.png',
-  '/assets/certificates/programming/CS50x.png',
+  '/assets/certificates/programming/1.webp',
+  '/assets/certificates/programming/2.webp',
+  '/assets/certificates/programming/3.webp',
+  '/assets/certificates/programming/4.webp',
+  '/assets/certificates/programming/5.webp',
+  '/assets/certificates/programming/6.webp',
+  '/assets/certificates/programming/CS50x.webp',
 ];
 
 const CertificateVault3D: React.FC = () => {

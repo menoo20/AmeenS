@@ -102,8 +102,8 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateTo: "September 2025",
     images: [
       "/assets/photos/work/preply1.webp",
-      "/assets/photos/work/preply2.jpg",
-      "/assets/photos/work/preply3.png"
+      "/assets/photos/work/preply2.webp",
+      "/assets/photos/work/preply3.webp"
     ],
     responsibilities: [
       "Delivered personalized ESL lessons to international learners",
@@ -155,9 +155,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "February 2020",
     dateTo: "January 2021",
     images: [
-      "/assets/photos/work/belaraby2.png",
-      "/assets/photos/work/broadcast2.jpg",
-      "/assets/photos/work/belaraby3.jpg"
+      "/assets/photos/work/belaraby2.webp",
+      "/assets/photos/work/broadcast2.webp",
+      "/assets/photos/work/belaraby3.webp"
     ],
     responsibilities: [
       "Led a team of three in creating interactive content for children",
@@ -182,9 +182,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "2020",
     dateTo: "2021",
     images: [
-      "/assets/photos/work/auc1.JPG",
-      "/assets/photos/work/NotCourses.jpg",
-      "/assets/photos/work/IMAG0405.jpg"
+      "/assets/photos/work/auc1.webp",
+      "/assets/photos/work/NotCourses.webp",
+      "/assets/photos/work/IMAG0405.webp"
     ],
     responsibilities: [
       "Taught IELTS Academic and General Training preparation courses",
@@ -210,9 +210,9 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "August 2016",
     dateTo: "June 2017",
     images: [
-      "/assets/photos/work/jawatha2.jpg",
-      "/assets/photos/work/jawatha4.jpg",
-      "/assets/photos/work/Jawath1.jpg"
+      "/assets/photos/work/jawatha2.webp",
+      "/assets/photos/work/atwork10.webp",
+      "/assets/photos/work/atwork12.webp"
     ],
     responsibilities: [
       "Taught English to primary and preparatory students",

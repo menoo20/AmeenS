@@ -6,56 +6,56 @@ import { useRouter } from 'next/navigation';
 
 const CERTIFICATES = [
   {
-    src: '/assets/certificates/Teaching/ba-cert.jpg',
+    src: '/assets/certificates/Teaching/ba-cert.webp',
     title: 'Bachelor of Arts in English Language',
     date: '2013',
     issue: "Suez Canal University",
     description: 'I earned my Bachelor of Arts degree in English Language and Literature from Suez Canal University. This comprehensive program provided me with a deep understanding of English linguistics, literature, and language teaching methodologies.'
   },
   {
-    src: '/assets/certificates/Teaching/PGDE.jpg',
+    src: '/assets/certificates/Teaching/PGDE.webp',
     title: 'Postgraduate Diploma in Education (PGDE)',
     date: '2014',
     issue: "Suez Canal University",
     description: 'I completed the Postgraduate Diploma in Education, specializing in English language teaching. This program equipped me with advanced pedagogical skills and modern teaching methodologies for effective classroom instruction.'
   },
   {
-    src: '/assets/certificates/Teaching/TEFL-AUC.jpg',
+    src: '/assets/certificates/Teaching/TEFL-AUC.webp',
     title: 'Teaching English as a Foreign Language (TEFL)',
     date: '2017',
     issue: "American University in Cairo (AUC)",
     description: 'I obtained my TEFL certification from the American University in Cairo. This intensive program focused on practical teaching techniques, curriculum design, and classroom management for teaching English to non-native speakers.'
   },
   {
-    src: '/assets/certificates/Teaching/TOEFL-PBT.jpg',
+    src: '/assets/certificates/Teaching/TOEFL-PBT.webp',
     title: 'TOEFL PBT Certificate',
     date: '2018',
     issue: "Amideast",
     description: 'I achieved a high score on the TOEFL Paper-Based Test, demonstrating my proficiency in English language skills including reading, writing, listening, and structure. This certification validates my English language competency at an advanced level.'
   },
   {
-    src: '/assets/certificates/Teaching/IELTS-Academic-Cetr.png',
+    src: '/assets/certificates/Teaching/IELTS-Academic-Cetr.webp',
     title: 'IELTS Academic Certificate',
     date: '2025',
     issue: "British Council",
     description: 'I successfully completed the IELTS Academic test with a strong overall band score. This internationally recognized certification demonstrates my English language proficiency across all four skills: listening, reading, writing, and speaking.'
   },
   {
-    src: '/assets/certificates/Teaching/Awarding-Cert.jpg',
+    src: '/assets/certificates/Teaching/Awarding-Cert.webp',
     title: 'Awarding Certificate',
     date: '2018',
     issue: "Tarbya Namouthajiyah Schools",
     description: 'I received this official recognition certificate from the Egyptian Ministry of Education for excellence in teaching and outstanding contribution to English language education.'
   },
   {
-    src: '/assets/certificates/Teaching/Electronic-preparation.png',
+    src: '/assets/certificates/Teaching/Electronic-preparation.webp',
     title: 'Electronic Course Preparation',
     date: '2022',
     issue: "Classera - The Leading E-Learning Platform in MENA",
     description: 'I completed this professional development course focused on digital teaching tools and e-learning methodologies. The course covered effective online course design, digital assessment strategies, and technology integration in education.'
   },
   {
-    src: '/assets/certificates/Teaching/Personal-Branding.jpeg',
+    src: '/assets/certificates/Teaching/Personal-Branding.webp',
     title: 'Personal Branding for Educators',
     date: '2025',
     issue: "Linkedin Learning",

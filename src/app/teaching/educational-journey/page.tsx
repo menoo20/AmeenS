@@ -26,7 +26,7 @@ const educationData: EducationSlide[] = [
     location: "Ismailia, Egypt",
     duration: "August 2009 — June 2013",
     description: "My educational journey began with this foundational four-year program that opened my mind to the world of humanities and critical thinking. This degree was my first step toward understanding how language shapes culture and communication. It provided me with the analytical skills and broad knowledge base that would later prove invaluable in my teaching career, setting the stage for my lifelong commitment to education and personal growth.",
-    image: "/assets/certificates/Teaching/ba-cert.jpg",
+    image: "/assets/certificates/Teaching/ba-cert.webp",
     altText: "Bachelor of Arts and Humanities Certificate"
   },
   {
@@ -36,7 +36,7 @@ const educationData: EducationSlide[] = [
     location: "Ismailia, Egypt",
     duration: "August 2013 — June 2014",
     description: "Recognizing that passion alone wasn't enough to excel as an educator, I pursued this professional teaching qualification immediately after my bachelor's degree. This intensive program transformed my understanding of educational methodology and curriculum development. It was here that I discovered my true calling as an educator, learning how to translate knowledge into meaningful learning experiences that inspire and engage students.",
-    image: "/assets/certificates/Teaching/PGDE.jpg",
+    image: "/assets/certificates/Teaching/PGDE.webp",
     altText: "Post Graduate Diploma in Education Certificate"
   },
   {
@@ -46,7 +46,7 @@ const educationData: EducationSlide[] = [
     location: "Cairo, Egypt", 
     duration: "October 2017",
     description: "After two years of hands-on teaching experience, I realized that the classroom had taught me lessons no textbook could capture. Yet I also recognized gaps between what I practiced and what I could achieve. This diploma became my bridge between real-world experience and structured pedagogy. Through comprehensive coursework in second language acquisition, classroom management techniques, and modern teaching methodologies, I refined my instincts into expertise. The program deepened my understanding of how students truly learn, equipping me with evidence-based strategies that transformed my approach to lesson planning, student assessment, and creating engaging learning environments. It was the perfect blend of theory meeting practice, sharpening both my skills and my confidence as an educator.",
-    image: "/assets/certificates/Teaching/TEFL-AUC.jpg",
+    image: "/assets/certificates/Teaching/TEFL-AUC.webp",
     altText: "FELT Diploma Certificate"
   },
   {
@@ -56,7 +56,7 @@ const educationData: EducationSlide[] = [
     location: "Egypt",
     issueDate: "May 2019",
     description: "Understanding that credibility in language teaching requires demonstrable proficiency, I challenged myself to achieve formal certification of my English language skills. This TOEFL certification validated my linguistic competency and opened new avenues for professional growth. It represented not just a test score, but a milestone in my journey toward becoming a globally recognized English language educator.",
-    image: "/assets/certificates/Teaching/TOEFL-PBT.jpg",
+    image: "/assets/certificates/Teaching/TOEFL-PBT.webp",
     altText: "TOEFL PBT Certificate"
   },
   {
@@ -67,7 +67,7 @@ const educationData: EducationSlide[] = [
     issueDate: "May 2025",
     score: "Overall Band 7.5/C1 Level",
     description: "My most recent achievement represents the culmination of years of continuous learning and professional development. Achieving a C1 level on the IELTS Academic test demonstrates my commitment to maintaining the highest standards in English proficiency. This certification positions me for advanced academic opportunities and international collaborations, reflecting my dedication to lifelong learning and excellence in education.",
-    image: "/assets/certificates/Teaching/IELTS-Academic-Cetr.png",
+    image: "/assets/certificates/Teaching/IELTS-Academic-Cetr.webp",
     altText: "IELTS Academic Certificate"
   }
 ]

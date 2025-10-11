@@ -52,9 +52,9 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-blue-600 to-purple-600",
     icon: "🎓",
     images: [
-      "/assets/photos/Thumbnails/studentLMS.png",
-      "/assets/photos/Thumbnails/studentLMS2.png",
-      "/assets/photos/Thumbnails/studentLMS3.png"
+      "/assets/photos/Thumbnails/studentLMS.webp",
+      "/assets/photos/Thumbnails/studentLMS2.webp",
+      "/assets/photos/Thumbnails/studentLMS3.webp"
     ],
     links: {
       github: "https://github.com/menoo20/studentLMS",
@@ -88,9 +88,9 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-orange-500 to-red-600",
     icon: "🏗️",
     images: [
-      "/assets/photos/Thumbnails/Osha.png",
-      "/assets/photos/Thumbnails/Osha2.png",
-      "/assets/photos/Thumbnails/Osha3.png"
+      "/assets/photos/Thumbnails/Osha.webp",
+      "/assets/photos/Thumbnails/Osha2.webp",
+      "/assets/photos/Thumbnails/Osha3.webp"
     ],
     links: {
       demo: "https://osha-six.vercel.app/",
@@ -143,10 +143,10 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-blue-500 to-purple-600",
     icon: "📊",
     images: [
-      "/assets/photos/Thumbnails/attendaceStatistics.png",
-      "/assets/photos/Thumbnails/attendaceStatistics2.png",
-      "/assets/photos/Thumbnails/attendaceStatistics3.png",
-      "/assets/photos/Thumbnails/attendaceStatistics4.png"
+      "/assets/photos/Thumbnails/attendaceStatistics.webp",
+      "/assets/photos/Thumbnails/attendaceStatistics2.webp",
+      "/assets/photos/Thumbnails/attendaceStatistics3.webp",
+      "/assets/photos/Thumbnails/attendaceStatistics4.webp"
     ],
     links: {
       demo: "https://menoo20.github.io/black-gold-attendance/",
@@ -180,9 +180,9 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-blue-500 to-purple-600",
     icon: "🎵",
     images: [
-      "/assets/photos/Thumbnails/Jollyphonics.png",
-      "/assets/photos/Thumbnails/Jollyphonics2.png",
-      "/assets/photos/Thumbnails/Jollyphonics3.png"
+      "/assets/photos/Thumbnails/Jollyphonics.webp",
+      "/assets/photos/Thumbnails/Jollyphonics2.webp",
+      "/assets/photos/Thumbnails/Jollyphonics3.webp"
     ],
     links: {
       github: "https://github.com/menoo20/Pronunciation_dictionary",
@@ -216,9 +216,9 @@ export const EDUCATIONAL_PROJECTS: EducationalProject[] = [
     cardColor: "from-emerald-500 to-blue-600",
     icon: "📚",
     images: [
-      "/assets/photos/Thumbnails/kidsactivities.jpg",
-      "/assets/photos/Thumbnails/kidsactivities2.png",
-      "/assets/photos/Thumbnails/kidsactivities3.png"
+      "/assets/photos/Thumbnails/kidsactivities.webp",
+      "/assets/photos/Thumbnails/kidsactivities2.webp",
+      "/assets/photos/Thumbnails/kidsactivities3.webp"
     ],
     links: {
       website: "https://www.kidsactivities.online/jolly-phonics/",

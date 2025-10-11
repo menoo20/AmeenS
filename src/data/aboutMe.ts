@@ -13,7 +13,7 @@ export const aboutMeData = {
       chapter: "The Foundation",
       title: "Roots in the Nile Valley",
       narrative: "Born and raised in Egypt, I discovered early on that my passion lay at the intersection of education and technology. After earning my Bachelor of Arts and Humanities from Suez Canal University in 2013, followed by a PGDE the next year, I began shaping my identity as an educator. But I wanted more—a FELT Diploma from the American University in Cairo (2019-2020), a TOEFL PBT, and eventually an IELTS Academic band score of 7.5 in 2025. Each certificate was a stepping stone toward excellence.",
-      image: "/assets/photos/personal/my pharonic ancestors.jpg"
+      image: "/assets/photos/personal/my pharonic ancestors.webp"
     },
     {
       chapter: "The Digital Pioneer",
@@ -49,7 +49,7 @@ export const aboutMeData = {
       chapter: "The AI Collaborator",
       title: "Evaluating the Future",
       narrative: "I don't fear artificial intelligence—I study it. I work on AI model evaluation projects, conducting detailed comparative assessments of ChatGPT and Gemini using criteria like factuality, comprehensiveness, safety, and helpfulness. I perform systematic fact-checking with error severity ratings, contribute to data annotation tasks, and explore GitHub Copilot integration with VS Code. I investigate how AI can enhance educational content creation while maintaining quality control. In the age of AI, I'm both student and evaluator.",
-      image: "/assets/photos/thumbnails/attendaceStatistics.png"
+      image: "/assets/photos/Thumbnails/attendaceStatistics.webp"
     },
     {
       chapter: "The System Builder",
