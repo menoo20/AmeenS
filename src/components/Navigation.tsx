@@ -51,6 +51,28 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
+              
+              {/* CV Download Button */}
+              <a
+                href="/assets/cv/MYCV2025.pdf"
+                download="Mohammed_Ameen_CV.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-medium rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              >
+                <svg 
+                  className="w-4 h-4" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                  />
+                </svg>
+                Download CV
+              </a>
             </div>
           </div>
 
@@ -89,6 +111,29 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
+              
+              {/* Mobile CV Download Button */}
+              <a
+                href="/assets/cv/MYCV2025.pdf"
+                download="Mohammed_Ameen_CV.pdf"
+                className="flex items-center justify-center gap-2 mt-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-base font-medium rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-md"
+                onClick={() => setIsOpen(false)}
+              >
+                <svg 
+                  className="w-5 h-5" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                  />
+                </svg>
+                Download CV
+              </a>
             </div>
           </div>
         )}
