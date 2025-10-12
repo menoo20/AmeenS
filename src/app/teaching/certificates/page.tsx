@@ -72,6 +72,9 @@ const CertificatesPage: React.FC = () => {
   const [magnified, setMagnified] = useState(false);
   const router = useRouter();
 
+  // Calculate progress based on current certificate
+  const progress = ((current + 1) / CERTIFICATES.length) * 100;
+
   useEffect(() => {
     if (zoomed !== null) return;
     const timer = setTimeout(() => {
@@ -84,6 +87,14 @@ const CertificatesPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-900 overflow-x-hidden">
       {/* Top Navigation Menu */}
       <Navigation />
+
+      {/* Fixed Progress Bar below Navigation */}
+      <div className="fixed top-16 left-0 w-full h-1 bg-white/20 z-40">
+        <div 
+          className="h-full bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 transition-all duration-500"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-32">
         <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 text-center px-2">
@@ -180,14 +191,6 @@ const CertificatesPage: React.FC = () => {
             )}
           </div>
         ))}
-        
-        {/* Progress bar underneath dots */}
-        <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 sm:w-24 h-1 bg-white/20 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full transition-all duration-4000 ease-linear"
-            style={{ width: `${((current + 1) / CERTIFICATES.length) * 100}%` }}
-          ></div>
-        </div>
       </div>
       
       {/* Zoomed Certificate Modal */}
