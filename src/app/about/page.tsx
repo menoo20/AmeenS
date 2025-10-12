@@ -90,8 +90,8 @@ export default function AboutMePage() {
         {/* Story Navigator */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-white flex items-center gap-2">
-              <BookOpen className="w-8 h-8 text-blue-400" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-2">
+              <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
               My Story
             </h2>
             
@@ -219,9 +219,9 @@ export default function AboutMePage() {
             
             <div className="flex items-center gap-3 mb-6 relative z-10">
               <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors duration-300">
-                <GraduationCap className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-2xl font-bold text-white">Teaching Expertise</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Teaching Expertise</h3>
             </div>
             
             <ul className="space-y-3 relative z-10">
@@ -267,9 +267,9 @@ export default function AboutMePage() {
             
             <div className="flex items-center gap-3 mb-6 relative z-10">
               <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors duration-300">
-                <Code className="w-8 h-8 text-purple-400 group-hover:scale-110 transition-transform duration-300" />
+                <Code className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400 group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-2xl font-bold text-white">Technical Expertise</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Technical Expertise</h3>
             </div>
             
             <ul className="space-y-3 relative z-10">
@@ -302,9 +302,9 @@ export default function AboutMePage() {
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-pink-500/20 rounded-lg">
-              <Heart className="w-8 h-8 text-pink-400" />
+              <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-pink-400" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Current Focus</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Current Focus</h3>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -354,8 +354,8 @@ export default function AboutMePage() {
           viewport={{ once: true }}
           className="text-center bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-lg rounded-2xl border border-white/10 p-12"
         >
-          <h3 className="text-3xl font-bold text-white mb-4">Key Achievement</h3>
-          <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white text-4xl font-bold px-8 py-4 rounded-full shadow-2xl mb-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Key Achievement</h3>
+          <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold px-4 py-3 sm:px-6 sm:py-4 md:px-8 rounded-full shadow-2xl mb-6">
             {aboutMeData.achievements.certifications}
           </div>
           
