@@ -334,7 +334,7 @@ const CertificatesPage: React.FC = () => {
       )}
 
       {/* Navigation Buttons */}
-      <div className="fixed bottom-16 sm:bottom-20 md:bottom-8 left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 pointer-events-none z-40">
+      <div className="fixed bottom-20 sm:bottom-24 md:bottom-8 left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 pointer-events-none z-40">
         {/* Back to Galaxy Button */}
         <button 
           onClick={() => router.push('/teaching/starfield')}
