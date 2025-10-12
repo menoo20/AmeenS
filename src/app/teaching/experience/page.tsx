@@ -710,18 +710,8 @@ const TeachingExperiencePage: React.FC = () => {
 
                   {/* Call to Action - Centered */}
                   <div className="text-center">
-                    <button 
-                      onClick={() => {
-                        // Navigate to developer journey
-                        const heroSection = document.querySelector('section')
-                        if (heroSection) {
-                          heroSection.scrollIntoView({ behavior: 'smooth' })
-                          // Trigger developer journey modal after scroll
-                          setTimeout(() => {
-                            alert('🚀 Opening Developer Journey... (This will connect to the Hero Developer Map)')
-                          }, 1000)
-                        }
-                      }}
+                    <a 
+                      href="/developer"
                       className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500 text-white px-4 py-3 sm:px-6 md:px-8 sm:py-4 rounded-xl font-bold text-sm sm:text-base md:text-lg shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300"
                     >
                       <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform flex-shrink-0">
@@ -736,7 +726,7 @@ const TeachingExperiencePage: React.FC = () => {
                       
                       {/* Glow effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-600 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
-                    </button>
+                    </a>
                     
                     <p className="text-gray-400 text-xs sm:text-sm mt-4 max-w-md mx-auto">
                       Discover how my programming skills enhanced my teaching methodology
