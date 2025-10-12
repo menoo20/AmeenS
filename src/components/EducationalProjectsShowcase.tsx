@@ -265,15 +265,15 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-12 md:py-16 lg:py-20 overflow-hidden">
       {/* Background Gradient */}
       <div className={`absolute inset-0 bg-gradient-to-br ${project.cardColor} opacity-5`} />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 md:gap-8 lg:gap-12 items-center`}>
           
           {/* Image Section - Full Column */}
-          <div className="w-full lg:w-1/2 h-[500px]" data-aos={isEven ? 'fade-right' : 'fade-left'}>
+          <div className="w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[500px]" data-aos={isEven ? 'fade-right' : 'fade-left'}>
             <ProjectSlideshow 
               images={project.images} 
               title={project.title}
@@ -282,29 +282,29 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
           </div>
 
           {/* Content Section */}
-          <div className="w-full lg:w-1/2 space-y-6" data-aos={isEven ? 'fade-left' : 'fade-right'}>
+          <div className="w-full lg:w-1/2 space-y-4 md:space-y-6" data-aos={isEven ? 'fade-left' : 'fade-right'}>
             
             {/* Header */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="text-5xl">{project.icon}</span>
+            <div className="space-y-2 md:space-y-3">
+              <div className="flex items-center gap-2 md:gap-3 flex-wrap">
+                <span className="text-3xl sm:text-4xl md:text-5xl">{project.icon}</span>
                 <StatusBadge status={project.status} />
-                <span className="text-sm text-gray-400">
+                <span className="text-xs sm:text-sm text-gray-400">
                   {project.startDate} {project.endDate && `- ${project.endDate}`}
                 </span>
               </div>
               
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 {project.title}
               </h2>
               
-              <p className="text-xl text-blue-400 font-medium">
+              <p className="text-lg sm:text-xl text-blue-400 font-medium">
                 {project.subtitle}
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="text-gray-300 leading-relaxed text-base md:text-lg">
               {project.description}
             </p>
 
@@ -322,14 +322,14 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
 
             {/* Technologies */}
             <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-wider">
                 Tech Stack
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, idx) => (
                   <span
                     key={idx}
-                    className={`px-4 py-2 bg-gradient-to-r ${project.cardColor} rounded-lg text-sm font-medium text-white shadow-lg hover:scale-105 transition-transform`}
+                    className={`px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r ${project.cardColor} rounded-lg text-xs sm:text-sm font-medium text-white shadow-lg hover:scale-105 transition-transform`}
                   >
                     {tech}
                   </span>
@@ -338,7 +338,7 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
             </div>
 
             {/* Features (Expandable) */}
-            <div className="space-y-3">
+            <div className="space-y-2 md:space-y-3">
               <button
                 onClick={() => setExpandedFeatures(!expandedFeatures)}
                 className="flex items-center gap-2 text-sm font-semibold text-gray-400 uppercase tracking-wider hover:text-white transition-colors group"
@@ -369,14 +369,14 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-3 md:gap-4 pt-2 md:pt-4">
               {project.links.demo && (
                 <Link
                   href={project.links.demo}
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold text-sm sm:text-base text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
                 >
-                  <FaExternalLinkAlt /> Live Demo
+                  <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4" /> Live Demo
                 </Link>
               )}
               
@@ -394,9 +394,9 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
                 <Link
                   href={project.links.github}
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-white transition-all hover:scale-105"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-sm sm:text-base text-white transition-all hover:scale-105"
                 >
-                  <FaGithub /> Source Code
+                  <FaGithub className="w-3 h-3 sm:w-4 sm:h-4" /> Source Code
                 </Link>
               )}
               
@@ -404,9 +404,9 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
                 <Link
                   href={project.links.documentation}
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-white transition-all hover:scale-105"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-sm sm:text-base text-white transition-all hover:scale-105"
                 >
-                  <FaBook /> Documentation
+                  <FaBook className="w-3 h-3 sm:w-4 sm:h-4" /> Documentation
                 </Link>
               )}
               
@@ -414,9 +414,9 @@ const ProjectSection: React.FC<{ project: EducationalProject; index: number }> =
                 <Link
                   href={project.links.video}
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-white transition-all hover:scale-105"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-semibold text-sm sm:text-base text-white transition-all hover:scale-105"
                 >
-                  <FaVideo /> Watch Demo
+                  <FaVideo className="w-3 h-3 sm:w-4 sm:h-4" /> Watch Demo
                 </Link>
               )}
             </div>
@@ -457,14 +457,14 @@ const EducationalProjectsShowcase: React.FC = () => {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <div className="mb-8">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 rounded-full px-8 py-4 mb-8">
-              <span className="text-3xl">🎓</span>
-              <span className="text-blue-300 font-bold text-lg">Educational Projects</span>
-              <span className="text-3xl">💡</span>
+            <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 rounded-full px-4 sm:px-6 md:px-8 py-3 sm:py-4 mb-8">
+              <span className="text-2xl sm:text-3xl">🎓</span>
+              <span className="text-blue-300 font-bold text-base sm:text-lg">Educational Projects</span>
+              <span className="text-2xl sm:text-3xl">💡</span>
             </div>
           </div>
           
-          <h1 className="text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-teal-400">
               Digital Learning
             </span>
@@ -472,7 +472,7 @@ const EducationalProjectsShowcase: React.FC = () => {
             <span className="text-white">Innovations</span>
           </h1>
           
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
             Explore my collection of educational technology projects that bridge the gap between 
             traditional teaching and modern digital learning experiences.
           </p>
