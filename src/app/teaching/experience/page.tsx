@@ -422,48 +422,48 @@ const TeachingExperiencePage: React.FC = () => {
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Text Content */}
-                <div className={`text-white space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="mb-4">
-                    <span className="text-sm font-medium opacity-80">
+                <div className={`text-white space-y-4 md:space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className="mb-2 md:mb-4">
+                    <span className="text-xs sm:text-sm font-medium opacity-80">
                       {experience.dateFrom} - {experience.dateTo}
                     </span>
                   </div>
-                  <h2 className="text-4xl font-bold mb-4 flex items-center gap-3">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 flex items-center gap-2 md:gap-3">
                     {experience.logo && (
                       <img
                         src={getAssetPath(experience.logo)}
                         alt={experience.workplace + ' logo'}
-                        className="h-10 w-10 object-contain rounded bg-white p-1 shadow"
+                        className="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded bg-white p-1 shadow"
                       />
                     )}
-                    {experience.workplace}
+                    <span className="break-words">{experience.workplace}</span>
                   </h2>
-                  <h3 className="text-2xl font-semibold mb-4 opacity-90">{experience.position}</h3>
-                  <p className="text-lg mb-6 opacity-80">{experience.location}</p>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 md:mb-4 opacity-90">{experience.position}</h3>
+                  <p className="text-base sm:text-lg mb-4 md:mb-6 opacity-80">{experience.location}</p>
                   
-                  <p className="text-lg leading-relaxed mb-8">{experience.description}</p>
+                  <p className="text-base sm:text-lg leading-relaxed mb-4 md:mb-8">{experience.description}</p>
                   
                   {/* Responsibilities */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-semibold mb-4">Key Responsibilities</h4>
+                  <div className="mb-4 md:mb-8">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Key Responsibilities</h4>
                     <ul className="space-y-2">
                       {experience.responsibilities.map((responsibility, idx) => (
                         <li key={idx} className="flex items-start">
-                          <span className="text-yellow-400 mr-2">•</span>
-                          <span className="opacity-90">{responsibility}</span>
+                          <span className="text-yellow-400 mr-2 flex-shrink-0">•</span>
+                          <span className="opacity-90 text-sm sm:text-base">{responsibility}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   
                   {/* Achievements */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-semibold mb-4">Notable Achievements</h4>
+                  <div className="mb-4 md:mb-8">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Notable Achievements</h4>
                     <ul className="space-y-2">
                       {experience.achievements.map((achievement, idx) => (
                         <li key={idx} className="flex items-start">
-                          <span className="text-yellow-400 mr-2">★</span>
-                          <span className="opacity-90">{achievement}</span>
+                          <span className="text-yellow-400 mr-2 flex-shrink-0">★</span>
+                          <span className="opacity-90 text-sm sm:text-base">{achievement}</span>
                         </li>
                       ))}
                     </ul>
@@ -471,15 +471,15 @@ const TeachingExperiencePage: React.FC = () => {
                   
                   {/* Skills and Technologies */}
                   {(experience.skills || experience.technologies) && (
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4">
                       {experience.skills && (
                         <div>
-                          <h4 className="text-lg font-semibold mb-3">Key Skills</h4>
+                          <h4 className="text-base sm:text-lg font-semibold mb-2 md:mb-3">Key Skills</h4>
                           <div className="flex flex-wrap gap-2">
                             {experience.skills.map((skill, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-200 cursor-default"
+                                className="px-2 py-1 sm:px-3 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs sm:text-sm font-medium hover:bg-white/30 transition-all duration-200 cursor-default"
                               >
                                 {skill}
                               </span>
@@ -490,12 +490,12 @@ const TeachingExperiencePage: React.FC = () => {
                       
                       {experience.technologies && (
                         <div>
-                          <h4 className="text-lg font-semibold mb-3">Technologies & Tools</h4>
+                          <h4 className="text-base sm:text-lg font-semibold mb-2 md:mb-3">Technologies & Tools</h4>
                           <div className="flex flex-wrap gap-2">
                             {experience.technologies.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium border border-blue-400/30 hover:bg-blue-500/30 transition-all duration-200 cursor-default"
+                                className="px-2 py-1 sm:px-3 sm:py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-xs sm:text-sm font-medium border border-blue-400/30 hover:bg-blue-500/30 transition-all duration-200 cursor-default"
                               >
                                 {tech}
                               </span>
