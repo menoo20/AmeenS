@@ -73,8 +73,8 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "July 2023",
     dateTo: "Present",
     images: [
-      "/assets/photos/work/apicwithmystudents.webp",
-      "/assets/photos/work/atwork6.webp",
+      "/assets/photos/work/apicwithmystudents.jpeg",
+      "/assets/photos/work/atwork6.jpeg",
       "/assets/photos/work/atwork10.jpg"
     ],
     responsibilities: [
@@ -129,7 +129,7 @@ const TEACHING_EXPERIENCES: TeachingExperience[] = [
     dateFrom: "March 2021",
     dateTo: "December 2022",
     images: [
-      "/assets/photos/work/Awardedbymyschool.webp",
+      "/assets/photos/work/Awardedbymyschool.jpeg",
       "/assets/photos/work/atwork11.webp",
       "/assets/photos/work/withmystudents3.jpg"
     ],
