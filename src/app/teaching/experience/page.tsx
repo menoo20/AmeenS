@@ -592,8 +592,8 @@ const TeachingExperiencePage: React.FC = () => {
           {/* Career Transition Section - appears after Belarabyapps (id 4) */}
           {experience.id === 4 && (
             <div className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black">
-              {/* Animated circuit board background */}
-              <div className="absolute inset-0 opacity-10">
+              {/* Animated circuit board background - Hidden on mobile */}
+              <div className="absolute inset-0 opacity-10 hidden md:block">
                 <div className="absolute top-10 left-10 w-32 h-32 border border-green-400 rounded-full animate-pulse"></div>
                 <div className="absolute top-40 right-20 w-20 h-20 border border-blue-400 rounded-lg animate-pulse delay-1000"></div>
                 <div className="absolute bottom-32 left-1/4 w-24 h-24 border border-purple-400 rounded-full animate-pulse delay-2000"></div>
@@ -750,7 +750,7 @@ const TeachingExperiencePage: React.FC = () => {
       ))}
       
       {/* Progress Indicator */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
+      <div className="hidden lg:block fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
         <div className="flex flex-col space-y-4">
           {TEACHING_EXPERIENCES.map((_, index) => (
             <div
