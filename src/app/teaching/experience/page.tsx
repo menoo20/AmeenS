@@ -508,7 +508,7 @@ const TeachingExperiencePage: React.FC = () => {
                 </div>
                 
                 {/* Image Gallery */}
-                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <div className="sm:col-span-2 relative group">
                     {/* Loading skeleton */}
                     {imageLoading[experience.images[0]] && (
@@ -520,7 +520,7 @@ const TeachingExperiencePage: React.FC = () => {
                       alt={`${experience.workplace} - Main`}
                       width={800}
                       height={400}
-                      className={`w-full h-64 object-cover rounded-lg shadow-xl transition-all duration-300 ${
+                      className={`w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg shadow-xl transition-all duration-300 ${
                         experience.id === 2 ? 'group-hover:shadow-2xl' : 'group-hover:shadow-2xl group-hover:scale-[1.02]'
                       } ${
                         experience.id === 2 || experience.id === 6 ? 'object-top' : ''
@@ -559,7 +559,7 @@ const TeachingExperiencePage: React.FC = () => {
                           alt={`${experience.workplace} - Secondary`}
                           width={400}
                           height={200}
-                          className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                          className={`w-full h-28 sm:h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
                             experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
                           } ${imageLoading[experience.images[1]] ? 'opacity-0' : 'opacity-100'}`}
                           onLoad={() => handleImageLoad(experience.images[1])}
@@ -575,7 +575,7 @@ const TeachingExperiencePage: React.FC = () => {
                           alt={`${experience.workplace} - Tertiary`}
                           width={400}
                           height={200}
-                          className={`w-full h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
+                          className={`w-full h-28 sm:h-32 object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-xl group-hover:scale-105 ${
                             experience.id === 1 || experience.id === 3 ? 'object-top' : experience.id === 4 || experience.id === 5 ? 'object-center' : 'object-bottom'
                           } ${imageLoading[experience.images[2]] ? 'opacity-0' : 'opacity-100'}`}
                           onLoad={() => handleImageLoad(experience.images[2])}
