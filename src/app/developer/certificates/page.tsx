@@ -65,6 +65,9 @@ const DeveloperCertificatesPage: React.FC = () => {
   const [magnified, setMagnified] = useState(false);
   const router = useRouter();
 
+  // Calculate progress based on current certificate
+  const progress = ((current + 1) / CERTIFICATES.length) * 100;
+
   useEffect(() => {
     if (zoomed !== null) return;
     const timer = setTimeout(() => {
@@ -74,13 +77,24 @@ const DeveloperCertificatesPage: React.FC = () => {
   }, [current, zoomed]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-purple-700 via-blue-700 to-indigo-900 overflow-x-hidden">
       {/* Top Navigation Menu */}
       <Navigation />
 
-      <div className="relative z-10 flex flex-col items-center justify-center p-8 pt-16 md:pt-32">
-  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-8 mt-24 sm:mt-0">Programming Certificates & Courses</h1>
-      <div className="relative w-full max-w-xl h-96 flex items-center justify-center group">
+      {/* Fixed Progress Bar below Navigation */}
+      <div className="fixed top-16 left-0 w-full h-1 bg-white/20 z-40">
+        <div 
+          className="h-full bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 transition-all duration-500"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-32">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 text-center px-2">
+          Programming Certificates & Courses
+        </h1>
+        
+        <div className="relative w-full max-w-xl h-64 sm:h-80 md:h-96 flex items-center justify-center group">
 
         {/* Certificate images */}
         {CERTIFICATES.map((cert, idx) => (
@@ -114,7 +128,9 @@ const DeveloperCertificatesPage: React.FC = () => {
           <div className="w-full h-full rounded-xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300"></div>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-8 space-x-3">
+      
+      {/* Navigation Dots */}
+      <div className="flex justify-center items-center mt-6 sm:mt-8 mb-6 space-x-2 sm:space-x-3 px-4">
         {CERTIFICATES.map((cert, idx) => (
           <div
             key={cert.src}
@@ -125,7 +141,7 @@ const DeveloperCertificatesPage: React.FC = () => {
             {/* Main dot */}
             <div
               className={`
-                relative w-4 h-4 rounded-full transition-all duration-500 transform
+                relative w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-500 transform
                 ${current === idx 
                   ? 'bg-gradient-to-r from-yellow-400 to-orange-400 scale-125 shadow-lg shadow-yellow-400/50' 
                   : 'bg-white/40 hover:bg-white/60 hover:scale-110'
@@ -150,7 +166,7 @@ const DeveloperCertificatesPage: React.FC = () => {
             </div>
 
             {/* Certificate preview tooltip on hover */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+            <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
               <div className="bg-black/90 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-xl border border-white/20">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse"></div>
@@ -168,33 +184,27 @@ const DeveloperCertificatesPage: React.FC = () => {
             )}
           </div>
         ))}
-        
-        {/* Progress bar underneath dots */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-white/20 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full transition-all duration-4000 ease-linear"
-            style={{ width: `${((current + 1) / CERTIFICATES.length) * 100}%` }}
-          ></div>
-        </div>
       </div>
+      
+      {/* Zoomed Certificate Modal */}
       {zoomed !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 pt-20 sm:pt-24">
-          <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl relative mx-4 max-w-2xl w-full max-h-[90vh] overflow-hidden border border-gray-200/50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 pt-20 sm:pt-24 overflow-y-auto">
+          <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl relative mx-auto my-4 max-w-2xl w-full max-h-[90vh] overflow-hidden border border-gray-200/50">
             {/* Header with gradient accent */}
             <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 p-4 sm:p-6 relative sticky top-0 z-10">
               <button
-                className="absolute top-4 right-4 text-white/80 hover:text-white text-2xl font-bold z-10 bg-black/20 rounded-full w-8 h-8 flex items-center justify-center backdrop-blur-sm transition-all hover:bg-black/40"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white/80 hover:text-white text-2xl font-bold z-10 bg-black/20 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center backdrop-blur-sm transition-all hover:bg-black/40"
                 onClick={() => setZoomed(null)}
                 aria-label="Close modal"
               >
                 ×
               </button>
-              <div className="text-white">
+              <div className="text-white pr-10">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium opacity-90">PROFESSIONAL CERTIFICATION</span>
+                  <span className="text-xs sm:text-sm font-medium opacity-90">PROFESSIONAL CERTIFICATION</span>
                 </div>
-                <h2 className="text-3xl font-bold leading-tight">{CERTIFICATES[zoomed].title}</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">{CERTIFICATES[zoomed].title}</h2>
               </div>
             </div>
 
@@ -230,20 +240,20 @@ const DeveloperCertificatesPage: React.FC = () => {
               {/* Certificate Details */}
               <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
                 {/* Issuer and Date */}
-                <div className="flex items-center justify-between bg-gray-50 rounded-lg p-3 sm:p-4 border border-gray-200">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-gray-50 rounded-lg p-3 sm:p-4 border border-gray-200 gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">{CERTIFICATES[zoomed].issue}</p>
-                      <p className="text-sm text-gray-600">Issued on {CERTIFICATES[zoomed].date}</p>
+                      <p className="font-semibold text-gray-900 text-sm sm:text-base">{CERTIFICATES[zoomed].issue}</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Issued on {CERTIFICATES[zoomed].date}</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+                  <div>
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs sm:text-sm font-medium">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                       Verified
                     </div>
@@ -318,11 +328,11 @@ const DeveloperCertificatesPage: React.FC = () => {
       )}
 
       {/* Navigation Buttons */}
-      <div className="fixed bottom-8 left-8 right-8 flex justify-between items-center pointer-events-none">
+      <div className="fixed bottom-20 sm:bottom-24 md:bottom-8 left-4 right-4 sm:left-6 sm:right-6 md:left-8 md:right-8 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 pointer-events-none z-40">
         {/* Back Button */}
         <button 
           onClick={() => router.push('/')}
-          className="bg-purple-600/90 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
+          className="w-full sm:w-auto bg-purple-600/90 hover:bg-purple-700 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20"
         >
           ← Back to Home
         </button>
@@ -330,10 +340,10 @@ const DeveloperCertificatesPage: React.FC = () => {
         {/* Next Section Button - Navigate back to Journey Map */}
         <button 
           onClick={() => router.push('/developer')}
-          className="bg-blue-600/90 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20 flex items-center gap-2"
+          className="w-full sm:w-auto bg-blue-600/90 hover:bg-blue-700 text-white px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-bold text-sm sm:text-base shadow-lg transition-all duration-300 hover:scale-105 pointer-events-auto backdrop-blur-sm border border-white/20 flex items-center justify-center gap-2"
         >
           <span>Explore More</span>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
           </svg>
         </button>
