@@ -321,6 +321,22 @@ export function getFeaturedVideos(): EducationalVideo[] {
   return EDUCATIONAL_VIDEOS.filter(video => video.featured);
 }
 
+// Get most popular videos by view count
+export function getMostPopularVideos(limit: number = 6): EducationalVideo[] {
+  // Convert view strings to numbers for sorting
+  const parseViews = (viewString: string): number => {
+    const cleaned = viewString.replace(/,/g, '');
+    if (cleaned.endsWith('K')) {
+      return parseFloat(cleaned.replace('K', '')) * 1000;
+    }
+    return parseInt(cleaned);
+  };
+
+  return [...EDUCATIONAL_VIDEOS]
+    .sort((a, b) => parseViews(b.views) - parseViews(a.views))
+    .slice(0, limit);
+}
+
 // Get all categories with video counts
 export function getCategoriesWithCounts() {
   return Object.entries(VIDEO_CATEGORIES).map(([key, value]) => ({

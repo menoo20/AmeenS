@@ -8,6 +8,7 @@ import {
   EDUCATIONAL_VIDEOS, 
   VIDEO_CATEGORIES, 
   getFeaturedVideos, 
+  getMostPopularVideos,
   getVideosByCategory,
   getCategoriesWithCounts,
   type EducationalVideo 
@@ -35,7 +36,7 @@ export default function ResearchPublicationsPage() {
   };
   
   const categories = getCategoriesWithCounts();
-  const featuredVideos = getFeaturedVideos();
+  const mostPopularVideos = getMostPopularVideos(3); // Get top 3 most viewed videos
   
   const getDisplayVideos = () => {
     if (selectedCategory === 'all') return EDUCATIONAL_VIDEOS;
@@ -172,16 +173,16 @@ export default function ResearchPublicationsPage() {
         </div>
       </div>
 
-      {/* Featured Videos Section */}
-      {featuredVideos.length > 0 && (
+      {/* Most Popular Videos Section */}
+      {mostPopularVideos.length > 0 && (
         <div className="container mx-auto px-4 mb-16">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-1 h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-            <h2 className="text-3xl font-bold text-white">Featured Research</h2>
+            <h2 className="text-3xl font-bold text-white">Most Popular</h2>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredVideos.map((video) => (
+            {mostPopularVideos.map((video) => (
               <VideoCard 
                 key={video.id} 
                 video={video} 
