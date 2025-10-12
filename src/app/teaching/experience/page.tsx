@@ -638,25 +638,25 @@ const TeachingExperiencePage: React.FC = () => {
                   </div>
 
                   <div className="mb-4">
-                    <span className="text-sm font-medium opacity-80">
+                    <span className="text-xs sm:text-sm font-medium opacity-80">
                       2017 - 2020
                     </span>
                   </div>
                   
-                  <h2 className="text-4xl font-bold text-white mb-4 leading-tight">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">
                       The Programming Journey
                     </span>
                   </h2>
                   
-                  <h3 className="text-2xl font-semibold text-white mb-6 flex items-center justify-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                      <span className="text-gray-900 font-bold text-sm">!</span>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-6 flex items-center justify-center gap-2 sm:gap-3">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-gray-900 font-bold text-xs sm:text-sm">!</span>
                     </div>
-                    Bridging Education & Technology
+                    <span className="break-words">Bridging Education & Technology</span>
                   </h3>
                   
-                  <p className="text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
+                  <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-3xl mx-auto">
                     Between 2017-2020, I temporarily left teaching to dive deep into programming and technology. 
                     This wasn't a career change—it was an <span className="text-green-400 font-semibold">educational evolution</span> 
                     that empowered me to design more sophisticated educational tools and elevate my teaching with technology integration.
@@ -678,30 +678,30 @@ const TeachingExperiencePage: React.FC = () => {
                   </div>
                   
                   {/* Key Achievements - Centered */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-semibold mb-4">Educational Impact</h4>
-                    <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                  <div className="mb-6 sm:mb-8">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-4">Educational Impact</h4>
+                    <div className="grid md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
                       <div className="text-center">
-                        <span className="text-green-400 text-2xl block mb-2">💻</span>
-                        <span className="text-sm">Mastered modern web development technologies</span>
+                        <span className="text-green-400 text-xl sm:text-2xl block mb-2">💻</span>
+                        <span className="text-xs sm:text-sm">Mastered modern web development technologies</span>
                       </div>
                       <div className="text-center">
-                        <span className="text-blue-400 text-2xl block mb-2">🔗</span>
-                        <span className="text-sm">Designed EdTech tools that bridge pedagogy and code</span>
+                        <span className="text-blue-400 text-xl sm:text-2xl block mb-2">🔗</span>
+                        <span className="text-xs sm:text-sm">Designed EdTech tools that bridge pedagogy and code</span>
                       </div>
                       <div className="text-center">
-                        <span className="text-purple-400 text-2xl block mb-2">📚</span>
-                        <span className="text-sm">Enhanced teaching methodology with tech integration</span>
+                        <span className="text-purple-400 text-xl sm:text-2xl block mb-2">📚</span>
+                        <span className="text-xs sm:text-sm">Enhanced teaching methodology with tech integration</span>
                       </div>
                     </div>
                   </div>
                   
                   {/* Skills acquired - Centered */}
-                  <div className="mb-8">
-                    <h4 className="text-xl font-semibold mb-4">Technologies Mastered</h4>
+                  <div className="mb-6 sm:mb-8">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-4">Technologies Mastered</h4>
                     <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
                       {['JavaScript', 'React', 'Python', 'EdTech Tools', 'Web Development', 'Database Design'].map((skill, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-gray-800 border border-gray-600 text-gray-300 rounded-full text-sm">
+                        <span key={idx} className="px-2 py-1 sm:px-3 sm:py-1 bg-gray-800 border border-gray-600 text-gray-300 rounded-full text-xs sm:text-sm">
                           {skill}
                         </span>
                       ))}
@@ -722,14 +722,14 @@ const TeachingExperiencePage: React.FC = () => {
                           }, 1000)
                         }
                       }}
-                      className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300"
+                      className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500 text-white px-4 py-3 sm:px-6 md:px-8 sm:py-4 rounded-xl font-bold text-sm sm:text-base md:text-lg shadow-2xl hover:shadow-green-500/25 transform hover:scale-105 transition-all duration-300"
                     >
-                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform">
-                        <span className="text-xl">💻</span>
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform flex-shrink-0">
+                        <span className="text-base sm:text-xl">💻</span>
                       </div>
-                      <span>Explore My Developer Journey</span>
-                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span className="break-words">Explore My Developer Journey</span>
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform flex-shrink-0">
+                        <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </div>
@@ -738,7 +738,7 @@ const TeachingExperiencePage: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-600 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                     </button>
                     
-                    <p className="text-gray-400 text-sm mt-4 max-w-md mx-auto">
+                    <p className="text-gray-400 text-xs sm:text-sm mt-4 max-w-md mx-auto">
                       Discover how my programming skills enhanced my teaching methodology
                     </p>
                   </div>
