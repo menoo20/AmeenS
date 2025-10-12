@@ -1,8 +1,5 @@
 const path = require('path')
 
-// Use basePath only in production (GitHub Pages)
-const isProduction = process.env.NODE_ENV === 'production'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
@@ -41,11 +38,6 @@ const nextConfig = {
   },
   output: 'export',
   compress: true,
-  // GitHub Pages deployment configuration (only in production)
-  ...(isProduction && {
-    basePath: '/AmeenS',
-    assetPrefix: '/AmeenS/',
-  }),
 };
 
 // Note: headers() and redirects() removed - they don't work with static export
