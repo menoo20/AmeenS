@@ -157,10 +157,17 @@ const BarChart = ({ title, cannotRead, level1Ready, total, testDate }: {
               whileInView={{ width: `${level1Percentage}%` }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="absolute h-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-end pr-3"
+              className="absolute h-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center"
             >
-              <span className="text-white font-bold text-sm">{Math.round(level1Percentage)}%</span>
+              {level1Percentage >= 15 && (
+                <span className="text-white font-bold text-sm">{Math.round(level1Percentage)}%</span>
+              )}
             </motion.div>
+            {level1Percentage < 15 && (
+              <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-700 font-bold text-sm">
+                {Math.round(level1Percentage)}%
+              </span>
+            )}
           </div>
         </div>
       </div>
