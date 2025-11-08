@@ -35,7 +35,7 @@ export default function BlogPostLayout({ post, children, relatedPosts = [] }: Bl
   };
 
   return (
-    <article className="min-h-screen bg-white pt-20">
+    <article className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="relative h-96 overflow-hidden">
         <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
@@ -43,9 +43,9 @@ export default function BlogPostLayout({ post, children, relatedPosts = [] }: Bl
 
         {/* Content Overlay */}
         <div className="absolute inset-0 flex flex-col justify-end">
-          <div className="max-w-4xl mx-auto px-6 pb-12 w-full">
+          <div className="max-w-4xl mx-auto px-6 pb-12 pt-24 w-full">
             {/* Category Badge */}
-            <div className="mb-4 mt-8">
+            <div className="mb-4">
               <div className={`inline-block bg-gradient-to-r ${categoryData.gradient} text-white px-4 py-2 rounded-full text-sm font-semibold`}>
                 {post.category}
               </div>
