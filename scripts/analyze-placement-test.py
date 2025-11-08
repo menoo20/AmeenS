@@ -38,12 +38,12 @@ def analyze_branch(file_path, branch_name):
             marks = pd.to_numeric(df[mark_column], errors='coerce').dropna()
             
             total_students = len(marks)
-            cannot_read = len(marks[marks < 33])
-            level1_ready = len(marks[marks >= 33])
+            cannot_read = len(marks[marks < 35])
+            level1_ready = len(marks[marks >= 35])
             
             print(f"\nTotal Students: {total_students}")
-            print(f"Cannot Read/Write (< 33): {cannot_read} ({(cannot_read/total_students*100):.1f}%)")
-            print(f"Ready for Level 1 (>= 33): {level1_ready} ({(level1_ready/total_students*100):.1f}%)")
+            print(f"Cannot Read/Write (< 35): {cannot_read} ({(cannot_read/total_students*100):.1f}%)")
+            print(f"Ready for Level 1 (>= 35): {level1_ready} ({(level1_ready/total_students*100):.1f}%)")
             
             print(f"\nMark Distribution:")
             print(f"  Minimum: {marks.min()}")

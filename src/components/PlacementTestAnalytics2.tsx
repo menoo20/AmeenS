@@ -170,17 +170,18 @@ const BarChart = ({ title, cannotRead, level1Ready, total, testDate }: {
 
 export default function PlacementTestAnalytics() {
   // Data from placement test results (ACTUAL DATA FROM EXCEL FILES)
+  // Threshold: 35/50 marks for Level 1 readiness
   const bgti1Stats = {
     totalStudents: 151,
-    cannotRead: 89,  // Students scoring < 33 out of 50
-    level1Ready: 62, // Students scoring >= 33 out of 50
+    cannotRead: 104,  // Students scoring < 35 out of 50
+    level1Ready: 47, // Students scoring >= 35 out of 50
     testDate: "September 5, 2024"
   };
 
   const bgti2Stats = {
     totalStudents: 30,
-    cannotRead: 23,  // Students scoring < 33 out of 50
-    level1Ready: 7,  // Students scoring >= 33 out of 50
+    cannotRead: 24,  // Students scoring < 35 out of 50
+    level1Ready: 6,  // Students scoring >= 35 out of 50
     testDate: "October 5, 2024"
   };
 
