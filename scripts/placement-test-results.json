@@ -1,0 +1,14 @@
+{
+  "branch1": {
+    "branch": "BGTI Branch 1",
+    "total": 151,
+    "cannot_read": 89,
+    "level1_ready": 62
+  },
+  "branch2": {
+    "branch": "BGTI Branch 2",
+    "total": 30,
+    "cannot_read": 23,
+    "level1_ready": 7
+  }
+}

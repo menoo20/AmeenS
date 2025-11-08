@@ -1,7 +1,26 @@
 const path = require('path')
 
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [require('remark-gfm')],
+    rehypePlugins: [
+      require('rehype-slug'),
+      require('rehype-autolink-headings'),
+      [
+        require('rehype-pretty-code'),
+        {
+          theme: 'github-dark',
+          keepBackground: true,
+        },
+      ],
+    ],
+  },
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -43,4 +62,4 @@ const nextConfig = {
 // Note: headers() and redirects() removed - they don't work with static export
 // For static sites, these features must be handled by the hosting platform
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
